@@ -45,6 +45,8 @@ input {
     font-size: 80px;    
 }
 
+/* I can't get the style to work for all checkbox elements, so I refer to them below by their IDs*/
+/* Start of checkbox elements */
 #camera-shake {
     width: 50px;
     height: 50px;
@@ -53,4 +55,15 @@ input {
 #invert-swivel {
     width: 50px;
     height: 50px;
+}
+
+#push-to-talk {
+    width: 50px;
+    height: 50px;
+}
+/*End of checkbox elements*/
+
+select {
+    font-family: "Courier";
+    font-size: 33px;
 }
