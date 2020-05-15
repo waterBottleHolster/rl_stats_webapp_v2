@@ -1,117 +1,178 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Rocket League Stats</title>
-        <link rel="stylesheet" href="styles.css">
+        <title>Rocket League Stats Registrations</title>
+            <!--link to include bootstrap styling-->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+            <!--link to include the custom styles sheet-->
+            <link rel="stylesheet" href="styles.css">
+            <!--link to include the font awesome icons-->
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </head>
     <body>
         <header>
             <h1>Rocket League Stats Tracker</h1>
         </header>
     
-        <div>
-            <h2>Kickoffs</h2>
-            <button type="button" id="whiff_btn" class="kickoff-button"> Whiff </button>
-            <button type="button" id="loss_btn" class="kickoff-button"> Loss </button>
-            <button type="button" id="win_btn" class="kickoff-button"> Win </button>
-            <br>
-            <label id="whiff-count"></label>
-            <label id="lose-count"></label>
-            <label id="win-count"></label>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="w-100 text-center">
+                    <h2>Kickoffs</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-4">
+                    <button class = "w-100 btn btn-primary" type="button" id="whiff_btn"> Whiff </button>
+                </div>
+                <div class="col-xl-4">
+                    <button class = "w-100 btn btn-primary" type="button" id="loss_btn"> Loss </button>
+                </div>
+                <div class="col-xl-4">
+                    <button class = "w-100 btn btn-primary" type="button" id="win_btn"> Win </button> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-4">
+                    <label id="whiff-count"></label>
+                </div>
+                <div class="col-xl-4">
+                    <label id="lose-count"></label>
+                </div>
+                <div class="col-xl-4">
+                    <label id="win-count"></label>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <h2>Game Mode</h2>
+            </div>
+            <div class="row">
+                <div class="col-xl-4">
+                    <select id = "game-modes-ddb" class="ddb w-100">
+                        <!-- eventually I want to populate this select with values from an associated json file-->
+                        <option value="standard">Standard</option>
+                        <option value="doubles">Doubles</option>
+                        <option value="dual">Duel</option>
+                        <option value="chaos">Chaos</option>
+                        <option value="rumble">Rumble</option>
+                        <option value="snow_day">Snow Day</option>
+                        <option value="hoops">Hoops</option>
+                        <option value="dropshot">Dropshot</option>
+                        <option value="heat_seeker">Heat Seeker</option>
+                        <option value="spike_rush">Spike Rush</option>
+                    </select>
+                </div>                
+                <div class="col-xl-4">
+                    <label for="party-toggle" class="w-100 text-center">
+                        <input id="party-toggle" type="checkbox" class="toggle-switch">Partied Up?</input>
+                    </label>
+                </div>
+                <div class="col-xl-4">
+                    <label for="competitive-toggle" class="w-100 text-center">
+                        <input id="competitive-toggle" type="checkbox" class="toggle-switch">Competitive?</input>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row justify-content-center">
+                <h2>Vehicle</h2>
+            </div>
+            <div class="row">
+                <div class="col-xl-4">
+                    <select id = "vehicle-ddb" class="ddb w-100">
+                        <!-- eventually I want to populate this select with values from an associated json file-->
+                        <option value="octane">Octane</option>
+                        <option value="dominus">Dominus</option>
+                        <option value="ronin_gxt">Ronin GXT</option>
+                        <option value="zippy">Zippy</option>
+                        <option value="merc">Merc</option>
+                        <option value="chikara_gxt">Chikara GXT</option>
+                        <option value="scarab">Scarab</option>
+                        <option value="venom">Venom</option>
+                    </select>
+                </div>
+                <div class="col-xl-4">
+                    <label class="w-100 text-center">
+                        <input id="topper-toggle" type="checkbox" class="toggle-switch">Topper?</input>
+                    </label>
+                </div>
+                <div class="col-xl-4">
+                    <label class="w-100 text-center">
+                        <input id="antenna-toggle" type="checkbox" class="toggle-switch">Antenna?</input>
+                    </label>
+                </div>
+            </div>
         </div>
 
-        <div>
-            <h2>Game Mode</h2>
-            <select id = "game-modes-ddb" class="ddb">
-                <!-- eventually I want to populate this select with values from an associated json file-->
-                <option value="standard">Standard</option>
-                <option value="doubles">Doubles</option>
-                <option value="dual">Duel</option>
-                <option value="chaos">Chaos</option>
-                <option value="rumble">Rumble</option>
-                <option value="snow_day">Snow Day</option>
-                <option value="hoops">Hoops</option>
-                <option value="dropshot">Dropshot</option>
-                <option value="heat_seeker">Heat Seeker</option>
-                <option value="spike_rush">Spike Rush</option>
-            </select>
-            <label>
-                <input id="competitive-toggle" type="checkbox" class="toggle-switch">Competitive?</input>
-            </label>
-            <label>
-                <input id="party-toggle" type="checkbox" class="toggle-switch">Partied Up?</input>
-            </label>
-        </div>
-        
-        <div>
-            <h2>Vehicle</h2>
-            <select id = "vehicle-ddb" class="ddb">
-                <!-- eventually I want to populate this select with values from an associated json file-->
-                <option value="octane">Octane</option>
-                <option value="dominus">Dominus</option>
-                <option value="ronin_gxt">Ronin GXT</option>
-                <option value="zippy">Zippy</option>
-                <option value="merc">Merc</option>
-                <option value="chikara_gxt">Chikara GXT</option>
-                <option value="scarab">Scarab</option>
-                <option value="venom">Venom</option>
-            </select>
-        <label>
-            <input id="topper-toggle" type="checkbox" class="toggle-switch">Topper?</input>
-        </label>
-        <label>
-            <input id="antenna-toggle" type="checkbox" class="toggle-switch">Antenna?</input>
-        </label>
-        </div>
-        
-        <div>
-            <h2>Notes</h2>
-            <textarea id="notes-area" rows=4></textarea>
+        <div class="container">
+            <div class="row justify-content-center">
+                <h2>Notes</h2>
+            </div>
+            <div class="row justify-content-center">
+                <textarea id="notes-area" rows = 4 cols=50></textarea>
+            </div>
         </div>
 
-        <div>
-            <h2>Team</h2>
-            <input name="team-choice" id="blue-team" type="radio" class="radio-btn">
-            <label for="blue-team">BLUE</label>
-            <input name="team-choice" id="orange-team" type="radio" class="radio-btn">
-            <label for="orange-team">ORANGE</label>
+        <div class="container">
+            <div class="row justify-content-center">
+                <h2>Team</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-xl-4 text-right">
+                    <input name="team-choice" id="blue-team" type="radio" class="radio-btn" checked="checked">
+                    <label for="blue-team">BLUE</label>
+                </div>
+                <div class="col-xl-4">
+                    <input name="team-choice" id="orange-team" type="radio" class="radio-btn">
+                    <label for="orange-team">ORANGE</label>
+                </div>
+            </div>
         </div>
         
-        <div>
-            <h2>Result</h2>
-            <select id = "result-ddb" class="ddb">
-                <!-- eventually I want to populate this select with values from an associated json file-->
-                <option value="win">Win</option>
-                <option value="loss">Loss</option>
-                <option value="ot_loss">OT Loss</option>
-                <option value="ff">Forfeit</option>
-                <option value="dc">Disconnect</option>
-            </select>
-        </div>
-        
-        <div>
-            <label for="camera-ddb">Camera:
-                <select id = "camera-ddb" class="ddb">
+        <div class="container">
+            <div class="row justify-content-center">
+                <h2>Result</h2>
+            </div>
+            <div class="row justify-content-center">
+                <select id = "result-ddb" class="ddb w-25">
                     <!-- eventually I want to populate this select with values from an associated json file-->
-                    <option value="profile1">Profile #1</option>
-                    <option value="profile2">Profile #2</option>
-                    <option value="profile3">Profile #3</option>
+                    <option value="win">Win</option>
+                    <option value="loss">Loss</option>
+                    <option value="ot_loss">OT Loss</option>
+                    <option value="ff">Forfeit</option>
+                    <option value="dc">Disconnect</option>
                 </select>
-                <input type="image" id="settings-btn" src="gear_icon.PNG" alt="Change Camera Settings" width="48" height="48">
-            </label>
+            </div>
         </div>
-
-        <div>
-            <label for="controller-ddb">Controller:
-                <select id = "controller-ddb" class="ddb">
-                    <!-- eventually I want to populate this select with values from an associated json file-->
-                    <option value="kbm1">KBM #1</option>
-                    <option value="kbm2">KBM #2</option>
-                    <option value="kbm3">CONT #1</option>
-                </select>
-                <input type="image" id="settings-btn" src="gear_icon.PNG" alt="Change Controller Settings" width="48" height="48">
-            </label>
+        
+        <div class="container">
+            <div class="w-100">
+                <label for="camera-ddb" class="w-100 align-middle text-center">Camera:
+                    <select id = "camera-ddb" class="ddb align-middle">
+                        <!-- eventually I want to populate this select with values from an associated json file-->
+                        <option value="profile1">Profile #1</option>
+                        <option value="profile2">Profile #2</option>
+                        <option value="profile3">Profile #3</option>
+                    </select>
+                    <input type="image" class="align-middle" id="settings-btn" src="gear_icon.PNG" alt="Change Camera Settings" width="43" height="43">
+                </label>
+            </div>
         </div>
-
+        <div class="container">
+            <div class="w-100">
+                <label for="controller-ddb" class="w-100 align-middle text-center">Camera:
+                    <select id = "controller-ddb" class="ddb align-middle">
+                        <!-- eventually I want to populate this select with values from an associated json file-->
+                        <option value="kbm1">Profile #1</option>
+                        <option value="kbm2">Profile #2</option>
+                        <option value="kbm3">Profile #3</option>
+                    </select>
+                    <input type="image" class="align-middle" id="settings-btn" src="gear_icon.PNG" alt="Change Camera Settings" width="43" height="43">
+                </label>
+            </div>
+        </div>
   </body>
 </html>
