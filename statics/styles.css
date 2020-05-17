@@ -4,14 +4,49 @@
     box-sizing: border-box;
 }
 
+body {
+    background: rgba(252, 84,12, 0.15)
+}
 header {
     background: rgb(252, 84,12);
-    padding: 60px;
+    padding: 20px;
 }
 
 h1 {
     font-family: Futura-CondensedExtraBold, sans-serif;
-    color: black;
-    text-align: center;
+    color: rgb(0, 0, 0);
     font-size: 60px;
+}
+
+.camera_lbls {
+    font-family: Futura-CondensedExtraBold, sans-serif;
+    color: rgb(0, 0, 0);
+    font-size: 34px;
+}
+
+.camera_txts {
+    font-family: Futura-CondensedExtraBold, sans-serif;
+    color: rgb(0, 0, 0);
+    font-size: 34px;
+}
+
+.camera_checkbox {
+    width: 50px;
+    height: 50px;
+}
+
+.camera_radio {
+    -webkit-appearance: none;
+    height: 25px;
+    width: 40%;
+    background-color: rgb(12,44,252);
+    border-color: transparent;
+}
+
+.camera_radio::-webkit-slider-thumb {
+    height: 21px;
+    width: 25px;
+    background-color: white;
+    border-width: 5px;
+    border-color: rgb(252, 84,12);
 }
