@@ -1,0 +1,17 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+header {
+    background: rgb(252, 84,12);
+    padding: 60px;
+}
+
+h1 {
+    font-family: Futura-CondensedExtraBold, sans-serif;
+    color: black;
+    text-align: center;
+    font-size: 60px;
+}
