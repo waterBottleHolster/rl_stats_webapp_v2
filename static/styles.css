@@ -2,16 +2,22 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: Futura-CondensedExtraBold;
+    font-family: rl_font;
 }
 
 body {
     background: rgb(255, 255, 255)
 }
+
+@font-face {
+    font-family: rl_font;
+    src: url("fonts/Futura_Condensed_Extra_Bold.otf");
+}
+
 header {
     /*background: rgba(252, 84,12,1);*/
     padding: 50px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../statics/images/orange_octane_banner.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("images/orange_octane_banner.png");
     /* Position and center the image to scale nicely on all screens */
     background-position: center;
     background-repeat: no-repeat;
@@ -123,8 +129,7 @@ select {
     /*padding: 0.4em 0em;*/
     border: 1px solid #ddd;
 
-    font: 25px sans-serif;
-    font-family: Futura-CondensedExtraBold;
+    font: 25px;
     text-align: center;  
 
     cursor: pointer;
