@@ -25,7 +25,7 @@
                 <label class="camera_lbls">PROFILE NAME:</label>
             </div>
             <div class="col">
-                <form>
+                <form name="camera-settings">
                     <input type="text" id="profile_name_input" class="camera_txts">
                 </form>
             </div>
@@ -35,7 +35,7 @@
                 <label class="camera_lbls">CAMERA SHAKE:</label>
             </div>
             <div class="col">
-                <form>
+                <form name="camera-settings">
                     <input type="checkbox" id="camera_shake_input" class="camera_checkbox">
                 </form>
             </div>
@@ -45,7 +45,7 @@
                 <label class="camera_lbls">FIELD OF VIEW:</label>
             </div>
             <div class="col-6">
-                <form>
+                <form name="camera-settings">
                     <div>
                         <input type="range" id="fov_input" class="camera_radio" min="60" max="110" step="1" value="69">
                         <span style="font-family: Futura-CondensedExtraBold; font-size: 34px; text-align: left;"><span id="fov_value"></span></span>
@@ -58,7 +58,7 @@
                 <label class="camera_lbls">DISTANCE:</label>
             </div>
             <div class="col-6">
-                <form>
+                <form name="camera-settings">
                     <div>
                         <input type="range" id="distance_input" class="camera_radio" min="100" max="400" step="10" value="220">
                         <span style="font-family: Futura-CondensedExtraBold; font-size: 34px; text-align: left;"><span id="distance_value"></span></span>
@@ -71,7 +71,7 @@
                 <label class="camera_lbls">HEIGHT:</label>
             </div>
             <div class="col-6">
-                <form>
+                <form name="camera-settings">
                     <div>
                         <input type="range" id="height_input" class="camera_radio" min="40" max="200" step="10">
                         <span style="font-family: Futura-CondensedExtraBold; font-size: 34px; text-align: left;"><span id="height_value"></span></span>                    
@@ -84,7 +84,7 @@
                 <label class="camera_lbls">ANGLE:</label>
             </div>
             <div class="col-6">
-                <form>
+                <form name="camera-settings">
                     <div>
                         <input type="range" id="angle_input" class="camera_radio" min="-15" max="0" step="1">
                         <span style="font-family: Futura-CondensedExtraBold; font-size: 34px; text-align: left;"><span id="angle_value"></span></span>                    
@@ -97,7 +97,7 @@
                 <label class="camera_lbls">STIFFNESS:</label>
             </div>
             <div class="col-6">
-                <form>
+                <form name="camera-settings">
                     <div>
                         <input type="range" id="stiffness_input" class="camera_radio" min="0" max="1" step="0.05">
                         <span style="font-family: Futura-CondensedExtraBold; font-size: 34px; text-align: left;"><span id="stiffness_value"></span></span>                    
@@ -110,7 +110,7 @@
                 <label class="camera_lbls">SWIVEL SPEED:</label>
             </div>
             <div class="col-6">
-                <form>
+                <form name="camera-settings">
                     <div>
                         <input type="range" id="swivel_input" class="camera_radio" min="1" max="10" step="0.1">
                         <span style="font-family: Futura-CondensedExtraBold; font-size: 34px; text-align: left;"><span id="swivel_value"></span></span>                    
@@ -123,7 +123,7 @@
                 <label class="camera_lbls">TRANSITION SPEED:</label>
             </div>
             <div class="col-6">
-                <form>
+                <form name="camera-settings">
                     <div>
                         <input type="range" id="transition_input" class="camera_radio" min="1" max="2" step="0.1">
                         <span style="font-family: Futura-CondensedExtraBold; font-size: 34px; text-align: left;"><span id="transition_value"></span></span>                    
@@ -136,16 +136,25 @@
                 <label class="camera_lbls">INVERT SWIVEL:</label>
             </div>
             <div class="col">
-                <form>
+                <form  name="camera-settings">
                     <input type="checkbox" id="invert_swivel_input" class="camera_checkbox">
                 </form>
             </div>
         </div>
         <!-- include two buttons at the bottom here, one to save/submit and one to go back to main page-->
+        <div class="row justify-content-center">
+            <div class="col-2">
+                <form action=/save_camera_settings name="camera-settings">
+                    <input class="btn btn-block btn-primary" type="submit" value="SAVE" id="camera-save-btn">
+                </form>
+            </div>
+            <div class="col-2">
+                <form action=/main_page>
+                    <input class="btn btn-block btn-primary" type="submit" value="MAIN" id="camera-main-btn">
+                </form>
+            </div>
+        </div>
     </div>
-
-
-
 
 
     <!-- Optional JavaScript -->
@@ -186,8 +195,6 @@
         swivel_value.innerHTML = swivel_slider.value;
         transition_value.innerHTML = transition_slider.value;
         
-        
-
         fov_slider.oninput = function() {
             fov_value.innerHTML = this.value;
         }

@@ -1,37 +1,304 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- style.css CSS-->
     <link rel="stylesheet" href="../statics/styles.css" type="text/css">
 
     <title>RL Stats Registration</title>
-  </head>
-  <body>
-    <h1 class="text-center">Rocket League Stats Tracker</h1>
+</head>
+
+<body>
+    <header>
+        <h1 class="text-center">ROCKET LEAGUE STATS TRACKER</h1>
+    </header>
+
     <div class="container-fluid">
         <div class="row">
-            <div class="col-6" style="background-color: beige;">
-                <label>
-                    TEST1
-                </label>
+            <div class="col-6" style="padding-top: 15px;">
+                <button class="accordion">GAME MODE</button>
+                <div class="panel">
+                    <div class="row align-items-center">
+                        <div class="col-4 text-center">
+                            <form id="game_mode_form">
+                                <select form="game_mode_form">
+                                    <option>STANDARD</option>
+                                    <option>TWOS</option>
+                                    <option>DUAL</option>
+                                    <option>CHAOS</option>
+                                    <option>STANDARD SOLO</option>
+                                    <option>RUMBLE</option>
+                                    <option>SNOW DAY</option>
+                                    <option>HOOPS</option>
+                                    <option>DROPSHOT</option>
+                                    <option>HEATSEEKER</option>
+                                    <option>SPIKE RUSH</option>
+                                    <option>BOOMER BALL</option>
+                                </select>                                
+                            </form>
+                        </div>
+                        <div class="col-4 text-center">
+                            <form id="game_mode_form" style="padding-top: 7px;">
+                                <label for="party_checkbox" style= "font-size: 25px;">
+                                    <input type="checkbox" id="party_checkbox" name="party_checkbox" style="width: 20px; height: 20px;">
+                                    PARTIED UP?
+                                </label>
+                            </form>
+                        </div>
+                        <div class="col-4 text-center">
+                            <form id="game_mode_form" style="padding-top: 7px;">
+                                <label for="comp_checkbox" style= "font-size: 25px;">
+                                    <input type="checkbox" id="comp_checkbox" name="comp_checkbox" style="width: 20px; height: 20px;">
+                                    COMPETITIVE?
+                                </label>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <button class="accordion">VEHICLE</button>
+                <div class="panel">
+                    <div class="row align-items-center">
+                        <div class="col-4 text-center">
+                            <form id="vehicle_form">
+                                <select form="vehicle_form">
+                                    <option>OCTANE</option>
+                                    <option>DOMINUS</option>
+                                    <option>VENOM</option>
+                                    <option>RONIN GXT</option>
+                                    <option>RONIN G1</option>
+                                    <option>RONIN</option>
+                                    <option>CHIKARA GXT</option>
+                                    <option>CHIKARA G1</option>
+                                    <option>BREAKOUT</option>
+                                    <option>GIZMO</option>
+                                    <option>HOTSHOT</option>
+                                    <option>MERC</option>
+                                    <option>ROAD HOG</option>
+                                    <option>X-DEVIL</option>
+                                    <option>ZIPPY</option>
+                                    <option>RIPPER</option>
+                                    <option>SCARAB</option>
+                                    <option>TAKUMI</option>
+                                </select>                                
+                            </form>
+                        </div>
+                        <div class="col-4 text-center">
+                            <form id="vehicle_form" style="padding-top: 7px;">
+                                <label for="topper_checkbox" style= "font-size: 25px;">
+                                    <input type="checkbox" id="topper_checkbox" name="topper_checkbox" style="width: 20px; height: 20px;">
+                                    TOPPER?
+                                </label>
+                            </form>
+                        </div>
+                        <div class="col-4 text-center">
+                            <form id="vehicle_form" style="padding-top: 7px;">
+                                <label for="antenna_checkbox" style= "font-size: 25px;">
+                                    <input type="checkbox" id="antenna_checkbox" name="antenna_checkbox" style="width: 20px; height: 20px;">
+                                    ANTENNA?
+                                </label>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <button class="accordion">CAMERA</button>
+                <div class="panel">
+                    <p>Lorem ipsum...</p>
+                </div>
                 
+                <button class="accordion">CONTROLLER</button>
+                <div class="panel">
+                    <p>Lorem ipsum...</p>
+                </div>                
             </div>
-            <div class="col-6" style="background-color: rgb(241, 241, 63);">
-                TEST2
+            <div class="col-6" style="padding-top: 15px;">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2>KICKOFFS</h2>
+                    </div>
+                    <div class="col-4 text-center">
+                        <form name="kickoff_form">
+                            <input type="hidden" value="0" id="whiff_counter" name="whiff_counter">
+                        </form>
+                        <button class="btn btn-block btn-primary" id="whiff_btn" value="WHIFF" onclick="myFunc(id)">WHIFF</button>
+                        <label style="font-size: 30px;" id="whiff_count_lbl">0</label>
+                    </div>
+                    <div class="col-4 text-center">
+                        <form name="kickoff_form">
+                            <input type="hidden" value="0" id="loss_counter" name="loss_counter">
+                        </form>
+                        <button class="btn btn-block btn-primary" id="loss_btn" value="LOSS" onclick="myFunc(id)">LOSS</button>
+                        <label style="font-size: 30px;" id="loss_count_lbl">0</label>
+                    </div>
+                    <div class="col-4 text-center">
+                        <form name="kickoff_form">
+                            <input type="hidden" value="0" id="win_counter" name="win_counter">
+                        </form>
+                        <button class="btn btn-block btn-primary" id="win_btn" value="WIN" onclick="myFunc(id)">WIN</button>
+                        <label style="font-size: 30px;" id="win_count_lbl">0</label>
+                    </div>                    
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2>TEAM</h2>
+                    </div>
+                    <div class="col-12 text-center">
+                        <form name="team_form">
+                            <ul class="segmented-control">
+                                <li class="segmented-control__item">
+                                    <input class="segmented-control__input" type="radio" value="1" name="team" id="blue">
+                                    <label class="segmented-control__label" for="blue">BLUE</label>
+                                </li>
+                                <li class="segmented-control__item">
+                                    <input class="segmented-control__input" type="radio" value="2" name="team" id="orange" checked>
+                                    <label class="segmented-control__label" for="orange">ORANGE</label>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2>RESULT</h2>
+                    </div>
+                    <div class="col-12 text-center">
+                        <form name="result_form">
+                            <ul class="segmented-control">
+                                <li class="segmented-control__item">
+                                    <input class="segmented-control__input" type="radio" value="1" name="result" id="win" checked>
+                                    <label class="segmented-control__label" for="win">WIN</label>
+                                </li>
+                                <li class="segmented-control__item">
+                                    <input class="segmented-control__input" type="radio" value="2" name="result" id="loss" >
+                                    <label class="segmented-control__label" for="loss">LOSS</label>
+                                </li>
+                                <li class="segmented-control__item">
+                                    <input class="segmented-control__input" type="radio" value="3" name="result" id="ot_loss" >
+                                    <label class="segmented-control__label" for="ot_loss">OT LOSS</label>
+                                </li>
+                                <li class="segmented-control__item">
+                                    <input class="segmented-control__input" type="radio" value="4" name="result" id="forfeit" >
+                                    <label class="segmented-control__label" for="forfeit">FORFEIT</label>
+                                </li>
+                                <li class="segmented-control__item">
+                                    <input class="segmented-control__input" type="radio" value="5" name="result" id="disconnect" >
+                                    <label class="segmented-control__label" for="disconnect">DISCONNECT</label>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2>NOTES</h2>
+                    </div>
+                    <div class="col-12 text-center">
+                        <form name="game_form">
+                            <textarea cols="50" rows="3" name="notes_txt" id="notes_txt"></textarea>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <form>
+                            <input type="submit" value="SAVE" class="btn btn-block btn-primary">
+                        </form>
+                    </div>
+                    <div class="col-6 text-center">
+                        <form>
+                            <input type="submit" value="RESET" class="btn btn-block btn-primary">
+                        </form>
+                    </div>
+                </div>
             </div>
-        </div>        
+        </div>
+
+
+        
+</div>
     </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <!-- This script also works on the first click; had to set onaction attribute in button element-->
+    <!-- the counters are hidden inputs that'll get sent to flask when it comes time to store values-->
+    <script>
+        function myFunc(sender) {
+            if (sender=="whiff_btn") {
+                var whiff_btn = document.getElementById("whiff_btn");
+                var whiff_lbl = document.getElementById("whiff_count_lbl");
+                var whiff_counter = document.getElementById("whiff_counter");
+                var whiff_count = whiff_lbl.innerHTML;
+                whiff_count++;
+                whiff_lbl.innerHTML = whiff_count;
+                whiff_counter.value = whiff_count;
+            } else if (sender=="loss_btn") {
+                var loss_btn = document.getElementById("loss_btn");
+                var loss_lbl = document.getElementById("loss_count_lbl");
+                var loss_count = loss_lbl.innerHTML;
+                var loss_counter = document.getElementById("loss_counter");
+                loss_count++;
+                loss_lbl.innerHTML = loss_count;
+                loss_counter.value = loss_count;
+            } else if (sender=="win_btn") {
+                var win_btn = document.getElementById("win_btn");
+                var win_lbl = document.getElementById("win_count_lbl");
+                var win_count = win_lbl.innerHTML;
+                var win_counter = document.getElementById("win_counter");
+                win_count++;
+                win_lbl.innerHTML = win_count;
+                win_counter.value = win_count;
+            }
+        }
+    </script>
+    <!-- This script works, but never on the first click of the whiff btn and I think
+    it's because it's value is "" to start (not zero)-->
+    <!--<script>
+        var whiff_btn = document.getElementById("whiff_btn");
+        var whiff_lbl = document.getElementById("whiff_count_lbl");
+        var whiff_count = whiff_lbl.innerHTML;
+
+        whiff_btn.onclick = function() {
+            whiff_lbl.innerHTML = whiff_count++;
+        }
+
+    </script>-->
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+        
+        for (i = 0; i < acc.length; i++) {
+          acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+              panel.style.maxHeight = null;
+            } else {
+              panel.style.maxHeight = panel.scrollHeight + "px";
+            } 
+          });
+        }
+        </script>
+</body>
+
 </html>

@@ -1,0 +1,12 @@
+{
+    "device_dropdown" : [
+        "Keyboard",
+        "Mouse"
+    ]
+},
+{
+    "ball_cam_dropdown" : [
+        "Toggle",
+        "Always On"
+    ]
+}

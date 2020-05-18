@@ -2,30 +2,40 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family: Futura-CondensedExtraBold;
 }
 
 body {
-    background: rgba(252, 84,12, 0.15)
+    background: rgb(255, 255, 255)
 }
 header {
-    background: rgb(252, 84,12);
-    padding: 20px;
+    background: rgba(252, 84,12,1);
+    padding: 50px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../statics/images/orange_octane_banner.png");
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 
 h1 {
-    font-family: Futura-CondensedExtraBold, sans-serif;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255) ;
     font-size: 60px;
+    padding-left: 250px;
+}
+
+select {
+    font-size: 25px;
+    width: 200px;
 }
 
 .camera_lbls {
-    font-family: Futura-CondensedExtraBold, sans-serif;
     color: rgb(0, 0, 0);
     font-size: 34px;
 }
 
 .camera_txts {
-    font-family: Futura-CondensedExtraBold, sans-serif;
     color: rgb(0, 0, 0);
     font-size: 34px;
 }
@@ -39,7 +49,7 @@ h1 {
     -webkit-appearance: none;
     height: 25px;
     width: 40%;
-    background-color: rgb(12,44,252);
+    background-color: rgba(0,17,255,1);
     border-color: transparent;
 }
 
@@ -48,5 +58,83 @@ h1 {
     width: 25px;
     background-color: white;
     border-width: 5px;
-    border-color: rgb(252, 84,12);
+    border-color: rgb(0,255,0);
+}
+
+#camera-save-btn {
+    font-size: 24px;
+    background-color: rgba(0,17,255,1);
+}
+
+#camera-main-btn {
+    font-size: 24px;
+    background-color: rgba(0,17,255,1);    
+}
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 25px;
+    transition: 0.4s;
+}
+  
+  .active, .accordion:hover {
+    background-color: #ccc;
+}
+  
+  .panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease-out;
+}
+
+
+.segmented-control {
+    display: table;
+    width: 100%;
+    margin: 0 0;
+    padding: 0;
+}
+
+.segmented-control__item {
+    display: table-cell;]
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    width: 20%;
+}
+
+.segmented-control__input {
+    position: absolute;
+    visibility: hidden;
+}
+
+.segmented-control__label {
+    display: block;
+    margin: 0 -1px -1px 0; /* -1px margin removes double-thickness borders between items */
+    /*padding: 0.4em 0em;*/
+    border: 1px solid #ddd;
+
+    font: 25px sans-serif;
+    font-family: Futura-CondensedExtraBold;
+    text-align: center;  
+
+    cursor: pointer;
+}
+
+.segmented-control__label:hover {
+    background: #fafafa;
+}
+
+.segmented-control__input:checked + .segmented-control__label {
+    background: rgb(241, 93, 93);
+    color: #333; 
 }
