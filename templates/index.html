@@ -17,111 +17,25 @@
 
 <body>
 
-    <header>
-        <h1 class="text-center">ROCKET LEAGUE STATS TRACKER</h1>
-    </header>
-
     <div class="container-fluid">
+        <div class="row">
+                <div class="bg-img-orange" id="header-img">
+                    <div class="topnav-container">
+                        <div class="topnav">
+                            <a class="active" href="{{ url_for('index') }}">HOME</a>
+                            <a href="#pre-game">PRE-GAME</a>
+                            <a href="{{ url_for('camera_settings') }}">CAMERA</a>
+                            <a href="{{ url_for('controller_settings') }}">CONTROLLER</a>
+                        </div>
+                    </div>
+                </div>    
+        </div>
+
+
         <div class="row">
             <!--first six columns are the LHS of the page: the accordian buttons-->
             <div class="col-6" style="padding-top: 15px;">
-                <button class="accordion">GAME MODE</button>
-                <div class="panel">
-                    <div class="row align-items-center">
-                        <div class="col-4 text-center">
-                            <form id="game_mode_form">
-                                <select form="game_mode_form">
-                                    <option>STANDARD</option>
-                                    <option>TWOS</option>
-                                    <option>DUAL</option>
-                                    <option>CHAOS</option>
-                                    <option>STANDARD SOLO</option>
-                                    <option>RUMBLE</option>
-                                    <option>SNOW DAY</option>
-                                    <option>HOOPS</option>
-                                    <option>DROPSHOT</option>
-                                    <option>HEATSEEKER</option>
-                                    <option>SPIKE RUSH</option>
-                                    <option>BOOMER BALL</option>
-                                </select>                                
-                            </form>
-                        </div>
-                        <div class="col-4 text-center">
-                            <form id="game_mode_form" style="padding-top: 7px;">
-                                <label for="party_checkbox" style= "font-size: 25px;">
-                                    <input type="checkbox" id="party_checkbox" name="party_checkbox" style="width: 20px; height: 20px;">
-                                    PARTIED UP?
-                                </label>
-                            </form>
-                        </div>
-                        <div class="col-4 text-center">
-                            <form id="game_mode_form" style="padding-top: 7px;">
-                                <label for="comp_checkbox" style= "font-size: 25px;">
-                                    <input type="checkbox" id="comp_checkbox" name="comp_checkbox" style="width: 20px; height: 20px;">
-                                    COMPETITIVE?
-                                </label>
-                            </form>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <button class="accordion">VEHICLE</button>
-                <div class="panel">
-                    <div class="row align-items-center">
-                        <div class="col-4 text-center">
-                            <form id="vehicle_form">
-                                <select form="vehicle_form">
-                                    <option>OCTANE</option>
-                                    <option>DOMINUS</option>
-                                    <option>VENOM</option>
-                                    <option>RONIN GXT</option>
-                                    <option>RONIN G1</option>
-                                    <option>RONIN</option>
-                                    <option>CHIKARA GXT</option>
-                                    <option>CHIKARA G1</option>
-                                    <option>BREAKOUT</option>
-                                    <option>GIZMO</option>
-                                    <option>HOTSHOT</option>
-                                    <option>MERC</option>
-                                    <option>ROAD HOG</option>
-                                    <option>X-DEVIL</option>
-                                    <option>ZIPPY</option>
-                                    <option>RIPPER</option>
-                                    <option>SCARAB</option>
-                                    <option>TAKUMI</option>
-                                </select>                                
-                            </form>
-                        </div>
-                        <div class="col-4 text-center">
-                            <form id="vehicle_form" style="padding-top: 7px;">
-                                <label for="topper_checkbox" style= "font-size: 25px;">
-                                    <input type="checkbox" id="topper_checkbox" name="topper_checkbox" style="width: 20px; height: 20px;">
-                                    TOPPER?
-                                </label>
-                            </form>
-                        </div>
-                        <div class="col-4 text-center">
-                            <form id="vehicle_form" style="padding-top: 7px;">
-                                <label for="antenna_checkbox" style= "font-size: 25px;">
-                                    <input type="checkbox" id="antenna_checkbox" name="antenna_checkbox" style="width: 20px; height: 20px;">
-                                    ANTENNA?
-                                </label>
-                            </form>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <button class="accordion">CAMERA</button>
-                <div class="panel">
-                    <p>Lorem ipsum...</p>
-                </div>
-                
-                <button class="accordion">CONTROLLER</button>
-                <div class="panel">
-                    <p>Lorem ipsum...</p>
-                </div>                
+           
             </div>
             <!--the RHS of the page are the variables that change almost every game-->
             <div class="col-6" style="padding-top: 15px;">
@@ -159,11 +73,11 @@
                         <form name="team_form">
                             <ul class="segmented-control">
                                 <li class="segmented-control__item">
-                                    <input class="segmented-control__input" type="radio" value="1" name="team" id="blue">
+                                    <input class="segmented-control__input" type="radio" value="1" name="team" id="blue" onclick="colorScheme(this.id)">
                                     <label class="segmented-control__label" for="blue">BLUE</label>
                                 </li>
                                 <li class="segmented-control__item">
-                                    <input class="segmented-control__input" type="radio" value="2" name="team" id="orange" checked>
+                                    <input class="segmented-control__input" type="radio" value="2" name="team" id="orange" checked onclick="colorScheme(this.id)">
                                     <label class="segmented-control__label" for="orange">ORANGE</label>
                                 </li>
                             </ul>
@@ -241,6 +155,22 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
+    <!-- Make a script to change color profile of page based on whether blue or orange team is selected -->
+    <script>
+        function colorScheme(sender) {
+            switch (sender) {
+                case "blue":
+                    window.alert("here");
+                    document.getElementById("header-img").className = "bg-img-blue";
+                    break;
+                case "orange":
+                    window.alert("here2");
+                    document.getElementById("header-img").className = "bg-img-orange";
+                    break;
+            }
+        }
+    </script>
+
     <!-- This script also works on the first click; had to set onaction attribute in button element-->
     <!-- the counters are hidden inputs that'll get sent to flask when it comes time to store values-->
     <script>
@@ -284,22 +214,7 @@
         }
 
     </script>-->
-    <script>
-        var acc = document.getElementsByClassName("accordion");
-        var i;
-        
-        for (i = 0; i < acc.length; i++) {
-          acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-              panel.style.maxHeight = null;
-            } else {
-              panel.style.maxHeight = panel.scrollHeight + "px";
-            } 
-          });
-        }
-        </script>
+
 </body>
 
 </html>
