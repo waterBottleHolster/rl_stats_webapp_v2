@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <style>
+            @font-face {
+                font-family: rl_font;
+                src: url("../static/fonts/Futura_Condensed_Extra_Bold.otf");
+            }
+
+            body {
+                font-family: rl_font;
+            }
+
+            .filter-div-container {
+                width: 800px;
+                height: 300px;
+                background-color: blueviolet;
+                display: flex;
+                flex-wrap:nowrap;
+            }
+
+            .category-btn {
+                background-color: rgb(252,60,12);
+                border: 1px solid black;
+                color: white; /* White text */
+                cursor: pointer; /* Pointer/hand icon */
+                height: 25%;
+                width: 90%;
+            }
+            
+            .category-btn:not(:last-child) {
+                border-bottom: none; /* Prevent double borders */
+            }
+
+            .category-btn:hover {
+                background-color: rgb(165, 30, 8);
+            }
+
+            .category-active-btn{
+                background-color:rgb(165, 30, 8);
+                border: 1px solid black;    
+                color: white;
+                cursor: pointer;
+                height: 25%;
+                width: 100%;
+            }
+
+            .option-btn {
+                background-color: rgb(252,60,12); 
+                border: 1px solid rgb(0, 0, 0);
+                color: white; /* White text */
+                cursor: pointer; /* Pointer/hand icon */
+                width: 50%;
+            }
+
+            .option-btn:not(:last-child) {
+                border-bottom: none; /* Prevent double borders */
+            }
+
+            .option-btn:hover {
+                background-color: rgb(165, 30, 8);
+            }
+
+            .option-active-btn {
+                background-color: rgb(165, 30, 8);
+                border: 1px solid rgb(0,0,0);
+                color: white;
+                cursor: pointer;
+            }
+
+
+            .option-btn-group {
+                display: flex;
+                flex-wrap: wrap;
+                flex-grow: 1;
+                justify-content: flex-end;
+                width: 66%;
+                border: 4px solid black;
+            }
+            .btn-group-vertical {
+                flex-grow: 0;
+                width: 33%;
+                background-color: black;
+            }
+
+
+        </style>
+        <title>Filterable Sub Buttons</title>
+    </head>
+    <body>
+        <div class="filter-div-container">
+                    <div class="btn-group-vertical">
+                        <button class="category-btn" id="casual-btn">CASUAL</button>
+                        <button class="category-btn" id="competitive-btn">COMPETITIVE</button>
+                        <button class="category-btn" id="extra-btn">EXTRA</button>
+                        <button class="category-btn" id="special-btn">SPECIAL</button>
+                    </div>
+                    <div class="option-btn-group">
+                        <button class="option-btn" id="standard-btn" type="button">STANDARD</button>
+                        <button class="option-btn" id="dual-btn" type="button">DUAL</button>
+                        <button class="option-btn" id="doubles-btn">DOUBLES</button>
+                        <button class="option-btn" id="chaos-btn">CHAOS</button>
+                    </div>
+                    
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function() {
+                $(".option-btn").click(function(){
+                    $(".option-btn").removeClass("option-active-btn");
+                    $(this).addClass("option-active-btn");
+                })
+
+                $(".category-btn").click(function(){
+                    $(".category-btn").removeClass("category-active-btn");
+                    $(this).addClass("category-active-btn");
+                })
+
+                // change labels to the competitive versions
+                $("#competitive-btn").click(function(){
+                    $("#standard-btn").text("STANDARD");
+                })
+                $("#competitive-btn").click(function(){
+                    $("#dual-btn").text("DUAL");
+                })
+                $("#competitive-btn").click(function(){
+                    $("#doubles-btn").text("DOUBLES");
+                })
+                $("#competitive-btn").click(function(){
+                    $("#chaos-btn").text("SOLO STANDARD");
+                })
+                
+                // change labels to the casual versions
+                $("#casual-btn").click(function(){
+                    $("#standard-btn").text("STANDARD");
+                })
+                $("#casual-btn").click(function(){
+                    $("#dual-btn").text("DUAL");
+                })
+                $("#casual-btn").click(function(){
+                    $("#doubles-btn").text("DOUBLES");
+                })
+                $("#casual-btn").click(function(){
+                    $("#chaos-btn").text("CHAOS");
+                })
+
+                // change labels to the extra game modes
+                $("#extra-btn").click(function(){
+                    $("#standard-btn").text("RUMBLE");
+                })
+                $("#extra-btn").click(function(){
+                    $("#dual-btn").text("SNOW DAY");
+                })
+                $("#extra-btn").click(function(){
+                    $("#doubles-btn").text("HOOPS");
+                })
+                $("#extra-btn").click(function(){
+                    $("#chaos-btn").text("DROPSHOT");
+                })
+
+                // change labels to the special game modes
+                $("#special-btn").click(function(){
+                    $("#standard-btn").text("HEATSEEKER");
+                })
+                $("#special-btn").click(function(){
+                    $("#dual-btn").text("DROPSHOT RUMBLE");
+                })
+                $("#special-btn").click(function(){
+                    $("#doubles-btn").text("BOOMER BALL");
+                })
+                $("#special-btn").click(function(){
+                    $("#chaos-btn").text("BEACHBALL MODE");
+                })
+                
+            })
+        </script>
+
+    </body>
+
+
+
+
+</html>

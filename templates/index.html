@@ -11,7 +11,7 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- style.css CSS-->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}" type="text/css">
-
+    <link rel="stylesheet" href="../static/styles.css" type="text/css">
     <title>RL Stats Registration</title>
 </head>
 
@@ -22,8 +22,8 @@
                 <div class="bg-img-orange" id="header-img">
                     <div class="topnav-container">
                         <div class="topnav">
-                            <a class="active" href="{{ url_for('index') }}">HOME</a>
-                            <a href="#pre-game">PRE-GAME</a>
+                            <a class="active-orange" href="{{ url_for('index') }}">HOME</a>
+                            <a href="{{ url_for('pregame_settings')}}">PRE-GAME</a>
                             <a href="{{ url_for('camera_settings') }}">CAMERA</a>
                             <a href="{{ url_for('controller_settings') }}">CONTROLLER</a>
                         </div>
@@ -32,13 +32,8 @@
         </div>
 
 
-        <div class="row">
-            <!--first six columns are the LHS of the page: the accordian buttons-->
-            <div class="col-6" style="padding-top: 15px;">
-           
-            </div>
-            <!--the RHS of the page are the variables that change almost every game-->
-            <div class="col-6" style="padding-top: 15px;">
+        <div class="row justify-content-center">
+            <div class="col-3" style="padding-top: 15px;">
                 <div class="row align-items-center" style="padding-top: 5px; padding-bottom: 5px;">
                     <div class="col-12 text-center">
                         <h2>KICKOFFS</h2>
@@ -47,21 +42,21 @@
                         <form name="kickoff_form">
                             <input type="hidden" value="0" id="whiff_counter" name="whiff_counter">
                         </form>
-                        <button class="btn btn-block btn-primary" id="whiff_btn" value="WHIFF" onclick="myFunc(id)">WHIFF</button>
+                        <button class="btn btn-block kickoff-orange-btn" id="whiff_btn" value="WHIFF" onclick="myFunc(id)">WHIFF</button>
                         <label style="font-size: 30px;" id="whiff_count_lbl">0</label>
                     </div>
                     <div class="col-4 text-center">
                         <form name="kickoff_form">
                             <input type="hidden" value="0" id="loss_counter" name="loss_counter">
                         </form>
-                        <button class="btn btn-block btn-primary" id="loss_btn" value="LOSS" onclick="myFunc(id)">LOSS</button>
+                        <button class="btn btn-block kickoff-orange-btn" id="loss_btn" value="LOSS" onclick="myFunc(id)">LOSS</button>
                         <label style="font-size: 30px;" id="loss_count_lbl">0</label>
                     </div>
                     <div class="col-4 text-center">
                         <form name="kickoff_form">
                             <input type="hidden" value="0" id="win_counter" name="win_counter">
                         </form>
-                        <button class="btn btn-block btn-primary" id="win_btn" value="WIN" onclick="myFunc(id)">WIN</button>
+                        <button class="btn btn-block kickoff-orange-btn" id="win_btn" value="WIN" onclick="myFunc(id)">WIN</button>
                         <label style="font-size: 30px;" id="win_count_lbl">0</label>
                     </div>                    
                 </div>
@@ -74,11 +69,11 @@
                             <ul class="segmented-control">
                                 <li class="segmented-control__item">
                                     <input class="segmented-control__input" type="radio" value="1" name="team" id="blue" onclick="colorScheme(this.id)">
-                                    <label class="segmented-control__label" for="blue">BLUE</label>
+                                    <label class="segmented-control__label-orange  segmented-control__label" for="blue">BLUE</label>
                                 </li>
                                 <li class="segmented-control__item">
                                     <input class="segmented-control__input" type="radio" value="2" name="team" id="orange" checked onclick="colorScheme(this.id)">
-                                    <label class="segmented-control__label" for="orange">ORANGE</label>
+                                    <label class="segmented-control__label-orange" for="orange">ORANGE</label>
                                 </li>
                             </ul>
                         </form>
@@ -93,23 +88,23 @@
                             <ul class="segmented-control">
                                 <li class="segmented-control__item">
                                     <input class="segmented-control__input" type="radio" value="1" name="result" id="win" checked>
-                                    <label class="segmented-control__label" for="win">WIN</label>
+                                    <label class="segmented-control__label-orange" for="win">WIN</label>
                                 </li>
                                 <li class="segmented-control__item">
                                     <input class="segmented-control__input" type="radio" value="2" name="result" id="loss" >
-                                    <label class="segmented-control__label" for="loss">LOSS</label>
+                                    <label class="segmented-control__label-orange" for="loss">LOSS</label>
                                 </li>
                                 <li class="segmented-control__item">
                                     <input class="segmented-control__input" type="radio" value="3" name="result" id="ot_loss" >
-                                    <label class="segmented-control__label" for="ot_loss">OT LOSS</label>
+                                    <label class="segmented-control__label-orange segmented-control__label" for="ot_loss">OT LOSS</label>
                                 </li>
                                 <li class="segmented-control__item">
                                     <input class="segmented-control__input" type="radio" value="4" name="result" id="forfeit" >
-                                    <label class="segmented-control__label" for="forfeit">FORFEIT</label>
+                                    <label class="segmented-control__label-orange segmented-control__label" for="forfeit">FORFEIT</label>
                                 </li>
                                 <li class="segmented-control__item">
                                     <input class="segmented-control__input" type="radio" value="5" name="result" id="disconnect" >
-                                    <label class="segmented-control__label" for="disconnect">DISCONNECT</label>
+                                    <label class="segmented-control__label-orange segmented-control__label" for="disconnect">DISCONNECT</label>
                                 </li>
                             </ul>
                         </form>
@@ -121,26 +116,26 @@
                     </div>
                     <div class="col-12 text-center">
                         <form name="game_form">
-                            <textarea cols="50" rows="3" name="notes_txt" id="notes_txt"></textarea>
+                            <textarea cols="39" rows="3" name="notes_txt" id="notes_txt"></textarea>
                         </form>
                     </div>
                 </div>
                 <div class="row align-items-center" style="padding-top: 15px; padding-bottom: 15px;">
                     <div class="col-6 text-center">
                         <form>
-                            <input type="submit" value="SAVE" class="btn btn-block btn-primary">
+                            <input type="submit" value="SAVE" class="btn btn-block">
                         </form>
                     </div>
                     <div class="col-6 text-center">
                         <form>
-                            <input type="submit" value="RESET" class="btn btn-block btn-primary">
+                            <input type="submit" value="RESET" class="btn btn-block">
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 
 
     <!-- Optional JavaScript -->
@@ -155,21 +150,52 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
+    <!-- The following jquery script changes the color profile of the page based on whether blue
+    or orange team is selected-->
+
+    <script>
+        $(document).ready(function() {
+            $(".segmented-control__label-orange").on("click", function(){
+                if ($(this).text() == "ORANGE") {
+                    $("#header-img").removeClass("bg-img-blue").addClass("bg-img-orange");
+                    $(".topnav .active-blue").removeClass("active-blue").addClass("active-orange");
+                    $(".kickoff-blue-btn").removeClass("kickoff-blue-btn").addClass("kickoff-orange-btn");
+                    $(".segmented-control__label-blue").removeClass("segmented-control__label-blue").addClass("segmented-control__label-orange");
+                } else if ($(this).text() == "BLUE") {
+                    $("#header-img").removeClass("bg-img-orange").addClass("bg-img-blue");
+                    $(".topnav .active-orange").removeClass("active-orange").addClass("active-blue");
+                    $(".kickoff-orange-btn").removeClass("kickoff-orange-btn").addClass("kickoff-blue-btn");
+                    $(".segmented-control__label-orange").removeClass("segmented-control__label-orange").addClass("segmented-control__label-blue");
+                }
+            })
+        });
+    </script>
     <!-- Make a script to change color profile of page based on whether blue or orange team is selected -->
+    <!-- What follows is the first version I tried, but I learned the basics of jquery and think that'd be
+    a better way to go
     <script>
         function colorScheme(sender) {
             switch (sender) {
                 case "blue":
-                    window.alert("here");
                     document.getElementById("header-img").className = "bg-img-blue";
+                    var x = document.getElementsByClassName("kickoff-orange-btn");
+                    var i;
+                    for (i=0; i<x.length; i++) {
+                        x[i].style.backgroundColor = "rgb(0,42,128)";
+                    }
+
                     break;
                 case "orange":
-                    window.alert("here2");
                     document.getElementById("header-img").className = "bg-img-orange";
+                    var x = document.getElementsByClassName("kickoff-orange-btn");
+                    var i;
+                    for (i=0; i<x.length; i++) {
+                        x[i].style.backgroundColor = "rgb(128,42,0)";
+                    }
                     break;
             }
         }
-    </script>
+    </script>-->
 
     <!-- This script also works on the first click; had to set onaction attribute in button element-->
     <!-- the counters are hidden inputs that'll get sent to flask when it comes time to store values-->

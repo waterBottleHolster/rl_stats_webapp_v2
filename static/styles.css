@@ -6,7 +6,9 @@
 }
 
 body {
-    background: rgb(255, 255, 255)
+    background: #eee;
+    --dark-red-bg: rgb(128, 42, 0);
+    --dark-blue-bg: rgb(0, 42, 128);
 }
 
 @font-face {
@@ -14,12 +16,74 @@ body {
     src: url("fonts/Futura_Condensed_Extra_Bold.otf");
 }
 
-h1 {
-    color: rgb(255, 255, 255) ;
-    font-size: 60px;
-    padding-left: 250px;
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #333;
+    overflow: hidden;
 }
 
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 40px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active-orange {
+    background-color: var(--dark-red-bg, "red");
+    color: white;
+}
+.topnav a.active-blue {
+    background-color: var(--dark-blue-bg, "blue");
+    color: white;
+}
+
+.topnav-container {
+    position: absolute;
+    margin: 47px;
+    width: auto;
+}
+.bg-img-orange {
+    /* The image used */
+    background-image: url("images/orange_octane_banner_v2.png");
+    height: 150px;
+    width: 100%;
+    /*min-height: 380px;*/
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* Needed to position the navbar */
+    position: relative;
+}
+    
+.bg-img-blue {
+    /* The image used */
+    background-image: url("images/blue_octane_banner_v2.png");
+    background-color: lawngreen;
+    height: 150px;
+    width: 100%;
+    /*min-height: 380px;*/
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Needed to position the navbar */
+    position: relative;
+}
 select {
     font-size: 25px;
     width: 200px;
@@ -74,7 +138,7 @@ select {
 }
 
 .segmented-control__item {
-    display: table-cell;]
+    display: table-cell;
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -86,90 +150,168 @@ select {
     visibility: hidden;
 }
 
-.segmented-control__label {
+.segmented-control__label-orange {
     display: block;
     margin: 0 -1px -1px 0; /* -1px margin removes double-thickness borders between items */
     /*padding: 0.4em 0em;*/
-    border: 1px solid #ddd;
-
+    border: 1px solid black;
     font: 25px;
-    text-align: center;  
-
+    text-align: center;
     cursor: pointer;
 }
 
-.segmented-control__label:hover {
-    background: #fafafa;
+.segmented-control__label-orange:hover {
+    background: white;
 }
 
-.segmented-control__input:checked + .segmented-control__label {
-    background: rgb(241, 93, 93);
-    color: #333; 
+.segmented-control__input:checked + .segmented-control__label-orange {
+    background: var(--dark-red-bg, "red");
+    color:white; 
 }
 
-/* Add a black background color to the top navigation */
-.topnav {
-background-color: #333;
-overflow: hidden;
+.segmented-control__input:checked + .segmented-control__label-blue {
+    background: var(--dark-blue-bg, "blue");
+    color:white; 
 }
 
-/* Style the links inside the navigation bar */
-.topnav a {
-float: left;
-color: #f2f2f2;
-text-align: center;
-padding: 14px 16px;
-text-decoration: none;
-font-size: 40px;
+
+
+
+.segmented-control__label-blue {
+    display: block;
+    margin: 0 -1px -1px 0;
+    border: 1px solid black;
+    font: 25px;
+    text-align: center;  
+    cursor: pointer;
 }
 
-/* Change the color of links on hover */
-.topnav a:hover {
-background-color: #ddd;
-color: black;
+.segmented-control__label-blue:hover {
+    background: white;
 }
 
-/* Add a color to the active/current link */
-.topnav a.active {
-background-color: rgba(153, 51, 0, 0.568);
-color: white;
+.segmented-control__input-blue:checked + .segmented-control__label-blue {
+    background: var(--dark-blue-bg, "blue");
+    color:white; 
+} 
+
+.carousel-item {
+    width: 500px;
+    background-color: black;
 }
 
-.topnav-container {
-    position: absolute;
-    margin: 47px;
-    width: auto;
+.carousel-item img {
+    display: block;
+    margin: auto;
 }
-.bg-img-orange {
-    /* The image used */
-    background-image: url("images/orange_octane_banner_v2.png");
-    background-color: lawngreen;
-    height: 150px;
-    width: 100%;
-    /*min-height: 380px;*/
 
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    /* Needed to position the navbar */
+.carousel-caption {
     position: relative;
+    left: 0;
+    top: 0;
+    height: auto;
+    background-color: rgb(128, 42, 0);
+    padding-top: 0px;
+    padding-bottom: 15px;
 }
 
-.bg-img-blue {
-    /* The image used */
-    background-image: url("images/blue_octane_banner_v2.png");
-    background-color: lawngreen;
-    height: 150px;
+.carousel-indicators {
+    padding: 0;
+    margin: 0;
+}
+.carousel-caption p {
+    padding: 0;
+    margin: 0;
+}
+.carousel-caption h4 {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    overflow: hidden;
+}
+
+
+
+/*FILTER DIV STYLING*/
+.category-btn {
+    background-color: rgb(252,60,12);
+    border: 1px solid black;
+    color: white; /* White text */
+    cursor: pointer; /* Pointer/hand icon */
+    height: 25%;
+    width: 90%;
+}
+
+.category-btn:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+}
+
+.category-btn:hover {
+    background-color: rgb(165, 30, 8);
+}
+
+.category-active-btn{
+    background-color:rgb(165, 30, 8);
+    border: 1px solid black;    
+    color: white;
+    cursor: pointer;
+    height: 25%;
     width: 100%;
-    /*min-height: 380px;*/
+}
 
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.option-btn {
+    background-color: rgb(252,60,12); 
+    border: 1px solid rgb(0, 0, 0);
+    color: white; /* White text */
+    cursor: pointer; /* Pointer/hand icon */
+    width: 50%;
+}
 
-    /* Needed to position the navbar */
-    position: relative;
+.option-btn:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+}
+
+.option-btn:hover {
+    background-color: rgb(165, 30, 8);
+}
+
+.option-active-btn {
+    background-color: rgb(165, 30, 8);
+    border: 1px solid rgb(0,0,0);
+    color: white;
+    cursor: pointer;
+}
+
+.option-btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: flex-end;
+    width: 66%;
+    border: 4px solid black;
+}
+.btn-group-vertical {
+    flex-grow: 0;
+    width: 33%;
+    background-color: black;
+}
+
+/*END OF FILTER DIV STYLING*/
+
+/*START OF INDEX.HTML SPECIFIC STYLING*/
+.kickoff-orange-btn {
+    background-color: rgb(128, 42, 0);
+    color: white;
+}
+.kickoff-orange-btn:hover {
+    background-color: rgb(94, 32, 1);
+}
+.kickoff-blue-btn {
+    background-color: rgb(0, 42, 128);
+    color: white;
+}
+.kickoff-blue-btn:hover {
+    background-color: rgb(0, 32, 94);
 }
