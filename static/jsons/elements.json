@@ -1,0 +1,18 @@
+
+{
+    "nav_bar" : {
+        "HOME" : "/home/",
+        "PRE-GAME" : "/pregame-settings/",
+        "CAMERA" : "/camera-settings/",
+        "CONTROLLER" : "/controller-settings/"
+    },
+    
+    "device_dropdown" : [
+        "Keyboard",
+        "Mouse"
+    ],
+    "ball_cam_dropdown" : [
+        "Toggle",
+        "Always On"
+    ]
+}
