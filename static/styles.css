@@ -11,6 +11,18 @@ body {
     background-repeat: repeat;
     --dark-red-bg: rgb(128, 42, 0);
     --dark-blue-bg: rgb(0, 42, 128);
+    min-width: 400px;
+}
+
+header {
+    overflow: hidden;
+    position: absolute;
+    right: 0px;
+}
+
+header img {
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 @font-face {
@@ -32,6 +44,12 @@ body {
     padding: 14px 16px;
     text-decoration: none;
     font-size: 40px;
+}
+
+@media (max-width: 800px) {
+    .topnav a {
+        font-size: 18px;
+    }
 }
 
 /* Change the color of links on hover */
@@ -60,6 +78,7 @@ body {
     background-image: url("images/orange_octane_banner_v2.png");
     height: 150px;
     width: 100%;
+    margin: 0, auto;
     /*min-height: 380px;*/
 
     /* Center and scale the image nicely */
