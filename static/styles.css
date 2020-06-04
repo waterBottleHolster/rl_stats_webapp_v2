@@ -6,9 +6,6 @@
 }
 
 body {
-    background: #eee;
-    background-image: url("images/axiom-pattern.png");
-    background-repeat: repeat;
     --dark-red-bg: rgb(128, 42, 0);
     --dark-blue-bg: rgb(0, 42, 128);
     min-width: 400px;
@@ -23,6 +20,19 @@ header {
 header img {
     margin-left: 50%;
     transform: translateX(-50%);
+}
+
+/* this is a hack to allow the background image to have an opacity property */
+body::after {
+    content: "";
+    background: url("images/axiom-pattern.png");
+    opacity: 0.5;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
 }
 
 @font-face {
