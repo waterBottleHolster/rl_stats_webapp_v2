@@ -5,7 +5,7 @@
 		}
 	],
 	"settings": {
-		"python.pythonPath": ".venv\\Scripts\\python.exe"
+		"python.pythonPath": "laptop-venv\\Scripts\\python.exe"
 	},
 	"files.associations": {}
 }
