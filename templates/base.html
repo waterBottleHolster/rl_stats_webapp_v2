@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @font-face {
+            font-family: rl_font;
+            src: url("../static/fonts/Futura_Condensed_Extra_Bold.otf");
+        }
+
+        * {
+            font-family: rl_font;
+            --dark-red-bg: rgb(128, 42, 0);
+            --dark-blue-bg: rgb(0, 37, 110);
+            --light-red-bg: rgb(185,63,2);
+            --light-blue-bg: rgb(0, 85, 255);
+        }
+        body {
+            background-color: #333;
+        }
+
+        /* this is a hack to allow the background image to have an opacity property */
+        body::after {
+            content: "";
+            background: url("../static/images/axiom-pattern.png");
+            opacity: 0.2;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;
+        }
+        header {
+            overflow: hidden;
+            position: relative;
+            right: 0px;
+        }
+
+        header> img {
+            width: 100%;
+        }
+
+        .topnav {
+        overflow: hidden;
+        background-color: #555;
+        position: relative;
+        }
+
+        .topnav #myLinks {
+        display: none;
+        }
+
+        .topnav a {
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
+        }
+
+        .topnav a.icon {
+        background: black;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        }
+
+        .active {
+        background-color: var(--dark-blue-bg);
+        color: white;
+        }
+
+        form {
+            background-color: rgb(107, 156, 255);
+            padding: 3%;
+            margin-top: 2%;
+        }
+
+        form .btn {
+            background-color: var(--dark-blue-bg);
+            color: white;
+        }
+
+        #camera-settings-btn {
+            background-color: #666;
+        }
+
+        form label {
+            color: black;
+            font-size: 20px;
+        }
+
+        form .checkbox-lbl {
+            font-size: 16px;
+        }
+
+        form .btn:hover {
+            background-color: var(--light-blue-bg);
+            color: black;
+        }
+
+        .modal-footer .btn {
+            background-color: var(--dark-blue-bg);
+            color: white;
+        }
+        .filter-div-container {
+            display: flex;
+            flex-wrap:nowrap;
+        }
+
+        .category-btn {
+            background-color: var(--light-blue-bg);
+            border: 1px solid black;
+            color: white; /* White text */
+            cursor: pointer; /* Pointer/hand icon */
+            height: 30%;
+            width: 95%;
+            font-size: 2.5vmin;
+        }
+        
+        .category-btn:not(:last-child) {
+            border-bottom: none; /* Prevent double borders */
+        }
+
+        .category-btn:hover {
+            background-color: var(--dark-blue-bg);
+        }
+
+        .category-active-btn{
+            background-color:var(--dark-blue-bg);
+            border: 1px solid black;    
+            color: white;
+            cursor: pointer;
+            height: 30%;
+            width: 100%;
+        }
+
+        .option-btn {
+            background-color: var(--light-blue-bg); 
+            border: 1px solid rgb(0, 0, 0);
+            color: white; /* White text */
+            cursor: pointer; /* Pointer/hand icon */
+            width: 50%;
+            font-size: 2.5vmin;
+        }
+
+        .option-btn:not(:last-child) {
+            border-bottom: none; /* Prevent double borders */
+        }
+
+        .option-btn:hover {
+            background-color: var(--light-blue-bg);
+        }
+
+        .option-active-btn {
+            background-color: var(--dark-blue-bg);
+            border: 1px solid rgb(0,0,0);
+            color: white;
+            cursor: pointer;
+        }
+
+
+        .option-btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            flex-grow: 1;
+            justify-content: flex-end;
+            width: 66%;
+            border: 4px solid black;
+        }
+        .btn-group-vertical {
+            flex-grow: 0;
+            width: 33%;
+            background-color: black;
+        }
+    </style>
+    <title>RL Stats</title>
+  </head>
+  <body>
+    <header>
+        <img src="../static/images/blue_octane_banner_v2.png" alt="octane-ball-banner">
+    </header>
+    <div class="topnav">
+        <a href="#" class="active">Home</a>
+        <div id="myLinks">
+          <a href="#">Analyze</a>
+          <a href="#">extra1</a>
+          <a href="#">extra2</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="dropdownFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <div class="container">
+        <form action="#">
+            <div class="form-group">
+                <label>Team</label>
+                <select class="form-control">
+                    <option>Blue</option>
+                    <option>Orange</option>
+                    <option>Club Colors</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Vehicle</label>
+                <select class="form-control">
+                    <option>Octane</option>
+                    <option>Dominus</option>
+                    <option>Ronin GTX</option>
+                    <option>Scarab</option>
+                    <option>Marauder</option>
+                    <option>Zippy</option>
+                    <option>Merc</option>
+                    <option>Chikara</option>
+                    <option>Venom</option>
+                    <option>Breakout</option>
+                </select>
+                <label for="topper-checkbox" class="checkbox-lbl">Topper?</label>
+                <input type="checkbox" id="topper-checkbox" class="form-check-lg">
+                <label for="antenna-checkbox" class="checkbox-lbl">Antenna?</label>
+                <input type="checkbox" id="antenna-checkbox" class="form-check-lg">
+            </div>
+            <div class="form-group">
+                <label>Game Mode</label>
+                <div class="filter-div-container">
+                    <div class="btn-group-vertical">
+                        <button class="category-btn" id="casual-btn">CASUAL</button>
+                        <button class="category-btn" id="competitive-btn">COMPETITIVE</button>
+                        <button class="category-btn" id="extra-btn">EXTRA</button>
+                        <button class="category-btn" id="special-btn">SPECIAL</button>
+                    </div>
+                    <div class="option-btn-group">
+                        <button class="option-btn" id="standard-btn" type="button">STANDARD</button>
+                        <button class="option-btn" id="dual-btn" type="button">DUAL</button>
+                        <button class="option-btn" id="doubles-btn">DOUBLES</button>
+                        <button class="option-btn" id="chaos-btn">CHAOS</button>
+                    </div>    
+                </div>
+                <label for="party-checkbox" class='checkbox-lbl'>Partied Up?</label>
+                <input type="checkbox" id="party-checkbox" class="form-check-lg">
+            </div>
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea rows="3" type="textarea" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-video-camera"></i>
+                    Camera Settings
+                </button>
+            </div>
+            <div class="form-group">
+                <label>Game Result</label>
+                <div class="form-row">
+                    <div class="col-sm">
+                        <button class="form-control btn">WIN</button>
+                    </div>
+                    <div class="col-sm">
+                        <button class="form-control btn">LOSS</button>
+                    </div>
+                    <div class="col-sm">
+                        <button class="form-control btn">FF (win)</button>
+                    </div>
+                    <div class="col-sm">
+                        <button class="form-control btn">FF (loss)</button>
+                    </div>
+                    <div class="col-sm">
+                        <button class="form-control btn">DC</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adjust Camera Settings</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        This is where the form for adjusting the camera settings will sit.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+        // this is for the vertical collapsible menu
+        function dropdownFunction() {
+          var x = document.getElementById("myLinks");
+          if (x.style.display === "block") {
+            x.style.display = "none";
+          } else {
+            x.style.display = "block";
+          }
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(".option-btn").click(function(){
+                $(".option-btn").removeClass("option-active-btn");
+                $(this).addClass("option-active-btn");
+            })
+
+            $(".category-btn").click(function(){
+                $(".category-btn").removeClass("category-active-btn");
+                $(this).addClass("category-active-btn");
+            })
+
+            // change labels to the competitive versions
+            $("#competitive-btn").click(function(){
+                $("#standard-btn").text("STANDARD");
+            })
+            $("#competitive-btn").click(function(){
+                $("#dual-btn").text("DUAL");
+            })
+            $("#competitive-btn").click(function(){
+                $("#doubles-btn").text("DOUBLES");
+            })
+            $("#competitive-btn").click(function(){
+                $("#chaos-btn").text("SOLO STANDARD");
+            })
+            
+            // change labels to the casual versions
+            $("#casual-btn").click(function(){
+                $("#standard-btn").text("STANDARD");
+            })
+            $("#casual-btn").click(function(){
+                $("#dual-btn").text("DUAL");
+            })
+            $("#casual-btn").click(function(){
+                $("#doubles-btn").text("DOUBLES");
+            })
+            $("#casual-btn").click(function(){
+                $("#chaos-btn").text("CHAOS");
+            })
+
+            // change labels to the extra game modes
+            $("#extra-btn").click(function(){
+                $("#standard-btn").text("RUMBLE");
+            })
+            $("#extra-btn").click(function(){
+                $("#dual-btn").text("SNOW DAY");
+            })
+            $("#extra-btn").click(function(){
+                $("#doubles-btn").text("HOOPS");
+            })
+            $("#extra-btn").click(function(){
+                $("#chaos-btn").text("DROPSHOT");
+            })
+
+            // change labels to the special game modes
+            $("#special-btn").click(function(){
+                $("#standard-btn").text("HEATSEEKER");
+            })
+            $("#special-btn").click(function(){
+                $("#dual-btn").text("DROPSHOT RUMBLE");
+            })
+            $("#special-btn").click(function(){
+                $("#doubles-btn").text("BOOMER BALL");
+            })
+            $("#special-btn").click(function(){
+                $("#chaos-btn").text("BEACHBALL MODE");
+            })
+            
+        })
+    </script>
+  </body>
+</html>
