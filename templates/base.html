@@ -37,14 +37,12 @@
             position: absolute;
             z-index: -1;
         }
-        header {
-            overflow: hidden;
-            position: relative;
-            right: 0px;
-        }
+
 
         header> img {
-            width: 100%;
+            float: right;
+            right: 0px;
+            height: 20vmin;
         }
 
         .topnav {
@@ -117,7 +115,7 @@
         }
 
         .category-btn {
-            background-color: var(--light-blue-bg);
+            background-color: var(--dark-blue-bg);
             border: 1px solid black;
             color: white; /* White text */
             cursor: pointer; /* Pointer/hand icon */
@@ -131,11 +129,11 @@
         }
 
         .category-btn:hover {
-            background-color: var(--dark-blue-bg);
+            background-color: var(--light-blue-bg);
         }
 
         .category-active-btn{
-            background-color:var(--dark-blue-bg);
+            background-color:var(--light-blue-bg);
             border: 1px solid black;    
             color: white;
             cursor: pointer;
@@ -144,7 +142,7 @@
         }
 
         .option-btn {
-            background-color: var(--light-blue-bg); 
+            background-color: var(--dark-blue-bg); 
             border: 1px solid rgb(0, 0, 0);
             color: white; /* White text */
             cursor: pointer; /* Pointer/hand icon */
@@ -161,7 +159,7 @@
         }
 
         .option-active-btn {
-            background-color: var(--dark-blue-bg);
+            background-color: var(--light-blue-bg);
             border: 1px solid rgb(0,0,0);
             color: white;
             cursor: pointer;
@@ -181,6 +179,13 @@
             width: 33%;
             background-color: black;
         }
+
+        footer {
+            margin-top: 2%;
+            margin-bottom: 1%;
+            text-align: center;
+            color: white;
+        }
     </style>
     <title>RL Stats</title>
   </head>
@@ -188,7 +193,7 @@
     <header>
         <img src="../static/images/blue_octane_banner_v2.png" alt="octane-ball-banner">
     </header>
-    <div class="topnav">
+    <div class="topnav" style="clear: right;">
         <a href="#" class="active">Home</a>
         <div id="myLinks">
           <a href="#">Analyze</a>
@@ -304,6 +309,9 @@
         </div>
 
     </div>
+    <footer>
+        Last Updated: Jun 28 2020
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -323,6 +331,7 @@
         }
     </script>
     <script>
+        //this script handles color changes when the user chooses a game mode
         $(document).ready(function() {
             $(".option-btn").click(function(){
                 $(".option-btn").removeClass("option-active-btn");
