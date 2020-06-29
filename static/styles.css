@@ -31,7 +31,7 @@ body::after {
 header> img {
     float: right;
     right: 0px;
-    height: 20vmin;
+    height: 200px;
 }
 
 .topnav {
@@ -48,7 +48,7 @@ display: none;
 color: white;
 padding: 14px 16px;
 text-decoration: none;
-font-size: 17px;
+font-size: 26px;
 display: block;
 }
 

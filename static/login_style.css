@@ -47,7 +47,8 @@ a {
 }
 
 a:hover {
-	text-decoration: underline;
+  text-decoration: underline;
+  color: rgb(161, 54, 0);
 }
 
 input {
@@ -99,11 +100,21 @@ p {
     padding: 0px 22px;
     width: 59%;
 }
-.logo{
-color:#fff;
-font-size:50px;
+.login-logo {
+  color:#fff;
+  font-size:50px;
   line-height: 125px;
+  transform: translate(10%);
 }
+
+.register-logo {
+  color:#fff;
+  font-size:50px;
+  line-height: 125px;
+  transform: translate(10%, 12%);
+}
+
+
 
 #login form span.fa {
 	background-color: #fff;

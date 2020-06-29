@@ -31,6 +31,25 @@
     <div class="container">
         <form action="#">
             <div class="form-group">
+                <label>Game Mode</label>
+                <div class="filter-div-container">
+                    <div class="btn-group-vertical">
+                        <button class="category-btn category-active-btn" id="casual-btn">CASUAL</button>
+                        <button class="category-btn" id="competitive-btn">COMPETITIVE</button>
+                        <button class="category-btn" id="extra-btn">EXTRA</button>
+                        <button class="category-btn" id="special-btn">SPECIAL</button>
+                    </div>
+                    <div class="option-btn-group">
+                        <button class="option-btn option-active-btn" id="standard-btn" type="button">STANDARD</button>
+                        <button class="option-btn" id="dual-btn" type="button">DUAL</button>
+                        <button class="option-btn" id="doubles-btn">DOUBLES</button>
+                        <button class="option-btn" id="chaos-btn">CHAOS</button>
+                    </div>    
+                </div>
+                <label for="party-checkbox" class='checkbox-lbl'>Partied Up?</label>
+                <input type="checkbox" id="party-checkbox" class="form-check-lg">
+            </div>
+            <div class="form-group">
                 <label>Team</label>
                 <select class="form-control">
                     <option>Blue</option>
@@ -56,25 +75,6 @@
                 <input type="checkbox" id="topper-checkbox" class="form-check-lg">
                 <label for="antenna-checkbox" class="checkbox-lbl">Antenna?</label>
                 <input type="checkbox" id="antenna-checkbox" class="form-check-lg">
-            </div>
-            <div class="form-group">
-                <label>Game Mode</label>
-                <div class="filter-div-container">
-                    <div class="btn-group-vertical">
-                        <button class="category-btn" id="casual-btn">CASUAL</button>
-                        <button class="category-btn" id="competitive-btn">COMPETITIVE</button>
-                        <button class="category-btn" id="extra-btn">EXTRA</button>
-                        <button class="category-btn" id="special-btn">SPECIAL</button>
-                    </div>
-                    <div class="option-btn-group">
-                        <button class="option-btn" id="standard-btn" type="button">STANDARD</button>
-                        <button class="option-btn" id="dual-btn" type="button">DUAL</button>
-                        <button class="option-btn" id="doubles-btn">DOUBLES</button>
-                        <button class="option-btn" id="chaos-btn">CHAOS</button>
-                    </div>    
-                </div>
-                <label for="party-checkbox" class='checkbox-lbl'>Partied Up?</label>
-                <input type="checkbox" id="party-checkbox" class="form-check-lg">
             </div>
             <div class="form-group">
                 <label>Notes</label>
@@ -107,7 +107,6 @@
                     </div>
                 </div>
             </div>
-
         </form>
 
         <!-- Modal -->
@@ -121,7 +120,28 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        This is where the form for adjusting the camera settings will sit.
+                        <form action="#">
+                            <div class="form-group">
+                                <label>Field of View</label>
+                                <span style="font-family: Futura-CondensedExtraBold; text-align: center;"><span id="fov_value"></span></span>
+                                <input id="fov-input" name="fov-input" class="form-control" type="range" min="60" max="110" step="1" value="110" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Distance</label>
+                                <span style="font-family: Futura-CondensedExtraBold; text-align: left;"><span id="distance_value"></span></span>                                
+                                <input id="distance-input" name="distance-input" class="form-control" type="range" min="100" max="400" step="10" value="220" required> 
+                            </div>
+                            <div class="form-group">
+                                <label>Height</label>
+                                <span style="font-family: Futura-CondensedExtraBold; text-align: left;"><span id="height_value"></span></span>                                
+                                <input id="height-input" name="height-input" class="form-control" type="range" min="40" max="200" step="10" value="120" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Angle</label>
+                                <span style="font-family: Futura-CondensedExtraBold; text-align: left;"><span id="angle_value"></span></span>
+                                <input id="angle-input" name="angle-input" class="form-control" type="range" min="-15" max="0" step="1" value="-3" required>
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -142,8 +162,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+    <!--This is for the vertical collapsible menu-->
     <script>
-        // this is for the vertical collapsible menu
         function dropdownFunction() {
           var x = document.getElementById("myLinks");
           if (x.style.display === "block") {
@@ -153,8 +173,8 @@
           }
         }
     </script>
+    <!--This script handles color changes when the user chooses a game mode-->
     <script>
-        //this script handles color changes when the user chooses a game mode
         $(document).ready(function() {
             $(".option-btn").click(function(){
                 $(".option-btn").removeClass("option-active-btn");
@@ -223,6 +243,38 @@
             })
             
         })
+    </script>
+    <!-- the following displays the sliders current value adjacent to the slider-->
+    <script>
+        //var fov_slider = document.getElementById("fov_input");
+        var fov_slider = document.getElementById("fov-input")
+        var distance_slider = document.getElementById("distance-input");
+        var height_slider = document.getElementById("height-input");
+        var angle_slider = document.getElementById("angle-input");
+
+        var fov_value = document.getElementById("fov_value");
+        var distance_value = document.getElementById("distance_value");
+        var height_value = document.getElementById("height_value");
+        var angle_value = document.getElementById("angle_value");
+
+        fov_value.innerHTML = fov_slider.value;
+        distance_value.innerHTML = distance_slider.value;
+        height_value.innerHTML = height_slider.value;
+        angle_value.innerHTML = angle_slider.value;
+        
+        fov_slider.oninput = function() {
+            fov_value.innerHTML = this.value;
+        }
+        distance_slider.oninput = function() {
+            distance_value.innerHTML = this.value;
+        }
+        height_slider.oninput = function() {
+            height_value.innerHTML = this.value;
+        }
+        angle_slider.oninput = function() {
+            angle_value.innerHTML = this.value;
+        }
+
     </script>
   </body>
 </html>
