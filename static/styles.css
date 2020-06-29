@@ -98,6 +98,10 @@ form .btn:hover {
     background-color: var(--dark-blue-bg);
     color: white;
 }
+
+.modal-title {
+    color: black;
+}
 .filter-div-container {
     display: flex;
     flex-wrap:nowrap;
@@ -110,7 +114,7 @@ form .btn:hover {
     cursor: pointer; /* Pointer/hand icon */
     height: 30%;
     width: 95%;
-    font-size: 2.5vmin;
+    font-size: 20px;
 }
 
 .category-btn:not(:last-child) {
@@ -136,7 +140,7 @@ form .btn:hover {
     color: white; /* White text */
     cursor: pointer; /* Pointer/hand icon */
     width: 50%;
-    font-size: 2.5vmin;
+    font-size: 20px;
 }
 
 .option-btn:not(:last-child) {
@@ -170,8 +174,28 @@ form .btn:hover {
 }
 
 footer {
+    position: absolute;
+    /*top: 100vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);*/
     margin-top: 2%;
     margin-bottom: 1%;
-    text-align: center;
     color: white;
+    width: 99%;
+    text-align: center;
 }
+
+.card-body {
+    color: black;
+}
+
+@media only screen and (max-width: 1030px){
+    table {
+      display: none;
+    }
+
+    .category-btn, .option-btn {
+        font-size: 12px;
+    }
+
+ }
