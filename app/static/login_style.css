@@ -132,12 +132,13 @@ p {
 #login form input {
 	height: 50px;
 }
-fieldset{
+
+fieldset {
     padding:0;
     border:0;
     margin: 0;
-
 }
+
 #login form input[type="text"], input[type="password"] {
 	background-color: #fff;
 	border-radius: 0px 3px 3px 0px;
@@ -174,4 +175,8 @@ fieldset{
 .middle {
   display: flex;
   width: 50%;
+}
+
+.password-validator {
+  color: red;
 }
