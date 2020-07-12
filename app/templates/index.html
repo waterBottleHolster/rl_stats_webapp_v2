@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <form action="#"  class="form-blue">
+        <div class="form-group">
+            <label>Game Mode</label>
+            <div class="filter-div-container">
+                <div class="btn-group-vertical">
+                    <button class="category-btn category-btn-active-blue" id="casual-btn">CASUAL</button>
+                    <button class="category-btn-blue" id="competitive-btn">COMPETITIVE</button>
+                    <button class="category-btn-blue" id="extra-btn">EXTRA</button>
+                    <button class="category-btn-blue" id="special-btn">SPECIAL</button>
+                </div>
+                <div class="option-btn-group">
+                    <button class="option-btn option-active-btn" id="standard-btn" type="button">STANDARD</button>
+                    <button class="option-btn" id="dual-btn" type="button">DUAL</button>
+                    <button class="option-btn" id="doubles-btn">DOUBLES</button>
+                    <button class="option-btn" id="chaos-btn">CHAOS</button>
+                </div>    
+            </div>
+            <label for="party-checkbox" class='checkbox-lbl'>Partied Up?</label>
+            <input type="checkbox" id="party-checkbox" class="form-check-lg">
+        </div>
+        <div class="form-group">
+            <label>Team</label>
+            <select id="team-select" class="form-control" onchange="teamSelected()">
+                <option value="blue">Blue</option>
+                <option value="orange">Orange</option>
+                <option value="club-color">Club Colors</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Vehicle</label>
+            <select class="form-control">
+                <option>Octane</option>
+                <option>Dominus</option>
+                <option>Ronin GTX</option>
+                <option>Scarab</option>
+                <option>Marauder</option>
+                <option>Zippy</option>
+                <option>Merc</option>
+                <option>Chikara</option>
+                <option>Venom</option>
+                <option>Breakout</option>
+            </select>
+            <label for="topper-checkbox" class="checkbox-lbl">Topper?</label>
+            <input type="checkbox" id="topper-checkbox" class="form-check-lg">
+            <label for="antenna-checkbox" class="checkbox-lbl">Antenna?</label>
+            <input type="checkbox" id="antenna-checkbox" class="form-check-lg">
+        </div>
+        <div class="form-group">
+            <label>Notes</label>
+            <textarea rows="3" type="textarea" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-video-camera"></i>
+                Camera Settings
+            </button>
+        </div>
+        <div class="form-group">
+            <label>Game Result</label>
+            <div class="form-row">
+                <div class="col-sm">
+                    <button class="form-control btn">WIN</button>
+                </div>
+                <div class="col-sm">
+                    <button class="form-control btn">LOSS</button>
+                </div>
+                <div class="col-sm">
+                    <button class="form-control btn">FF (win)</button>
+                </div>
+                <div class="col-sm">
+                    <button class="form-control btn">FF (loss)</button>
+                </div>
+                <div class="col-sm">
+                    <button class="form-control btn">DC</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Adjust Camera Settings</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#">
+                        <div class="form-group">
+                            <label>Field of View</label>
+                            <span style="font-family: Futura-CondensedExtraBold; text-align: center;"><span id="fov_value"></span></span>
+                            <input id="fov-input" name="fov-input" class="form-control" type="range" min="60" max="110" step="1" value="110" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Distance</label>
+                            <span style="font-family: Futura-CondensedExtraBold; text-align: left;"><span id="distance_value"></span></span>                                
+                            <input id="distance-input" name="distance-input" class="form-control" type="range" min="100" max="400" step="10" value="220" required> 
+                        </div>
+                        <div class="form-group">
+                            <label>Height</label>
+                            <span style="font-family: Futura-CondensedExtraBold; text-align: left;"><span id="height_value"></span></span>                                
+                            <input id="height-input" name="height-input" class="form-control" type="range" min="40" max="200" step="10" value="120" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Angle</label>
+                            <span style="font-family: Futura-CondensedExtraBold; text-align: left;"><span id="angle_value"></span></span>
+                            <input id="angle-input" name="angle-input" class="form-control" type="range" min="-15" max="0" step="1" value="-3" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

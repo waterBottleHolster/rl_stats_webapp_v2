@@ -1,0 +1,76 @@
+{
+    "camera": {
+        "fov": {
+            "min": 60,
+            "max": 110,
+            "step": 1
+        },
+        "distance": {
+            "min": 100,
+            "max": 400,
+            "step": 10
+        },
+        "height": {
+            "min": 40,
+            "max": 200,
+            "step": 10
+        },
+        "angle": {
+            "min": -15,
+            "max": 0,
+            "step": 1
+        },
+        "stiffness": {
+            "min": 0,
+            "max": 1,
+            "step": 0.05
+        },
+        "swivel_speed": {
+            "min": 1,
+            "max": 10,
+            "step": 0.1
+        },
+        "transition_speed": {
+            "min": 1,
+            "max": 2,
+            "step": 0.1
+        }
+    },
+    "controller": {
+        "steering_sens": {
+            "min": 1,
+            "max": 10,
+            "step": 0.01
+        },
+        "aerial_sens": {
+            "min": 1,
+            "max": 10,
+            "step": 0.01
+        },
+        "cont_dz": {
+            "min": 0,
+            "max": 0.75,
+            "step": 0.01
+        },
+        "dodge_dz": {
+            "min": 0.1,
+            "max": 1,
+            "step": 0.01
+        },
+        "vibration_intensity": {
+            "min": 0,
+            "max": 3,
+            "step": 0.1
+        },
+        "mouse_sens": {
+            "min": 1,
+            "max": 100,
+            "step": 1
+        },
+        "kb_input_accel": {
+            "min": 0,
+            "max": 0.25,
+            "step": 0.01
+        }
+    }
+}
