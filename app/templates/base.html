@@ -14,14 +14,14 @@
   </head>
   <body>
     <header>
-        <img src="../static/images/blue_octane_banner_v2.png" alt="octane-ball-banner">
+        <img src="../static/images/blue_octane_banner_v2.png" alt="octane-ball-banner" id="banner-image">
     </header>
     <div class="topnav" style="clear: right;">
-        <a href="#" class="active">Home</a>
+        <a href="#" class="active-blue" id="home-link">Home</a>
         <div id="myLinks">
-          <a href="#">Analyze</a>
-          <a href="#">extra1</a>
-          <a href="#">extra2</a>
+          <a href="#" id="analyze-link">Analyze</a>
+          <a href="#" id="extra1-link">extra1</a>
+          <a href="#" id="extra2-link">extra2</a>
         </div>
         <a href="javascript:void(0);" class="icon" onclick="dropdownFunction()">
           <i class="fa fa-bars"></i>
@@ -64,5 +64,20 @@
         }
     </script>
 
+
+    <script>
+        function teamSelected() {
+            var team = document.getElementById("team-select").value;
+            if (team == "orange") {
+                document.getElementById("banner-image").src = "../static/images/orange_octane_banner_v2.png";
+                $("#home-link").addClass("active-red");
+                $("form").addClass("form-red");
+            } else {
+                document.getElementById("banner-image").src = "../static/images/blue_octane_banner_v2.png";
+                $("#home-link").removeClass("active-red");
+                $("form").removeClass("form-red");
+            }
+        }
+    </script>
   </body>
 </html>

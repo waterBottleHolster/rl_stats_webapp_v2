@@ -10,6 +10,7 @@
     --light-red-bg: rgb(185,63,2);
     --light-blue-bg: rgb(0, 85, 255);
 }
+
 body {
     background-color: #333;
 }
@@ -35,40 +36,52 @@ header> img {
 }
 
 .topnav {
-overflow: hidden;
-background-color: #555;
-position: relative;
+    overflow: hidden;
+    background-color: #555;
+    position: relative;
 }
 
 .topnav #myLinks {
-display: none;
+    display: none;
 }
 
 .topnav a {
-color: white;
-padding: 14px 16px;
-text-decoration: none;
-font-size: 26px;
-display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 26px;
+    display: block;
 }
 
 .topnav a.icon {
-background: black;
-display: block;
-position: absolute;
-right: 0;
-top: 0;
+    background: black;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
-.active {
-background-color: var(--dark-blue-bg);
-color: white;
+.active-blue {
+    background-color: var(--dark-blue-bg);
+    color: white;
 }
 
-form {
-    background-color: rgb(107, 156, 255);
+.active-red {
+    background-color: var(--dark-red-bg);
+    color: white;
+}
+
+
+.form-blue {
     padding: 3%;
     margin-top: 2%;
+    background-image: radial-gradient(var(--light-blue-bg), var(--dark-blue-bg));
+}
+
+.form-red {
+    padding: 3%;
+    margin-top: 2%;
+    background-image: radial-gradient(var(--light-red-bg), var(--dark-red-bg));
 }
 
 form .btn {
@@ -81,7 +94,7 @@ form .btn {
 }
 
 form label {
-    color: black;
+    color: white;
     font-size: 20px;
 }
 
@@ -107,7 +120,7 @@ form .btn:hover {
     flex-wrap:nowrap;
 }
 
-.category-btn {
+.category-btn-blue {
     background-color: var(--dark-blue-bg);
     border: 1px solid black;
     color: white; /* White text */
@@ -117,15 +130,15 @@ form .btn:hover {
     font-size: 20px;
 }
 
-.category-btn:not(:last-child) {
+.category-btn-blue:not(:last-child) {
     border-bottom: none; /* Prevent double borders */
 }
 
-.category-btn:hover {
+.category-btn-blue:hover {
     background-color: var(--light-blue-bg);
 }
 
-.category-active-btn{
+.category-btn-active-blue{
     background-color:var(--light-blue-bg);
     border: 1px solid black;    
     color: white;
@@ -157,7 +170,6 @@ form .btn:hover {
     color: white;
     cursor: pointer;
 }
-
 
 .option-btn-group {
     display: flex;
@@ -194,7 +206,7 @@ footer {
       display: none;
     }
 
-    .category-btn, .option-btn {
+    .category-btn-blue, .option-btn {
         font-size: 12px;
     }
 

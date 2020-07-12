@@ -2,15 +2,15 @@
 
 {% block content %}
 <div class="container">
-    <form action="#">
+    <form action="#"  class="form-blue">
         <div class="form-group">
             <label>Game Mode</label>
             <div class="filter-div-container">
                 <div class="btn-group-vertical">
-                    <button class="category-btn category-active-btn" id="casual-btn">CASUAL</button>
-                    <button class="category-btn" id="competitive-btn">COMPETITIVE</button>
-                    <button class="category-btn" id="extra-btn">EXTRA</button>
-                    <button class="category-btn" id="special-btn">SPECIAL</button>
+                    <button class="category-btn category-btn-active-blue" id="casual-btn">CASUAL</button>
+                    <button class="category-btn-blue" id="competitive-btn">COMPETITIVE</button>
+                    <button class="category-btn-blue" id="extra-btn">EXTRA</button>
+                    <button class="category-btn-blue" id="special-btn">SPECIAL</button>
                 </div>
                 <div class="option-btn-group">
                     <button class="option-btn option-active-btn" id="standard-btn" type="button">STANDARD</button>
@@ -24,10 +24,10 @@
         </div>
         <div class="form-group">
             <label>Team</label>
-            <select class="form-control">
-                <option>Blue</option>
-                <option>Orange</option>
-                <option>Club Colors</option>
+            <select id="team-select" class="form-control" onchange="teamSelected()">
+                <option value="blue">Blue</option>
+                <option value="orange">Orange</option>
+                <option value="club-color">Club Colors</option>
             </select>
         </div>
         <div class="form-group">
