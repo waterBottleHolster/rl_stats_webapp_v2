@@ -2,7 +2,7 @@
 
 This is the most recent screenshot of the login screen.
 
-![Image of login.html](https://github.com/waterBottleHolster/rl_stats_webapp_v2/blob/mockup-only/static/images/screenshots/login.html%20screenshot.png)
+![Image of login.html](https://github.com/waterBottleHolster/rl_stats_webapp_v2/blob/master/mockups/static/images/screenshots/current/login_v2.html%20mobile%20screenshot.png)
 
 And here is the most recent screenshot of the base screen.
 
