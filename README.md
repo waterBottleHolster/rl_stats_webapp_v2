@@ -6,7 +6,9 @@ This is the most recent screenshot of the login screen.
 
 And here is the most recent screenshot of the base screen.
 
-![Image of base.html](https://github.com/waterBottleHolster/rl_stats_webapp_v2/blob/mockup-only/static/images/screenshots/base.html%20screenshot.png)
+![Image of base.html](https://github.com/waterBottleHolster/rl_stats_webapp_v2/blob/master/mockups/static/images/screenshots/current/base.html%20red%20screenshot.png)
+![Image of base.html](https://github.com/waterBottleHolster/rl_stats_webapp_v2/blob/master/mockups/static/images/screenshots/current/base.html%20screenshot.png)
+
 
 
 Here is a list of tags being used in the associated wordpress devlog
