@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../static/styles.css" type="text/css">
 
+    <link rel="icon" href="../static/images/rl_stats_logo_red1.png">
+
     <title>RL Stats - Home</title>
   </head>
   <body>
@@ -20,7 +22,7 @@
         <a href="#" class="active-blue" id="home-link">Home</a>
         <div id="myLinks">
           <a href="#" id="analyze-link">Analyze</a>
-          <a href="#" id="extra1-link">extra1</a>
+          <a href="{{ url_for('logout') }}" id="logout">Logout</a>
           <a href="#" id="extra2-link">extra2</a>
         </div>
         <a href="javascript:void(0);" class="icon" onclick="dropdownFunction()">
@@ -64,20 +66,169 @@
         }
     </script>
 
-
+    <!--This script handles changing the color scheme depending on which team is selected-->
     <script>
+        
         function teamSelected() {
             var team = document.getElementById("team-select").value;
             if (team == "orange") {
                 document.getElementById("banner-image").src = "../static/images/orange_octane_banner_v2.png";
                 $("#home-link").addClass("active-red");
                 $("form").addClass("form-red");
-            } else {
+                $(".category-btn").addClass("category-btn-red");
+                $(".category-btn-active-blue").addClass("category-btn-active-red");
+                $(".category-btn").removeClass("category-btn-blue");
+                $(".category-btn-active-red").removeClass("category-btn-active-blue");
+                $(".option-btn").addClass("option-btn-red");
+                $(".option-btn-active-blue").addClass("option-btn-active-red");
+                $(".option-btn").removeClass("option-btn-blue");
+                $(".option-btn-active-red").removeClass("option-btn-active-blue");
+                $(".btn-blue").addClass("btn-red");
+                $(".btn-red").removeClass("btn-blue");
+                $(".fov-slider-blue").addClass("fov-slider-red");
+                $(".fov-slider-red").removeClass("fov-slider-blue");
+                $(".distance-slider-blue").addClass("distance-slider-red");
+                $(".distance-slider-red").removeClass("distance-slider-blue");
+                $(".height-slider-blue").addClass("height-slider-red");
+                $(".height-slider-red").removeClass("height-slider-blue");
+                $(".angle-slider-blue").addClass("angle-slider-red");
+                $(".angle-slider-red").removeClass("angle-slider-blue");
+            } else if (team == "blue") {
                 document.getElementById("banner-image").src = "../static/images/blue_octane_banner_v2.png";
                 $("#home-link").removeClass("active-red");
                 $("form").removeClass("form-red");
+                $(".category-btn").addClass("category-btn-blue");
+                $(".category-btn-active-red").addClass("category-btn-active-blue");
+                $(".category-btn").removeClass("category-btn-red");
+                $(".category-btn-active-blue").removeClass("category-btn-active-red");
+                $(".option-btn").addClass("option-btn-blue");
+                $(".option-btn-active-red").addClass("option-btn-active-blue");
+                $(".option-btn").removeClass("option-btn-red");
+                $(".option-btn-active-blue").removeClass("option-btn-active-red");
+                $(".btn-red").addClass("btn-blue");
+                $(".btn-blue").removeClass("btn-red");
+                $(".fov-slider-red").addClass("fov-slider-blue");
+                $(".fov-slider-blue").removeClass("fov-slider-red");
+                $(".distance-slider-red").addClass("distance-slider-blue");
+                $(".distance-slider-blue").removeClass("distance-slider-red");
+                $(".height-slider-red").addClass("height-slider-blue");
+                $(".height-slider-blue").removeClass("height-slider-red");
+                $(".angle-slider-red").addClass("angle-slider-blue");
+                $(".angle-slider-blue").removeClass("angle-slider-red");
+                
             }
         }
     </script>
+
+    <!--This script changes the game mode options-->
+    <script>
+        $(document).ready(function() {
+            $(".option-btn").click(function(){
+                var currMode = document.getElementById("team-select").value;
+                if (currMode == "blue") {
+                    $(".option-btn").removeClass("option-btn-active-blue");
+                    $(this).addClass("option-btn-active-blue");
+                } else if (currMode == "orange") {
+                    $(".option-btn").removeClass("option-btn-active-red");
+                    $(this).addClass("option-btn-active-red");
+                }
+
+            })
+
+            $(".category-btn").click(function(){
+                var currTeam = document.getElementById("team-select").value;
+                if (currTeam == "blue") {
+                    $(".category-btn").removeClass("category-btn-active-blue");
+                    $(this).addClass("category-btn-active-blue");
+                } else if (currTeam == "orange") {
+                    $(".category-btn").removeClass("category-btn-active-red");
+                    $(this).addClass("category-btn-active-red");
+                }
+            })
+
+            // change labels to the competitive versions
+            $("#competitive-btn").click(function(){
+                $("#standard-btn").text("STANDARD");
+            })
+            $("#competitive-btn").click(function(){
+                $("#dual-btn").text("DUAL");
+            })
+            $("#competitive-btn").click(function(){
+                $("#doubles-btn").text("DOUBLES");
+            })
+            $("#competitive-btn").click(function(){
+                $("#chaos-btn").text("SOLO STANDARD");
+            })
+            
+            // change labels to the casual versions
+            $("#casual-btn").click(function(){
+                $("#standard-btn").text("STANDARD");
+            })
+            $("#casual-btn").click(function(){
+                $("#dual-btn").text("DUAL");
+            })
+            $("#casual-btn").click(function(){
+                $("#doubles-btn").text("DOUBLES");
+            })
+            $("#casual-btn").click(function(){
+                $("#chaos-btn").text("CHAOS");
+            })
+
+            // change labels to the extra game modes
+            $("#extra-btn").click(function(){
+                $("#standard-btn").text("RUMBLE");
+            })
+            $("#extra-btn").click(function(){
+                $("#dual-btn").text("SNOW DAY");
+            })
+            $("#extra-btn").click(function(){
+                $("#doubles-btn").text("HOOPS");
+            })
+            $("#extra-btn").click(function(){
+                $("#chaos-btn").text("DROPSHOT");
+            })
+
+            // change labels to the special game modes
+            $("#special-btn").click(function(){
+                $("#standard-btn").text("HEATSEEKER");
+            })
+            $("#special-btn").click(function(){
+                $("#dual-btn").text("DROPSHOT RUMBLE");
+            })
+            $("#special-btn").click(function(){
+                $("#doubles-btn").text("BOOMER BALL");
+            })
+            $("#special-btn").click(function(){
+                $("#chaos-btn").text("BEACHBALL MODE");
+            })
+          
+        })
+    </script>
+
+    <!--This script handles the fancy slider formatting for the camera settings sliders-->
+    <script>
+        $('input[type="range"]').change(function () {
+            var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
+            var currTeam = document.getElementById("team-select").value
+
+            if (currTeam == "orange") {
+                $(this).css('background-image',
+                        '-webkit-gradient(linear, left top, right top, '
+                        + 'color-stop(' + val + ', #B93F02), '
+                        + 'color-stop(' + val + ', #ddd)'
+                        + ')'
+                );
+            } else if (currTeam == "blue") {
+                $(this).css('background-image',
+                        '-webkit-gradient(linear, left top, right top, '
+                        + 'color-stop(' + val + ', #0055FF), '
+                        + 'color-stop(' + val + ', #ddd)'
+                        + ')'
+                );
+            }
+
+        });
+    </script>
+
   </body>
 </html>

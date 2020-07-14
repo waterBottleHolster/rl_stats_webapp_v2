@@ -1,0 +1,84 @@
+body {
+    background: #0264d6; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  rgb() 1%, rgb(0, 37, 110) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,rgb(0, 85, 255)), color-stop(100%,rgb(0, 37, 110))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  rgb(0, 85, 255) 1%,rgb(0, 37, 110) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  rgb(0, 85, 255) 1%,rgb(0, 37, 110) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  rgb(0, 85, 255) 1%,rgb(0, 37, 110) 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  rgb(0, 85, 255) 1%,rgb(0, 37, 110) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgb(0, 85, 255)', endColorstr='rgb(0, 37, 110)',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    height:calc(100vh);
+}
+
+.container-fluid {
+    transform: translate(0%, 35%);
+    overflow: hidden;
+}
+
+.login-logo-cont {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+.login-logo-cont img{
+    width: auto;
+    height: 200px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 40px;
+}
+
+#login {
+    text-align: center;
+}
+
+.form-group {
+    background-color: #fff;
+    padding-right: 10px;
+    border-radius: 3px;
+}
+
+.form-group:last-child, .form-group:nth-last-child(2) {
+    background-color: transparent;
+}
+
+input {
+    font-size: 20px;
+    outline: none;
+    border: none;
+}
+
+#submit {
+    background-color: black;
+    color: white;
+}
+
+.password-validator {
+    color: white;
+}
+
+#user-icon, #password-icon {
+	background-color: #fff;
+	border-radius: 3px 0px 0px 3px;
+	color: #000;
+	height: 50px;
+    font-size: 24px;
+	line-height: 50px;
+	text-align: center;
+	width: 50px;
+}
+
+#helper-links {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 1030px){
+    .container-fluid {
+        transform: translate(1%, 15%);
+    }
+}

@@ -7,16 +7,16 @@
             <label>Game Mode</label>
             <div class="filter-div-container">
                 <div class="btn-group-vertical">
-                    <button class="category-btn category-btn-active-blue" id="casual-btn">CASUAL</button>
-                    <button class="category-btn-blue" id="competitive-btn">COMPETITIVE</button>
-                    <button class="category-btn-blue" id="extra-btn">EXTRA</button>
-                    <button class="category-btn-blue" id="special-btn">SPECIAL</button>
+                    <button class="category-btn category-btn-blue category-btn-active-blue" id="casual-btn">CASUAL</button>
+                    <button class="category-btn category-btn-blue" id="competitive-btn">COMPETITIVE</button>
+                    <button class="category-btn category-btn-blue" id="extra-btn">EXTRA</button>
+                    <button class="category-btn category-btn-blue" id="special-btn">SPECIAL</button>
                 </div>
                 <div class="option-btn-group">
-                    <button class="option-btn option-active-btn" id="standard-btn" type="button">STANDARD</button>
-                    <button class="option-btn" id="dual-btn" type="button">DUAL</button>
-                    <button class="option-btn" id="doubles-btn">DOUBLES</button>
-                    <button class="option-btn" id="chaos-btn">CHAOS</button>
+                    <button class="option-btn option-btn-blue option-btn-active-blue" id="standard-btn" type="button">STANDARD</button>
+                    <button class="option-btn option-btn-blue" id="dual-btn" type="button">DUAL</button>
+                    <button class="option-btn option-btn-blue" id="doubles-btn">DOUBLES</button>
+                    <button class="option-btn option-btn-blue" id="chaos-btn">CHAOS</button>
                 </div>    
             </div>
             <label for="party-checkbox" class='checkbox-lbl'>Partied Up?</label>
@@ -55,7 +55,7 @@
         </div>
         <div class="form-group">
             <!-- Button trigger modal -->
-            <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+            <button id="camera-settings-btn" type="button" class="btn btn-blue" data-toggle="modal" data-target="#exampleModal">
                 <i class="fa fa-video-camera"></i>
                 Camera Settings
             </button>
@@ -64,19 +64,19 @@
             <label>Game Result</label>
             <div class="form-row">
                 <div class="col-sm">
-                    <button class="form-control btn">WIN</button>
+                    <button class="form-control btn btn-blue">WIN</button>
                 </div>
                 <div class="col-sm">
-                    <button class="form-control btn">LOSS</button>
+                    <button class="form-control btn btn-blue">LOSS</button>
                 </div>
                 <div class="col-sm">
-                    <button class="form-control btn">FF (win)</button>
+                    <button class="form-control btn btn-blue">FF (win)</button>
                 </div>
                 <div class="col-sm">
-                    <button class="form-control btn">FF (loss)</button>
+                    <button class="form-control btn btn-blue">FF (loss)</button>
                 </div>
                 <div class="col-sm">
-                    <button class="form-control btn">DC</button>
+                    <button class="form-control btn btn-blue">DC</button>
                 </div>
             </div>
         </div>
@@ -93,32 +93,32 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="#">
+                    <form action="#" class="form-blue">
                         <div class="form-group">
                             <label>Field of View</label>
                             <span style="font-family: Futura-CondensedExtraBold; text-align: center;"><span id="fov_value"></span></span>
-                            <input id="fov-input" name="fov-input" class="form-control" type="range" min="60" max="110" step="1" value="110" required>
+                            <input id="fov-input" name="fov-input" class="form-control fov-slider-blue" type="range" min="60" max="110" step="1" value="110" required>
                         </div>
                         <div class="form-group">
                             <label>Distance</label>
                             <span style="font-family: Futura-CondensedExtraBold; text-align: left;"><span id="distance_value"></span></span>                                
-                            <input id="distance-input" name="distance-input" class="form-control" type="range" min="100" max="400" step="10" value="220" required> 
+                            <input id="distance-input" name="distance-input" class="form-control distance-slider-blue" type="range" min="100" max="400" step="10" value="220" required> 
                         </div>
                         <div class="form-group">
                             <label>Height</label>
                             <span style="font-family: Futura-CondensedExtraBold; text-align: left;"><span id="height_value"></span></span>                                
-                            <input id="height-input" name="height-input" class="form-control" type="range" min="40" max="200" step="10" value="120" required>
+                            <input id="height-input" name="height-input" class="form-control height-slider-blue" type="range" min="40" max="200" step="10" value="120" required>
                         </div>
                         <div class="form-group">
                             <label>Angle</label>
                             <span style="font-family: Futura-CondensedExtraBold; text-align: left;"><span id="angle_value"></span></span>
-                            <input id="angle-input" name="angle-input" class="form-control" type="range" min="-15" max="0" step="1" value="-3" required>
+                            <input id="angle-input" name="angle-input" class="form-control angle-slider-blue" type="range" min="-15" max="0" step="1" value="-3" required>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn">Save changes</button>
+                    <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-blue">Save changes</button>
                 </div>
             </div>
         </div>

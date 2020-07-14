@@ -1,4 +1,5 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
     <head>
         <!-- Required meta tags -->
@@ -6,6 +7,65 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../static/login_style_v2.css" type="text/css">
+
+        <link rel="icon" href="../static/images/rl_stats_logo_red1.png">
+
+        <title>RL Stats Tracker Login</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="login-logo-cont">
+                    <img src="../static/images/rl_stats_logo_blue1.png" alt="Rocket League Logo">
+                </div>
+            </div>
+            <div class="row">
+                <div class="login">
+                    <form action="{{ url_for('login') }}" method="POST">
+                        {{ form.hidden_tag() }}
+
+                        <div class="form-group" style="display: flex;">
+                            <span class="fa fa-user" id="user-icon"></span> {{ form.username(placeholder="Username") }}
+                        </div>
+                        
+                        <div class="form-group">
+                            <span class="fa fa-lock" id="password-icon"></span> {{ form.password(placeholder="Password") }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.submit() }}
+                        </div>
+                        <div class="form-group" id="helper-links">
+                            <a class="small-text" href="#" style="color: white;">Forgot password?</a>
+                            <a class="small-text" href="#" style="color: white;">Register</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    </body>
+
+</html>
+
+
+
+
+<!--Everything below is from the original version of the login.html-->
+<!--
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="../static/login_style.css" type="text/css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -40,7 +100,7 @@
                     </fieldset>
                 </form>
 
-            </div> <!-- end login -->
+            </div>
             <div class="login-logo">
                 <img src="../static/images/rl_logo.png" alt="Rocket League Logo" style="width: 100%; height: auto;">
                 <div class="clearfix"></div>
@@ -58,10 +118,8 @@
     </div>
 
 </div>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
-</html>
+</html>-->

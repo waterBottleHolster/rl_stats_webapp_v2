@@ -84,13 +84,14 @@ header> img {
     background-image: radial-gradient(var(--light-red-bg), var(--dark-red-bg));
 }
 
-form .btn {
+.btn-blue {
     background-color: var(--dark-blue-bg);
     color: white;
 }
 
-#camera-settings-btn {
-    background-color: #666;
+.btn-red {
+    background-color: var(--dark-red-bg);
+    color: white;
 }
 
 form label {
@@ -102,13 +103,13 @@ form .checkbox-lbl {
     font-size: 16px;
 }
 
-form .btn:hover {
+form .btn-blue:hover {
     background-color: var(--light-blue-bg);
-    color: black;
+    color: white;
 }
 
-.modal-footer .btn {
-    background-color: var(--dark-blue-bg);
+form .btn-red:hover {
+    background-color: var(--light-red-bg);
     color: white;
 }
 
@@ -120,17 +121,24 @@ form .btn:hover {
     flex-wrap:nowrap;
 }
 
-.category-btn-blue {
-    background-color: var(--dark-blue-bg);
+.category-btn {
     border: 1px solid black;
     color: white; /* White text */
     cursor: pointer; /* Pointer/hand icon */
     height: 30%;
-    width: 95%;
+    width: 90%;
     font-size: 20px;
 }
 
-.category-btn-blue:not(:last-child) {
+.category-btn-blue {
+    background-color: var(--dark-blue-bg);
+}
+
+.category-btn-red {
+    background-color: var(--dark-red-bg);
+}
+
+.category-btn:not(:last-child) {
     border-bottom: none; /* Prevent double borders */
 }
 
@@ -138,17 +146,23 @@ form .btn:hover {
     background-color: var(--light-blue-bg);
 }
 
-.category-btn-active-blue{
-    background-color:var(--light-blue-bg);
-    border: 1px solid black;    
-    color: white;
-    cursor: pointer;
+.category-btn-red:hover {
+    background-color: var(--light-red-bg);
+}
+
+.category-btn-active-blue {
+    background-color: var(--light-blue-bg);
+    height: 30%;
+    width: 100%;
+}
+
+.category-btn-active-red {
+    background-color: var(--light-red-bg);
     height: 30%;
     width: 100%;
 }
 
 .option-btn {
-    background-color: var(--dark-blue-bg); 
     border: 1px solid rgb(0, 0, 0);
     color: white; /* White text */
     cursor: pointer; /* Pointer/hand icon */
@@ -156,16 +170,35 @@ form .btn:hover {
     font-size: 20px;
 }
 
+.option-btn-blue {
+    background-color: var(--dark-blue-bg); 
+}
+
+.option-btn-red {
+    background-color: var(--dark-red-bg); 
+}
+
 .option-btn:not(:last-child) {
     border-bottom: none; /* Prevent double borders */
 }
 
-.option-btn:hover {
+.option-btn-blue:hover {
     background-color: var(--light-blue-bg);
 }
 
-.option-active-btn {
+.option-btn-red:hover {
+    background-color: var(--light-red-bg);
+}
+
+.option-btn-active-blue {
     background-color: var(--light-blue-bg);
+    border: 1px solid rgb(0,0,0);
+    color: white;
+    cursor: pointer;
+}
+
+.option-btn-active-red {
+    background-color: var(--light-red-bg);
     border: 1px solid rgb(0,0,0);
     color: white;
     cursor: pointer;
@@ -187,9 +220,6 @@ form .btn:hover {
 
 footer {
     position: absolute;
-    /*top: 100vh;
-    left: 50vw;
-    transform: translate(-50%, -50%);*/
     margin-top: 2%;
     margin-bottom: 1%;
     color: white;
@@ -206,7 +236,10 @@ footer {
       display: none;
     }
 
-    .category-btn-blue, .option-btn {
+    .category-btn, .option-btn {
+        font-size: 12px;
+    }
+    .category-btn, .option-btn {
         font-size: 12px;
     }
 
@@ -214,4 +247,155 @@ footer {
 
 .alert-error {
     color: white;
+}
+
+/*These are for formatting the camera-settings sliders*/
+.fov-slider-blue {
+    -webkit-appearance: none;
+    -moz-apperance: none;
+    border-radius: 6px;
+    height: 6px;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        color-stop(1.0, var(--light-blue-bg)),
+        color-stop(1.0, #ddd)
+    );
+}
+.fov-slider-red {
+    -webkit-appearance: none;
+    -moz-apperance: none;
+    border-radius: 6px;
+    height: 6px;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        color-stop(1.0, var(--light-red-bg)),
+        color-stop(1.0, #ddd)
+    );
+}
+
+.distance-slider-blue {
+    -webkit-appearance: none;
+    -moz-apperance: none;
+    border-radius: 6px;
+    height: 6px;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        color-stop(0.4, var(--light-blue-bg)),
+        color-stop(0.4, #ddd)
+    );
+}
+
+.distance-slider-red {
+    -webkit-appearance: none;
+    -moz-apperance: none;
+    border-radius: 6px;
+    height: 6px;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        color-stop(0.4, var(--light-red-bg)),
+        color-stop(0.4, #ddd)
+    );
+}
+
+.height-slider-blue {
+    -webkit-appearance: none;
+    -moz-apperance: none;
+    border-radius: 6px;
+    height: 6px;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        color-stop(0.5, var(--light-blue-bg)),
+        color-stop(0.5, #ddd)
+    );
+}
+
+.height-slider-red {
+    -webkit-appearance: none;
+    -moz-apperance: none;
+    border-radius: 6px;
+    height: 6px;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        color-stop(0.5, var(--light-red-bg)),
+        color-stop(0.5, #ddd)
+    );
+}
+
+.angle-slider-blue {
+    -webkit-appearance: none;
+    -moz-apperance: none;
+    border-radius: 6px;
+    height: 6px;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        color-stop(0.8, var(--light-blue-bg)),
+        color-stop(0.8, #ddd)
+    );
+}
+
+.angle-slider-red {
+    -webkit-appearance: none;
+    -moz-apperance: none;
+    border-radius: 6px;
+    height: 6px;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        color-stop(0.8, var(--light-red-bg)),
+        color-stop(0.8, #ddd)
+    );
+}
+/*These blocks affect only the thumb on the slider, not the track*/
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    border: 1px solid #CECECE;
+    height: 15px;
+    width: 15px;
+}
+
+.fov-slider-blue::-webkit-slider-thumb {
+    background-color: var(--dark-blue-bg);
+}
+
+.fov-slider-red::-webkit-slider-thumb {
+    background-color: var(--dark-red-bg);
+}
+
+.distance-slider-blue::-webkit-slider-thumb {
+    background-color: var(--dark-blue-bg);
+}
+
+.distance-slider-red::-webkit-slider-thumb {
+    background-color: var(--dark-red-bg);
+}
+
+.height-slider-blue::-webkit-slider-thumb {
+    background-color: var(--dark-blue-bg);
+}
+
+.height-slider-red::-webkit-slider-thumb {
+    background-color: var(--dark-red-bg);
+}
+
+.angle-slider-blue::-webkit-slider-thumb {
+    background-color: var(--dark-blue-bg);
+}
+
+.angle-slider-red::-webkit-slider-thumb {
+    background-color: var(--dark-red-bg);
 }

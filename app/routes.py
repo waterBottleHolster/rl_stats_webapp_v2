@@ -2,7 +2,7 @@
 from flask import render_template, flash, redirect, g, url_for
 from app import app
 from app.forms import LoginForm
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user
 from app.models import User
 import sqlite3
 
@@ -31,6 +31,10 @@ def login():
         login_user(user, remember=True)
         return redirect(url_for('index'))
 
-    return render_template('login.html', form=form)
+    return render_template('login_v2.html', form=form)
 
-    
+@app.route('/logout/')
+def logout():
+    logout_user()
+    flash('You\'ve Been Successfully Logged Out')
+    return redirect(url_for('login'))
