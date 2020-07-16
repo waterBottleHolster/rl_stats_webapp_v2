@@ -1,7 +1,7 @@
 #!/home/dh_4gxtme/rl-experiment-tracker.com/public/rl_stats_webapp_v2/venv_rl_webapp/bin/python3
 from flask import render_template, flash, redirect, g, url_for
 from app import app
-from app.forms import LoginForm
+from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user
 from app.models import User
 import sqlite3
@@ -12,6 +12,11 @@ db_path = 'rl_stats.db'
 @app.route('/index/')
 def index():
     return render_template('index.html')
+
+@app.route('/register/', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    return render_template('registration.html', form=form)
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():

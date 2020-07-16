@@ -72,9 +72,8 @@ input {
 	width: 50px;
 }
 
-#helper-links {
-    display: flex;
-    justify-content: space-between;
+#helper-links a {
+    text-align: right;
 }
 
 @media only screen and (max-width: 1450px){
