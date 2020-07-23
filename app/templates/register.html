@@ -24,7 +24,7 @@
             </div>
             <div class="row">
                 <div class="login">
-                    <form action="{{ url_for('login') }}" method="POST">
+                    <form action="{{ url_for('register') }}" method="POST" oninput='confirm.setCustomValidity(confirm.value != password.value ? "Passwords do not match." : "")'>
                         {{ form.hidden_tag() }}
 
                         <div class="form-group" style="display: flex;">
@@ -35,7 +35,7 @@
                             <span class="fa fa-lock" id="password-icon"></span> {{ form.password(placeholder="Password") }}
                         </div>
                         <div class="form-group">
-                            <span class="fa fa-lock" id="password-icon"></span> {{ form.password(placeholder="Confirm Password") }}
+                            <span class="fa fa-lock" id="password-icon"></span> {{ form.confirm(placeholder="Confirm Password") }}
                         </div>
                         
                         <div class="form-group">
@@ -48,6 +48,16 @@
                 </div>
             </div>
         </div>
+
+        {% for error in form.username.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+
+        <script>
+            function pwCheck() {
+                confirm.setCustomValidity(confirm.value != password.value ? "Passwords do not match." : "")
+            }
+        </script>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
