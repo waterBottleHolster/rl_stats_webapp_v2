@@ -99,10 +99,6 @@ form label {
     font-size: 20px;
 }
 
-form .checkbox-lbl {
-    font-size: 16px;
-}
-
 form .btn-blue:hover {
     background-color: var(--light-blue-bg);
     color: white;
@@ -116,6 +112,10 @@ form .btn-red:hover {
 form .form-group span {
     color: white;
 
+}
+
+#antenna-lbl {
+    margin-left: 40px;
 }
 
 .modal-title {

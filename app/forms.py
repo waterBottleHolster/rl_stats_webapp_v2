@@ -34,18 +34,18 @@ class RegistrationForm(FlaskForm):
 
 
 class GameDataForm(FlaskForm):
-    partied = BooleanField()
+    partied = BooleanField(u'Partied Up?')
     team = SelectField(u'Team', choices=[('blue','Blue'),('orange','Orange'), ('club_colors','Club Colors')])
     vehicle = SelectField(u'Vehicle', choices=rl_vehicle_list)
     topper = BooleanField(u'Topper')
-    antenna = BooleanField()
-    notes = TextAreaField()
-    result = HiddenField()
-    gamemode = HiddenField()
-    fov = HiddenField()
-    distance = HiddenField()
-    height = HiddenField()
-    angle = HiddenField()
+    antenna = BooleanField(u'Antenna')
+    notes = TextAreaField(u'Notes')
+    result = HiddenField(validators=[DataRequired()])
+    gamemode = HiddenField(validators=[DataRequired()])
+    fov = HiddenField(validators=[DataRequired()])
+    distance = HiddenField(validators=[DataRequired()])
+    height = HiddenField(validators=[DataRequired()])
+    angle = HiddenField(validators=[DataRequired()])
 
 
 class AnalyzeForm(FlaskForm):

@@ -69,3 +69,10 @@ rl_vehicle_list = [
     ("xdevil_mk2", "X-Devil Mk2"),
     ("zippy", "Zippy")
 ]
+
+def boolean_to_binary(input):
+    if input == True:
+        output = 1
+    else:
+        output = 0
+    return output

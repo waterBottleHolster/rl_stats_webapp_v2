@@ -13,8 +13,6 @@
     <link rel="icon" href="../static/images/rl_stats_logo_red1.png">
 
     <title>RL Stats - Home</title>
-    {{ moment.include_jquery() }}
-    {{ moment.include_moment() }}
   </head>
   <body>
     <header>
@@ -74,7 +72,7 @@
     <script>
         $(document).ready(function() {
             $(".option-btn").click(function(){
-                $("#gamemode").val(this.innerHTML);
+                //$("#gamemode").val(this.innerHTML);
 
                 var currMode = document.getElementById("team-select").value;
                 if (currMode == "blue") {
@@ -223,7 +221,7 @@
         function teamSelected() {
             var team = document.getElementById("team-select").value;
 
-            if (team == "Orange") {
+            if (team == "orange") {
                 document.getElementById("banner-image").src = "../static/images/orange_octane_banner_v2.png";
                 $("#home-link").addClass("active-red");
                 $("form").addClass("form-red");
@@ -245,7 +243,7 @@
                 $(".height-slider-red").removeClass("height-slider-blue");
                 $(".angle-slider-blue").addClass("angle-slider-red");
                 $(".angle-slider-red").removeClass("angle-slider-blue");
-            } else if (team == "Blue") {
+            } else if (team == "blue") {
                 document.getElementById("banner-image").src = "../static/images/blue_octane_banner_v2.png";
                 $("#home-link").removeClass("active-red");
                 $("form").removeClass("form-red");
@@ -274,6 +272,10 @@
             // assign teamSelected function to team-select element
             $("#team-select")[0].setAttribute("onchange", "teamSelected()");
             $("#gamemode").val("3v3");
+            $("#fov").val($("#fov-input").val())
+            $("#distance").val($("#distance-input").val())
+            $("#height").val($("#height-input").val())
+            $("#angle").val($("#angle-input").val())
         }
 
 
@@ -283,6 +285,16 @@
     <script>
         function winClicked() {
             $("#result").val("win");
+            // Figure out which option btn is chosen
+            if ($("#team-select").val() == "orange") {
+                $("#gamemode").val($(".option-btn-active-red").text());
+            } else if ($("#team-select").val() == "blue")  {
+                $("#gamemode").val($(".option-btn-active-blue").text());
+            }
+            
+
+            
+            //$("#gamemode").val($(".option-btn-active-red").innerHTML)
             $("#game-data-form").submit();
         }
         function lossClicked() {

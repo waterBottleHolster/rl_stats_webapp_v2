@@ -21,19 +21,19 @@
                     <button class="option-btn option-btn-blue" id="chaos-btn" type="button">4v4</button>
                 </div>    
             </div>
-            <label for="partied" class='checkbox-lbl'>Partied Up?</label>
+            {{ form.partied.label }}
             {{ form.partied() }}
         </div>
         <div class="form-group">
-            <label>Team</label>
+            {{ form.team.label }}
             {{ form.team(id="team-select", class="form-control") }}
         </div>
         <div class="form-group">
-            <label>Vehicle</label>
+            {{ form.vehicle.label }}
             {{ form.vehicle(id="vehicle-select", class="form-control") }}
-            <label for="topper" class="checkbox-lbl">Topper?</label>
+            {{ form.topper.label }}
             {{ form.topper() }}
-            <label for="antenna" class="checkbox-lbl" style="margin-left: 4%;">Antenna?</label>
+            {{ form.antenna.label(id="antenna-lbl") }}
             {{ form.antenna() }}
         </div>
         <div class="form-group">
@@ -110,6 +110,5 @@
             </div>
         </div>
     </div>
-    <p style="color: white;">The local date and time is {{ moment(current_time).format('LLL') }}</p>
 </div>
 {% endblock %}

@@ -8,6 +8,7 @@ from werkzeug.urls import url_parse
 from app.models import User
 import sqlite3
 from datetime import datetime
+from app.helper_objects import boolean_to_binary
 
 db_path = 'rl_stats.db'
 
@@ -16,7 +17,7 @@ db_path = 'rl_stats.db'
 @login_required
 def index():
     form = GameDataForm()
-    return render_template('index.html', form=form, current_time=datetime.utcnow())
+    return render_template('index.html', form=form)
 
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
@@ -41,14 +42,42 @@ def register():
 @app.route('/data_submit/', methods=['GET', 'POST'])
 def data_submit():
     form = GameDataForm()
+    current_time = datetime.utcnow()
+    # Collect all of the form variables
+    # Convert the boolean fields to binary w/ helper function
+    current_result = form.result.data
+    current_topper = boolean_to_binary(form.topper.data)
+    current_gamemode = form.gamemode.data
+    current_partied = boolean_to_binary(form.partied.data)
+    current_team = form.team.data
+    current_vehicle = form.vehicle.data
+    current_antenna = boolean_to_binary(form.antenna.data)
+    current_fov = form.fov.data
+    current_distance = form.distance.data
+    current_height = form.height.data
+    current_angle = form.angle.data
+    current_notes = form.notes.data
 
+    conn = sqlite3.connect(db_path)
+    cur = conn.execute("INSERT INTO game_data (date_time, username, \
+                        game_result, topper, game_mode, partied, team, \
+                        vehicle, antenna, fov, distance, height, angle, \
+                        notes) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (
+                        current_time, current_user.username, 
+                        current_result, current_topper, current_gamemode, 
+                        current_partied, current_team, current_vehicle, 
+                        current_antenna, current_fov, current_distance, 
+                        current_height, current_angle, current_notes))
+    conn.commit()
+    conn.close()
+    
+    # current_user.username
     return redirect(url_for('index'))
 
 @app.route('/analyze/', methods=['GET', 'POST'])
 @login_required
 def analyze():
     form = AnalyzeForm()
-    print(form.validate_on_submit())
     return render_template('analyze.html', form=form)
 
 @app.route('/login/', methods=['GET', 'POST'])
