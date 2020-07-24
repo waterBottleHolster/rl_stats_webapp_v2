@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <form action="{{ url_for('analyze') }}" method="POST" id="analyze-form">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.test1(placeholder="put something here") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.test2() }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.test3() }}
+        </div>
+        
+        
+        
+        {{ form.submit() }}
+
+        <button id="submit2">JS SUBMIT</button>
+    </form>
+</div>
+{% endblock %}

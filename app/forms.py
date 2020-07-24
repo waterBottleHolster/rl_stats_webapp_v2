@@ -1,7 +1,8 @@
 #!/home/dh_4gxtme/rl-experiment-tracker.com/public/rl_stats_webapp_v2/venv_rl_webapp/bin/python3
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, validators, HiddenField, IntegerField, SelectField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, validators, HiddenField, IntegerField, SelectField, BooleanField, TextAreaField
 from wtforms.validators import ValidationError, DataRequired, Regexp
+from app.helper_objects import rl_vehicle_list
 import sqlite3
 db_path = 'rl_stats.db'
 
@@ -31,8 +32,24 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('Please use a different username.')
         conn.close()
 
+
 class GameDataForm(FlaskForm):
-    gamemode = HiddenField('Game Mode', validators=[DataRequired()])
-    partied = BooleanField('Partied')
-    fov = IntegerField('FOV')
-    team = SelectField("Team", choices=[('Blue'),('Orange'),('Club Colors')])
+    partied = BooleanField()
+    team = SelectField(u'Team', choices=[('blue','Blue'),('orange','Orange'), ('club_colors','Club Colors')])
+    vehicle = SelectField(u'Vehicle', choices=rl_vehicle_list)
+    topper = BooleanField(u'Topper')
+    antenna = BooleanField()
+    notes = TextAreaField()
+    result = HiddenField()
+    gamemode = HiddenField()
+    fov = HiddenField()
+    distance = HiddenField()
+    height = HiddenField()
+    angle = HiddenField()
+
+
+class AnalyzeForm(FlaskForm):
+    test1 = StringField('Testeroo')
+    test2 = SelectField(u'Testeroo2', choices=rl_vehicle_list)
+    test3 = SelectField(u'Testeroo3', choices=[('Blue', 'BLUE'), ('Orange', 'ORANGE'), ('Club Colors', 'CLUB')])
+    submit = SubmitField('SUBMIT')

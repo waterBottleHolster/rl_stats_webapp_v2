@@ -13,15 +13,17 @@
     <link rel="icon" href="../static/images/rl_stats_logo_red1.png">
 
     <title>RL Stats - Home</title>
+    {{ moment.include_jquery() }}
+    {{ moment.include_moment() }}
   </head>
   <body>
     <header>
         <img src="../static/images/blue_octane_banner_v2.png" alt="octane-ball-banner" id="banner-image">
     </header>
     <div class="topnav" style="clear: right;">
-        <a href="#" class="active-blue" id="home-link">Home</a>
+        <a href="{{ url_for('index') }}" class="active-blue" id="home-link">Home</a>
         <div id="myLinks">
-          <a href="#" id="analyze-link">Analyze</a>
+          <a href="{{ url_for('analyze') }}" id="analyze-link">Analyze</a>
           <a href="{{ url_for('logout') }}" id="logout">Logout</a>
           <a href="#" id="extra2-link">extra2</a>
         </div>
@@ -48,6 +50,8 @@
         Last Updated: Jun 28 2020
     </footer>
 
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -66,63 +70,12 @@
         }
     </script>
 
-    <!--This script handles changing the color scheme depending on which team is selected-->
-    <script>
-        
-        function teamSelected() {
-            var team = document.getElementById("team-select").value;
-            if (team == "orange") {
-                document.getElementById("banner-image").src = "../static/images/orange_octane_banner_v2.png";
-                $("#home-link").addClass("active-red");
-                $("form").addClass("form-red");
-                $(".category-btn").addClass("category-btn-red");
-                $(".category-btn-active-blue").addClass("category-btn-active-red");
-                $(".category-btn").removeClass("category-btn-blue");
-                $(".category-btn-active-red").removeClass("category-btn-active-blue");
-                $(".option-btn").addClass("option-btn-red");
-                $(".option-btn-active-blue").addClass("option-btn-active-red");
-                $(".option-btn").removeClass("option-btn-blue");
-                $(".option-btn-active-red").removeClass("option-btn-active-blue");
-                $(".btn-blue").addClass("btn-red");
-                $(".btn-red").removeClass("btn-blue");
-                $(".fov-slider-blue").addClass("fov-slider-red");
-                $(".fov-slider-red").removeClass("fov-slider-blue");
-                $(".distance-slider-blue").addClass("distance-slider-red");
-                $(".distance-slider-red").removeClass("distance-slider-blue");
-                $(".height-slider-blue").addClass("height-slider-red");
-                $(".height-slider-red").removeClass("height-slider-blue");
-                $(".angle-slider-blue").addClass("angle-slider-red");
-                $(".angle-slider-red").removeClass("angle-slider-blue");
-            } else if (team == "blue") {
-                document.getElementById("banner-image").src = "../static/images/blue_octane_banner_v2.png";
-                $("#home-link").removeClass("active-red");
-                $("form").removeClass("form-red");
-                $(".category-btn").addClass("category-btn-blue");
-                $(".category-btn-active-red").addClass("category-btn-active-blue");
-                $(".category-btn").removeClass("category-btn-red");
-                $(".category-btn-active-blue").removeClass("category-btn-active-red");
-                $(".option-btn").addClass("option-btn-blue");
-                $(".option-btn-active-red").addClass("option-btn-active-blue");
-                $(".option-btn").removeClass("option-btn-red");
-                $(".option-btn-active-blue").removeClass("option-btn-active-red");
-                $(".btn-red").addClass("btn-blue");
-                $(".btn-blue").removeClass("btn-red");
-                $(".fov-slider-red").addClass("fov-slider-blue");
-                $(".fov-slider-blue").removeClass("fov-slider-red");
-                $(".distance-slider-red").addClass("distance-slider-blue");
-                $(".distance-slider-blue").removeClass("distance-slider-red");
-                $(".height-slider-red").addClass("height-slider-blue");
-                $(".height-slider-blue").removeClass("height-slider-red");
-                $(".angle-slider-red").addClass("angle-slider-blue");
-                $(".angle-slider-blue").removeClass("angle-slider-red");   
-            }
-        }
-    </script>
-
     <!--This script changes the game mode options-->
     <script>
         $(document).ready(function() {
             $(".option-btn").click(function(){
+                $("#gamemode").val(this.innerHTML);
+
                 var currMode = document.getElementById("team-select").value;
                 if (currMode == "blue") {
                     $(".option-btn").removeClass("option-btn-active-blue");
@@ -207,9 +160,9 @@
     <!--This script handles the fancy slider formatting for the camera settings sliders-->
     <script>
         $('input[type="range"]').change(function () {
+            
             var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
             var currTeam = document.getElementById("team-select").value
-
             if (currTeam == "orange") {
                 $(this).css('background-image',
                         '-webkit-gradient(linear, left top, right top, '
@@ -228,10 +181,49 @@
 
         });
     </script>
+
+    <!--This script displays the slider's current value adjacent to the slider-->
+    <script>
+        var fov_slider = document.getElementById("fov-input");
+        var distance_slider = document.getElementById("distance-input");
+        var height_slider = document.getElementById("height-input");
+        var angle_slider = document.getElementById("angle-input");
+        
+        var fov_value = document.getElementById("fov-value");
+        var distance_value = document.getElementById("distance-value");
+        var height_value = document.getElementById("height-value");
+        var angle_value = document.getElementById("angle-value");
+        
+        fov_value.innerHTML = fov_slider.value;
+        distance_value.innerHTML = distance_slider.value;
+        height_value.innerHTML = height_slider.value;
+        angle_value.innerHTML = angle_slider.value;
+        
+        fov_slider.oninput = function() {
+            fov_value.innerHTML = this.value;
+            $("#fov").val(this.value);
+        }
+        distance_slider.oninput = function() {
+            distance_value.innerHTML = this.value;
+            $("#distance").val(this.value);
+        }
+        height_slider.oninput = function() {
+            height_value.innerHTML = this.value;
+            $("#height").val(this.value);
+        }
+        angle_slider.oninput = function() {
+            angle_value.innerHTML = this.value;
+            $("#angle").val(this.value);
+        }
+        
+    </script>
+
+    <!--This script handles default values for hidden inputs and the color change when the user changes the current team-->
     <script>
         function teamSelected() {
             var team = document.getElementById("team-select").value;
-            if (team == "orange") {
+
+            if (team == "Orange") {
                 document.getElementById("banner-image").src = "../static/images/orange_octane_banner_v2.png";
                 $("#home-link").addClass("active-red");
                 $("form").addClass("form-red");
@@ -253,7 +245,7 @@
                 $(".height-slider-red").removeClass("height-slider-blue");
                 $(".angle-slider-blue").addClass("angle-slider-red");
                 $(".angle-slider-red").removeClass("angle-slider-blue");
-            } else if (team == "blue") {
+            } else if (team == "Blue") {
                 document.getElementById("banner-image").src = "../static/images/blue_octane_banner_v2.png";
                 $("#home-link").removeClass("active-red");
                 $("form").removeClass("form-red");
@@ -279,14 +271,47 @@
         }
         window.onload = initPage;
         function initPage() {
-            alert('here');
             // assign teamSelected function to team-select element
-            document.getElementById('team-select').onchange = teamSelected();
-            alert('here2')
+            $("#team-select")[0].setAttribute("onchange", "teamSelected()");
+            $("#gamemode").val("3v3");
         }
 
 
     </script>
 
+    <!--This script will change the game result's hidden input and submit the form-->
+    <script>
+        function winClicked() {
+            $("#result").val("win");
+            $("#game-data-form").submit();
+        }
+        function lossClicked() {
+            alert('test2');
+        }
+        function ffwClicked() {
+            alert('test3');
+        }
+        function fflClicked() {
+            alert('test4');
+        }
+        function dcClicked() {
+            alert('test5');
+        }
+        
+        $("#win").click(winClicked)
+        $("#loss").click(lossClicked)
+        $("#forfeit_win").click(ffwClicked)
+        $("#forfeit_loss").click(fflClicked)
+        $("#disconnect").click(dcClicked)
+        
+    </script>
+
+    <!-- This script will submit the analyze form-->
+    <script>
+        function btnClicked() {
+            $("#analyze-form").submit();
+        }
+        $("#submit2").click(btnClicked);
+    </script>
   </body>
 </html>

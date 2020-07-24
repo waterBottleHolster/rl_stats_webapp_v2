@@ -1,21 +1,22 @@
 #!/home/dh_4gxtme/rl-experiment-tracker.com/public/rl_stats_webapp_v2/venv_rl_webapp/bin/python3
 from flask import render_template, flash, redirect, g, url_for, request
 from app import app
-from app.forms import LoginForm, RegistrationForm, GameDataForm
+from app.forms import LoginForm, RegistrationForm, GameDataForm, AnalyzeForm
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash
 from werkzeug.urls import url_parse
 from app.models import User
 import sqlite3
+from datetime import datetime
 
 db_path = 'rl_stats.db'
 
 @app.route('/')
-@app.route('/index/')
+@app.route('/index/', methods=["GET", "POST"])
 @login_required
 def index():
     form = GameDataForm()
-    return render_template('index.html', form=form)
+    return render_template('index.html', form=form, current_time=datetime.utcnow())
 
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
@@ -35,6 +36,20 @@ def register():
         return redirect(url_for('index'))
 
     return render_template('register.html', form=form)
+
+
+@app.route('/data_submit/', methods=['GET', 'POST'])
+def data_submit():
+    form = GameDataForm()
+
+    return redirect(url_for('index'))
+
+@app.route('/analyze/', methods=['GET', 'POST'])
+@login_required
+def analyze():
+    form = AnalyzeForm()
+    print(form.validate_on_submit())
+    return render_template('analyze.html', form=form)
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():

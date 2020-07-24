@@ -113,6 +113,11 @@ form .btn-red:hover {
     color: white;
 }
 
+form .form-group span {
+    color: white;
+
+}
+
 .modal-title {
     color: black;
 }

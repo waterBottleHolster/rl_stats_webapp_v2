@@ -33,7 +33,7 @@ def load_user(id):
     conn = sqlite3.connect(db_path)
     cur = conn.execute("SELECT id, username, password FROM users WHERE id = ?", (id,))
     cur = cur.fetchone()
-    print(cur[0])
+
     if cur[0] == None:
         return None
     else:
