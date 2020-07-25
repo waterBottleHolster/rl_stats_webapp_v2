@@ -70,9 +70,37 @@ rl_vehicle_list = [
     ("zippy", "Zippy")
 ]
 
+#first item is how it'll go into the database
+#second item is how it'll appear on the rendered page
+rl_gamemode_list = [
+    ('three_v_three', '3v3'),
+    ('two_v_two', '2v2'),
+    ('one_v_one', '1v1'),
+    ('three_v_three', '3v3'),
+    ('standard', 'STANDARD'),
+    ('doubles', 'DOUBLES'),
+    ('duel', "DUEL"),
+    ('solo_standard', 'SOLO STANDARD'),
+    ('rumble', 'RUMBLE'),
+    ('dropshot', 'DROPSHOT'),
+    ('hoops', 'HOOPS'),
+    ('snow_day', "SNOW DAY"),
+    ('beach_ball', 'BEACH BALL'),
+    ('boomer_ball', 'BOOMER BALL'),
+    ('dropshot_rumble', "DROPSHOT RUMBLE"),
+    ('heatseeker', 'HEATSEEKER')
+]
+
 def boolean_to_binary(input):
     if input == True:
         output = 1
     else:
         output = 0
+    return output
+
+def binary_to_boolean(input):
+    if input == 1:
+        output = True
+    else:
+        output = False
     return output

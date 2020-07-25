@@ -298,16 +298,16 @@
             $("#game-data-form").submit();
         }
         function lossClicked() {
-            alert('test2');
+            $("#result").val("loss");
         }
         function ffwClicked() {
-            alert('test3');
+            $("#result").val("win_forfeit");
         }
         function fflClicked() {
-            alert('test4');
+            $("#result").val("loss_forfeit");
         }
         function dcClicked() {
-            alert('test5');
+            $("#result").val("disconnect");
         }
         
         $("#win").click(winClicked)

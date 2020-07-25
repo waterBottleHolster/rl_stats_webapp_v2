@@ -34,6 +34,11 @@ Dropshot
 Hoops
 Snow Day
 
+FOV Range (60 - 110, step 1)
+Distance Range (100 - 400, step 10)
+Height Range (40 - 200, step 10)
+Angle Range (-15 - 0, step 1)
+
 <HTML SPECIFIC>
 Always lower case.
 Use underscores between words (not hyphens which are for CSS).
@@ -47,3 +52,7 @@ Freecodecamp.org has a write up explaining BEM by Emmanuel Ohans
 
 <JAVASCRIPT SPECIFIC>
 camelCase for everything.
+
+<DATABASE SPECIFIC>
+all string entries should be lowercase and one word (use underscores)
+date_time column should be this format YYYY-MM-DD HH:MM:SS and 24hr clock
