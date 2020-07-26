@@ -72,7 +72,7 @@
     <script>
         $(document).ready(function() {
             $(".option-btn").click(function(){
-                //$("#gamemode").val(this.innerHTML);
+                $("#gamemode").val(this.innerHTML);
 
                 var currMode = document.getElementById("team-select").value;
                 if (currMode == "blue") {
@@ -81,18 +81,6 @@
                 } else if (currMode == "orange") {
                     $(".option-btn").removeClass("option-btn-active-red");
                     $(this).addClass("option-btn-active-red");
-                }
-
-            })
-
-            $(".category-btn").click(function(){
-                var currTeam = document.getElementById("team-select").value;
-                if (currTeam == "blue") {
-                    $(".category-btn").removeClass("category-btn-active-blue");
-                    $(this).addClass("category-btn-active-blue");
-                } else if (currTeam == "orange") {
-                    $(".category-btn").removeClass("category-btn-active-red");
-                    $(this).addClass("category-btn-active-red");
                 }
             })
 
@@ -150,6 +138,25 @@
             })
             $("#special-btn").click(function(){
                 $("#chaos-btn").text("BEACHBALL MODE");
+            })
+
+            // Put this after changing the text on the option buttons
+            $(".category-btn").click(function(){
+                var currTeam = document.getElementById("team-select").value;
+
+                if (currTeam == "blue") {
+                    // highlight the button just clicked
+                    $(".category-btn").removeClass("category-btn-active-blue");
+                    $(this).addClass("category-btn-active-blue");
+                    // update the hidden input with the new value
+                    $("#gamemode").val($(".option-btn-active-blue").text());
+                } else if (currTeam == "orange") {
+                    // highlight the button just clicked
+                    $(".category-btn").removeClass("category-btn-active-red");
+                    $(this).addClass("category-btn-active-red");
+                    // update the hidden input with the new value
+                    $("#gamemode").val($(".option-btn-active-red").text());
+                }
             })
           
         })
@@ -220,7 +227,7 @@
     <script>
         function teamSelected() {
             var team = document.getElementById("team-select").value;
-
+            sliderWidth()
             if (team == "orange") {
                 document.getElementById("banner-image").src = "../static/images/orange_octane_banner_v2.png";
                 $("#home-link").addClass("active-red");
@@ -267,15 +274,79 @@
                 $(".angle-slider-blue").removeClass("angle-slider-red");   
             }
         }
+
+        function sliderWidth () {
+                var val1 = ($("#fov-input").val() - $("#fov-input").attr('min')) / ($("#fov-input").attr('max') - $("#fov-input").attr('min'));
+                var val2 = ($("#distance-input").val() - $("#distance-input").attr('min')) / ($("#distance-input").attr('max') - $("#distance-input").attr('min'));
+                var val3 = ($("#height-input").val() - $("#height-input").attr('min')) / ($("#height-input").attr('max') - $("#height-input").attr('min'));
+                var val4 = ($("#angle-input").val() - $("#angle-input").attr('min')) / ($("#angle-input").attr('max') - $("#angle-input").attr('min'));
+
+                var currTeam = document.getElementById("team-select").value
+                if (currTeam == "orange") {
+                    $("#fov-input").css('background-image',
+                            '-webkit-gradient(linear, left top, right top, '
+                            + 'color-stop(' + val1 + ', #B93F02), '
+                            + 'color-stop(' + val1 + ', #ddd)'
+                            + ')'
+                    );
+                    $("#distance-input").css('background-image',
+                            '-webkit-gradient(linear, left top, right top, '
+                            + 'color-stop(' + val2 + ', #B93F02), '
+                            + 'color-stop(' + val2 + ', #ddd)'
+                            + ')'
+                    );
+                    $("#height-input").css('background-image',
+                            '-webkit-gradient(linear, left top, right top, '
+                            + 'color-stop(' + val3 + ', #B93F02), '
+                            + 'color-stop(' + val3 + ', #ddd)'
+                            + ')'
+                    );
+                    $("#angle-input").css('background-image',
+                            '-webkit-gradient(linear, left top, right top, '
+                            + 'color-stop(' + val4 + ', #B93F02), '
+                            + 'color-stop(' + val4 + ', #ddd)'
+                            + ')'
+                    );
+                } else if (currTeam == "blue") {
+                    $("#fov-input").css('background-image',
+                            '-webkit-gradient(linear, left top, right top, '
+                            + 'color-stop(' + val1 + ', #0055FF), '
+                            + 'color-stop(' + val1 + ', #ddd)'
+                            + ')'
+                    );
+                    $("#distance-input").css('background-image',
+                            '-webkit-gradient(linear, left top, right top, '
+                            + 'color-stop(' + val2 + ', #0055FF), '
+                            + 'color-stop(' + val2 + ', #ddd)'
+                            + ')'
+                    );
+                    $("#height-input").css('background-image',
+                            '-webkit-gradient(linear, left top, right top, '
+                            + 'color-stop(' + val3 + ', #0055FF), '
+                            + 'color-stop(' + val3 + ', #ddd)'
+                            + ')'
+                    );
+                    $("#angle-input").css('background-image',
+                            '-webkit-gradient(linear, left top, right top, '
+                            + 'color-stop(' + val4 + ', #0055FF), '
+                            + 'color-stop(' + val4 + ', #ddd)'
+                            + ')'
+                    );
+                }
+
+            }
+
+
+
+
         window.onload = initPage;
         function initPage() {
             // assign teamSelected function to team-select element
+            teamSelected();
+            sliderWidth();
             $("#team-select")[0].setAttribute("onchange", "teamSelected()");
             $("#gamemode").val("3v3");
-            $("#fov").val($("#fov-input").val())
-            $("#distance").val($("#distance-input").val())
-            $("#height").val($("#height-input").val())
-            $("#angle").val($("#angle-input").val())
+            
         }
 
 
@@ -291,9 +362,7 @@
             } else if ($("#team-select").val() == "blue")  {
                 $("#gamemode").val($(".option-btn-active-blue").text());
             }
-            
 
-            
             //$("#gamemode").val($(".option-btn-active-red").innerHTML)
             $("#game-data-form").submit();
         }
@@ -307,7 +376,7 @@
             $("#result").val("loss_forfeit");
         }
         function dcClicked() {
-            $("#result").val("disconnect");
+            $("#result").val("disconnectf");
         }
         
         $("#win").click(winClicked)

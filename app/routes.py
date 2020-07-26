@@ -18,26 +18,38 @@ db_path = 'rl_stats.db'
 def index():
     # obtain the most recent data for user (if available) to try and \
     # autopopulate some of the fields.
-    conn = sqlite3.connect(db_path)
-    cur = conn.execute("SELECT * \
-                        FROM game_data \
-                        WHERE username = ? \
-                        ORDER BY id DESC \
-                        LIMIT 1", 
-                        (current_user.username,))
-    cur = cur.fetchone()
-    conn.close()
-    # Convert the tuple from the db to a list
-    cur = list(cur)
+    try:
+        # attempt to get information from the database from the current_user
+        conn = sqlite3.connect(db_path)
+        cur = conn.execute("SELECT * \
+                            FROM game_data \
+                            WHERE username = ? \
+                            ORDER BY id DESC \
+                            LIMIT 1", 
+                            (current_user.username,))
+        cur = cur.fetchone()
+        conn.close()
+        # Convert the tuple from the db to a list
+        cur = list(cur)
 
-    # Convert the binary (db) into boolean (webpage)
-    cur[4] = binary_to_boolean(cur[4])
-    cur[6] = binary_to_boolean(cur[6])
-    cur[9] = binary_to_boolean(cur[9])
+        # Convert the binary (db) into boolean (webpage)
+        cur[4] = binary_to_boolean(cur[4])
+        cur[6] = binary_to_boolean(cur[6])
+        cur[9] = binary_to_boolean(cur[9])
 
-    form = GameDataForm(vehicle=cur[8], team=cur[7], partied=cur[6], 
-                        topper=cur[4], antenna=cur[9], fov=cur[10],
-                        distance=str(cur[11]), height=cur[12], angle=cur[13])
+        form = GameDataForm(vehicle=cur[8], team=cur[7], partied=cur[6], 
+                            topper=cur[4], antenna=cur[9], fov=cur[10],
+                            distance=str(cur[11]), height=cur[12], angle=cur[13])
+    except:
+        # if there is no data in the database from the current_user \
+        # then just go with some defaults.
+        cur = ["0", "1970-01-01 00:00:00", current_user.username, "win", 
+                False, "three_v_three", False, "blue", "batmobile16",
+                False, 110, 220, 110, -4]
+        form = GameDataForm(vehicle=cur[8], team=cur[7], partied=cur[6], 
+                            topper=cur[4], antenna=cur[9], fov=cur[10],
+                            distance=str(cur[11]), height=cur[12], angle=cur[13])
+
     return render_template('index.html', form=form, cur=cur)
 
 @app.route('/register/', methods=['GET', 'POST'])
