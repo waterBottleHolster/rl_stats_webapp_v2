@@ -40,13 +40,6 @@
         Apply Filter
     </button>
 
-
-    <!--This form container can stay, but put it in the modal-->
-    <form action="{{ url_for('analyze') }}" method="POST" id="analyze-form">
-        {{ form.hidden_tag() }}    
-
-        {{ form.submit() }}
-    </form>
 </div>
 <div class="container-fluid">
     <input type="text" id="myInput" onkeyup="filterTable()" placeholder="Search for dates..">
@@ -157,204 +150,100 @@
             </div>
             <div class="modal-body">
                 <div id="accordion">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    TEAM
-                                </button>
-                            </h5>
-                        </div>
-                    
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <div class="form-group" style="background: #bbb;">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
-                                        <label class="form-check-label" for="exampleRadios1">
-                                            Blue
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                        <label class="form-check-label" for="exampleRadios2">
-                                            Orange
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" checked>
-                                        <label class="form-check-label" for="exampleRadios3">
-                                            None
-                                        </label>
-                                    </div>
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        TEAM
+                                    </button>
+                                </h5>
+                            </div>
+                        
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <form name="analyze-form">
+                                        {{ form.team() }}
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    GAME MODE
-                                </button>
-                            </h5>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        GAME MODE
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body">
+                                    <form name="analyze-form">
+                                        <div class="form-check">
+                                            {{ form.three_v_three() }}
+                                            {{ form.three_v_three.label }}
+                                        </div>
+                                        <div class="form-check">
+                                            {{ form.two_v_two() }}
+                                            {{ form.two_v_two.label }}
+                                        </div>
+                                        <div class="form-check">
+                                            {{ form.one_v_one() }}
+                                            {{ form.one_v_one.label }}
+                                        </div>
+                                        <div class="form-check">
+                                            {{ form.four_v_four() }}
+                                            {{ form.four_v_four.label }}
+                                        </div>
+                                        {{ form.gamemode.label }}
+                                        {{ form.gamemode() }}
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                            <div class="card-body">
-                                <div class="form-group" style="background: #bbb;">
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        VEHICLE
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="card-body">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="casual-3v3" value="option1" checked>
-                                        <label class="form-check-label" for="casual-3v3">
-                                            Casual 3v3
+                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="batmobile-16" value="option1">
+                                        <label class="form-check-label" for="batmobile-16">
+                                            '16 Batmobile
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="casual-2v2" value="option2">
-                                        <label class="form-check-label" for="casual-2v2">
-                                            Casual 2v2
+                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="dodge-charger-70" value="option2">
+                                        <label class="form-check-label" for="dodge-charger-70">
+                                            '70 Dodge Charger R/T
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="casual-1v1" value="option3">
-                                        <label class="form-check-label" for="casual-1v1">
-                                            Casual 1v1
+                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="batmobile-89" value="option3">
+                                        <label class="form-check-label" for="batmobile-89">
+                                            '89 Batmobile
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="casual-4v4" value="option4">
-                                        <label class="form-check-label" for="casual-4v4">
-                                            Casual 4v4
-                                        </label>
-                                    </div>
-
-                                    <hr>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="comp-3v3" value="option1">
-                                        <label class="form-check-label" for="comp-3v3">
-                                            Competitive 3v3
+                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="skyline-99" value="option4">
+                                        <label class="form-check-label" for="skyline-99">
+                                            '99 Nissan Skyline
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="comp-2v2" value="option2">
-                                        <label class="form-check-label" for="comp-2v2">
-                                            Competitive 2v2
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="comp-1v1" value="option3">
-                                        <label class="form-check-label" for="comp-1v1">
-                                            Competitive 1v1
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="comp-solo-3v3" value="option4">
-                                        <label class="form-check-label" for="comp-solo-3v3">
-                                            Competitive 4v4
+                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="aftershock" value="option4">
+                                        <label class="form-check-label" for="aftershock">
+                                            Aftershock
                                         </label>
                                     </div>
                                     
-                                    <hr>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="rumble" value="option1">
-                                        <label class="form-check-label" for="rumble">
-                                            Rumble
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="dropshot" value="option2">
-                                        <label class="form-check-label" for="dropshot">
-                                            Drop Shot
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="hoops" value="option3">
-                                        <label class="form-check-label" for="hoops">
-                                            Hoops
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="snowday" value="option4">
-                                        <label class="form-check-label" for="snowday">
-                                            Snow Day
-                                        </label>
-                                    </div>
-
-                                    <hr>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="dropshot-rumble" value="option1">
-                                        <label class="form-check-label" for="dropshot-rumble">
-                                            Drop Shot Rumble
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="spike-rush" value="option2">
-                                        <label class="form-check-label" for="spike-rush">
-                                            Spike Rush
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="boomer-ball" value="option3">
-                                        <label class="form-check-label" for="boomer-ball">
-                                            Boomer Ball
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="heatseeker" value="option4">
-                                        <label class="form-check-label" for="heatseeker">
-                                            Heatseeker
-                                        </label>
-                                    </div>                                        
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    VEHICLE
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                            <div class="card-body">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="batmobile-16" value="option1">
-                                    <label class="form-check-label" for="batmobile-16">
-                                        '16 Batmobile
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="dodge-charger-70" value="option2">
-                                    <label class="form-check-label" for="dodge-charger-70">
-                                        '70 Dodge Charger R/T
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="batmobile-89" value="option3">
-                                    <label class="form-check-label" for="batmobile-89">
-                                        '89 Batmobile
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="skyline-99" value="option4">
-                                    <label class="form-check-label" for="skyline-99">
-                                        '99 Nissan Skyline
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="exampleCheckboxes" id="skyline-99" value="option4">
-                                    <label class="form-check-label" for="skyline-99">
-                                        Aftershock
-                                    </label>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="modal-footer">

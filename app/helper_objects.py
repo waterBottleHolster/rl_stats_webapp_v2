@@ -76,7 +76,7 @@ rl_gamemode_list = [
     ('three_v_three', '3v3'),
     ('two_v_two', '2v2'),
     ('one_v_one', '1v1'),
-    ('three_v_three', '3v3'),
+    ('four_v_four', '4v4'),
     ('standard', 'STANDARD'),
     ('doubles', 'DOUBLES'),
     ('duel', "DUEL"),

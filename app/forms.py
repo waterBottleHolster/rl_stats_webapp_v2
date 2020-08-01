@@ -1,8 +1,10 @@
 #!/home/dh_4gxtme/rl-experiment-tracker.com/public/rl_stats_webapp_v2/venv_rl_webapp/bin/python3
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, validators, HiddenField, IntegerField, SelectField, BooleanField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, validators, \
+    HiddenField, IntegerField, SelectField, BooleanField, TextAreaField, \
+    RadioField, SelectMultipleField
 from wtforms.validators import ValidationError, DataRequired, Regexp
-from app.helper_objects import rl_vehicle_list
+from app.helper_objects import rl_vehicle_list, rl_gamemode_list
 import sqlite3
 db_path = 'rl_stats.db'
 
@@ -49,7 +51,14 @@ class GameDataForm(FlaskForm):
 
 
 class AnalyzeForm(FlaskForm):
-    test1 = StringField('Testeroo')
-    test2 = SelectField(u'Testeroo2', choices=rl_vehicle_list)
-    test3 = SelectField(u'Testeroo3', choices=[('Blue', 'BLUE'), ('Orange', 'ORANGE'), ('Club Colors', 'CLUB')])
+    team = RadioField(u'Team', choices=[('Blue', 'BLUE'), ('Orange', 'ORANGE'), ('Club Colors', 'CLUB')])
+
+    three_v_three = BooleanField(u'3v3')
+    two_v_two = BooleanField(u'2v2')
+    one_v_one = BooleanField(u'1v1')
+    four_v_four = BooleanField(u'4v4')
+
+    gamemode = SelectMultipleField(u'Game Mode', choices=rl_gamemode_list)
+
+    vehicle = BooleanField(u'Vehicle')
     submit = SubmitField('SUBMIT')

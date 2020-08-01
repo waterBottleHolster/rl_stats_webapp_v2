@@ -112,8 +112,8 @@ def data_submit():
 def analyze():
     form = AnalyzeForm()
     
-    # The result_dict contains info about the most recent 20 games for
-    # the user currently logged in.
+    # By default The result_dict contains info about the most recent 20 games
+    # for the user currently logged in.
     # If there aren't 20 games worth of data, it'll show as many games
     # as are available.
     result_dict = {}
@@ -126,9 +126,6 @@ def analyze():
                         (current_user.username,))
 
     cur = cur.fetchall()
-
-    # Translate the results of the query so that they look good for the
-    # table.
 
 
     # Put the results of the fetchall into 20 rows of the result_dict.
