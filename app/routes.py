@@ -91,6 +91,9 @@ def data_submit():
     current_angle = form.angle.data
     current_notes = form.notes.data
 
+    # You don't have any data validation here... was it taken care of somewhere
+    # else???
+
     conn = sqlite3.connect(db_path)
     cur = conn.execute("INSERT INTO game_data (date_time, username, \
                         game_result, topper, game_mode, partied, team, \
@@ -162,6 +165,16 @@ def analyze():
     result_dict['record'] = record
 
     return render_template('analyze.html', form=form, result_dict=result_dict)
+
+@app.route('/filter_table/', methods=['GET', 'POST'])
+@login_required
+def filter_table():
+    form = AnalyzeForm()
+    print(form.validate_on_submit())
+
+    return redirect(url_for('analyze'))
+
+
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():

@@ -89,6 +89,10 @@ header> img {
     background-image: radial-gradient(var(--light-red-bg), var(--dark-red-bg));
 }
 
+li {
+    list-style: none;
+}
+
 .btn-blue {
     background-color: var(--dark-blue-bg);
     color: white;
@@ -99,12 +103,13 @@ header> img {
     color: white;
 }
 
+
 form label {
     color: white;
     font-size: 20px;
 }
 
-.card-body {
+.card {
     background-color: #444;
 }
 
@@ -240,10 +245,6 @@ footer {
     color: white;
     width: 99%;
     text-align: center;
-}
-
-.card-body {
-    color: black;
 }
 
 @media only screen and (max-width: 1030px){
