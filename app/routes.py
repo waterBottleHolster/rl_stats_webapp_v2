@@ -170,9 +170,55 @@ def analyze():
 @login_required
 def filter_table():
     form = AnalyzeForm()
-    print(form.validate_on_submit())
+    for fieldname, value in form.data.items():
+        # This will cycle through all the fields in the form.
+        # Obviously I'm only interested in the options where the user 
+        # selected something...
+        if value:
+            if fieldname == "team":
+                pass
 
-    return redirect(url_for('analyze'))
+    result_dict = {}
+    conn = sqlite3.connect(db_path)
+    cur = conn.execute("SELECT * FROM game_data \
+                        WHERE username=? \
+                        AND team IN (?,?) \
+                        ORDER BY id DESC \
+                        LIMIT 20",
+                        (current_user.username, 'blue', 'club_colors'))
+    cur = cur.fetchall()
+
+    for j in range(20):
+        try:
+            result_dict[j] = cur[j]
+        except:
+            # If there aren't twenty rows of data, just put the loop 
+            # counter as the value.
+            result_dict[j] = j
+
+    # Calculate the win-loss record and store it in the result_dict
+    # under the key 'record'
+    win_counter = 0
+    loss_counter = 0
+
+    for j in range(20):
+        try:
+            if result_dict[j][3] == "win" or \
+                result_dict[j][3] == "forfeit_win":
+                    win_counter = win_counter + 1
+            elif result_dict[j][3] == "loss" or \
+                result_dict[j][3] == "forfeit_loss":
+                    loss_counter = loss_counter + 1
+        except:
+            # An empty except clause is poor practice, but I really 
+            # can't think of what should go here.
+            pass
+
+    record = str(win_counter) + 'W - ' + str(loss_counter) + 'L'
+
+    result_dict['record'] = record
+
+    return render_template('analyze.html', form=form, result_dict=result_dict)
 
 
 

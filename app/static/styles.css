@@ -103,10 +103,17 @@ li {
     color: white;
 }
 
+.modal-dialog {
+    width: 88%;
+}
 
 form label {
     color: white;
     font-size: 20px;
+}
+
+form li label {
+    font-size: 14px;
 }
 
 .card {

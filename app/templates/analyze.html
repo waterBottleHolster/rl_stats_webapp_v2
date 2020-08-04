@@ -148,7 +148,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form name="analyze-form" action="{{ url_for('filter_table') }}" method="POST">
+                <form name="analyze-form" id="analyze-form" action="{{ url_for('filter_table') }}" method="POST">
                     {{ form.hidden_tag() }}
                     <div class="card">
                         <div class="form-group">
@@ -159,23 +159,20 @@
                     <div class="card">
                         <div class="form-group">
                             {{ form.gamemode.label }}
-                            {{ form.gamemode(class="form-control") }}
+                            {{ form.gamemode(class="form-control", size="6") }}
                         </div>
                     </div>
                     <div class="card">
                         <div class="form-group">
                             {{ form.vehicle.label }}
-                            {{ form.vehicle(class="form-control") }}
+                            {{ form.vehicle(class="form-control", size="6") }}
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <form name="analyze-form" action="{{ url_for('filter_table') }}" method="POST">
-                    {{ form.hidden_tag() }}
-                    {{ form.submit(class="btn btn-primary") }}
-                </form>
+                <button type="submit" class="btn btn-success" form="analyze-form">Apply</button>
             </div>
         </div>
     </div>

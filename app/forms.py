@@ -51,10 +51,11 @@ class GameDataForm(FlaskForm):
 
 
 class AnalyzeForm(FlaskForm):
-    team = RadioField(u'Team', choices=[('Blue', 'BLUE'), ('Orange', 'ORANGE'), ('Club Colors', 'CLUB')])
-
+    team = RadioField(u'Team', choices=[
+                                ('Blue', 'BLUE'), 
+                                ('Orange', 'ORANGE'), 
+                                ('Club Colors', 'CLUB'),
+                                ('No Filter', 'NONE')
+                                ])
     gamemode = SelectMultipleField(u'Game Mode', choices=rl_gamemode_list)
-
     vehicle = SelectMultipleField(u'Vehicle', choices=rl_vehicle_list)
-
-    submit = SubmitField('Apply')
