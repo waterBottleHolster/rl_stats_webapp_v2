@@ -45,11 +45,14 @@
     <table class="table table-dark table-striped table-hover table-sm" style="margin-top: 5%;" id="big-table">
         <thead>
             <tr>
-                <th scope="col" style="text-align: center;"><input style="width: 65px;" type="text" placeholder="Game #"><span onclick="sortTable(0)" class="fa fa-sort"></span></th>
-                <th scope="col"><input style="width: 165px;" type="text" placeholder="Date"><span onlick="sortTable(1)" class="fa fa-sort"></span></th>
-                <th scope="col"><input style="width: 90px;" type="text" placeholder="Result"><span onlick="sortTable(2)" class="fa fa-sort"></span></th>
-                <th scope="col"><input style="width: 90px;" type="text" placeholder="Team"><span onlick="sortTable(3)" class="fa fa-sort"></span></th>
-                <th scope="col"><input style="width: 120px;" type="text" placeholder="Game Mode"><span onlick="sortTable(4)" class="fa fa-sort"></span></th>
+                <th scope="col" style="text-align: center;">
+                    <input id="game-hdr" style="width: 65px;" type="text" placeholder="Game #">
+                    <span onclick="sortTable(0)" class="fa fa-sort"></span>
+                </th>
+                <th scope="col"><input style="width: 165px;" id="date-hdr" type="text" placeholder="Date"><span onlick="sortTable(1)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 90px;" id="result-hdr" type="text" placeholder="Result"><span onlick="sortTable(2)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 90px;" id="team-hdr" type="text" placeholder="Team"><span onlick="sortTable(3)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 120px;" id="gametype="text" placeholder="Game Mode"><span onlick="sortTable(4)" class="fa fa-sort"></span></th>
                 <th scope="col"><input style="width: 60px;" type="text" placeholder="Party"><span onlick="sortTable(5)" class="fa fa-sort"></span></th>
                 <th scope="col"><input style="width: 170px;" type="text" placeholder="Vehicle"><span onlick="sortTable(6)" class="fa fa-sort"></span></th>
                 <th scope="col"><input style="width: 165px;" type="text" placeholder="Topper"><span onlick="sortTable(7)" class="fa fa-sort"></span></th>
