@@ -372,7 +372,7 @@
         $("#submit2").click(btnClicked);
     </script>
 
-    <!--This script will sort the analyze table by clicking on the header-->
+    <!--This script will sort the analyze table by clicking on the sort icon-->
     <script>
         function sortTable(n) {
           var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -432,27 +432,28 @@
 
     <!-- This script will filter the table based on the date entered-->
     <script>
-        function filterTable() {
-          
-          // Declare variables
-          var input, filter, table, tr, td, i, txtValue;
-          input = document.getElementById("myInput");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("big-table");
-          tr = table.getElementsByTagName("tr");
+        // argument one is the column name that's being filtered.
+        // argument two is the column number that's being filtered.
+        function filterTable(hdrName, j) {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById(hdrName);
+            filter = input.value.toUpperCase();
+            table = document.getElementById("big-table");
+            tr = table.getElementsByTagName("tr");
         
-          // Loop through all table rows, and hide those who don't match the search query
-          for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[j];
             if (td) {
-              txtValue = td.textContent || td.innerText;
-              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 tr[i].style.display = "";
-              } else {
+                } else {
                 tr[i].style.display = "none";
-              }
+                }
             }
-          }
+            }
         }
     </script>
   </body>

@@ -33,34 +33,25 @@
 </div>
 
 <div class='container' style="text-align: center;">
-    <p style="color: white; font-size: 30px; text-align: center;">{{ result_dict['record'] }}</p>
-    
-    <button class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
-        <i class="fa fa-plus"></i>
-        Apply Filter
-    </button>
-
+    <p style="color: white; font-size: 40px; text-align: center;">{{ result_dict['record'] }}</p>
 </div>
 <div class="container-fluid">
-    <table class="table table-dark table-striped table-hover table-sm" style="margin-top: 5%;" id="big-table">
+    <table class="table table-dark table-striped table-hover table-sm" style="margin-top: 3%;" id="big-table">
         <thead>
             <tr>
-                <th scope="col" style="text-align: center;">
-                    <input id="game-hdr" style="width: 65px;" type="text" placeholder="Game #">
-                    <span onclick="sortTable(0)" class="fa fa-sort"></span>
-                </th>
-                <th scope="col"><input style="width: 165px;" id="date-hdr" type="text" placeholder="Date"><span onlick="sortTable(1)" class="fa fa-sort"></span></th>
-                <th scope="col"><input style="width: 90px;" id="result-hdr" type="text" placeholder="Result"><span onlick="sortTable(2)" class="fa fa-sort"></span></th>
-                <th scope="col"><input style="width: 90px;" id="team-hdr" type="text" placeholder="Team"><span onlick="sortTable(3)" class="fa fa-sort"></span></th>
-                <th scope="col"><input style="width: 120px;" id="gametype="text" placeholder="Game Mode"><span onlick="sortTable(4)" class="fa fa-sort"></span></th>
-                <th scope="col"><input style="width: 60px;" type="text" placeholder="Party"><span onlick="sortTable(5)" class="fa fa-sort"></span></th>
-                <th scope="col"><input style="width: 170px;" type="text" placeholder="Vehicle"><span onlick="sortTable(6)" class="fa fa-sort"></span></th>
-                <th scope="col"><input style="width: 165px;" type="text" placeholder="Topper"><span onlick="sortTable(7)" class="fa fa-sort"></span></th>
-                <th scope="col"><input style="width: 165px;" type="text" placeholder="Antenna"><span onlick="sortTable(8)" class="fa fa-sort"></span></th>
-                <th scope="col"><input style="width: 165px;" type="text" placeholder="FOV"><span onlick="sortTable(9)" class="fa fa-sort"></span></th>
-                <th scope="col"><input style="width: 165px;" type="text" placeholder="Distance"><span onlick="sortTable(10)" class="fa fa-sort"></span></th>
-                <th scope="col"><input style="width: 165px;" type="text" placeholder="Height"><span onlick="sortTable(11)" class="fa fa-sort"></span></th>
-                <th scope="col"><input style="width: 165px;" type="text" placeholder="Angle"><span onlick="sortTable(12)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 65px;" id="game-hdr" type="text" placeholder="Game #" onkeyup="filterTable('game-hdr', 0)"><span onclick="sortTable(0)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 165px;" id="date-hdr" type="text" placeholder="Date" onkeyup="filterTable('date-hdr', 1)"><span onclick="sortTable(1)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 90px;" id="result-hdr" type="text" placeholder="Result" onkeyup="filterTable('result-hdr', 2)"><span onclick="sortTable(2)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 90px;" id="team-hdr" type="text" placeholder="Team" onkeyup="filterTable('team-hdr', 3)"><span onclick="sortTable(3)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 120px;" id="gametype" type="text" placeholder="Game Mode" onkeyup="filterTable('gametype', 4)"><span onclick="sortTable(4)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 60px;" id="party-hdr" type="text" placeholder="Party" onkeyup="filterTable('party-hdr', 5)"><span onclick="sortTable(5)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 170px;" id="vehicle-hdr" type="text" placeholder="Vehicle" onkeyup="filterTable('vehicle-hdr', 6)"><span onclick="sortTable(6)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 70px;" id="topper-hdr" type="text" placeholder="Topper" onkeyup="filterTable('topper-hdr', 7)"><span onclick="sortTable(7)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 80px;" id="antenna-hdr" type="text" placeholder="Antenna" onkeyup="filterTable('antenna-hdr', 8)"><span onclick="sortTable(8)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 55px;" id="fov-hdr" type="text" placeholder="FOV" onkeyup="filterTable('fov-hdr', 9)"><span onclick="sortTable(9)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 90px;" id="distance-hdr" type="text" placeholder="Distance" onkeyup="filterTable('distance-hdr', 10)"><span onclick="sortTable(10)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 75px;" id="height-hdr" type="text" placeholder="Height" onkeyup="filterTable('height-hdr', 11)"><span onclick="sortTable(11)" class="fa fa-sort"></span></th>
+                <th scope="col"><input style="width: 75px;" id="angle-hdr" type="text" placeholder="Angle" onkeyup="filterTable('angle-hdr', 12)"><span onclick="sortTable(12)" class="fa fa-sort"></span></th>
             </tr>
         </thead>
         <tbody>
@@ -140,44 +131,4 @@
     </table>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Please Select a Filter</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form name="analyze-form" id="analyze-form" action="{{ url_for('filter_table') }}" method="POST">
-                    {{ form.hidden_tag() }}
-                    <div class="card">
-                        <div class="form-group">
-                            {{ form.team.label }}
-                            {{ form.team() }}
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="form-group">
-                            {{ form.gamemode.label }}
-                            {{ form.gamemode(class="form-control", size="6") }}
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="form-group">
-                            {{ form.vehicle.label }}
-                            {{ form.vehicle(class="form-control", size="6") }}
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" form="analyze-form">Apply</button>
-            </div>
-        </div>
-    </div>
-</div>
 {% endblock %}
