@@ -205,7 +205,7 @@
         function teamSelected() {
             var team = document.getElementById("team-select").value;
             sliderWidth()
-            if (team == "orange") {
+            if (team == "Orange") {
                 document.getElementById("banner-image").src = "../static/images/orange_octane_banner_v2.png";
                 $("#home-link").addClass("active-red");
                 $("form").addClass("form-red");
@@ -227,7 +227,7 @@
                 $(".height-slider-red").removeClass("height-slider-blue");
                 $(".angle-slider-blue").addClass("angle-slider-red");
                 $(".angle-slider-red").removeClass("angle-slider-blue");
-            } else if (team == "blue") {
+            } else if (team == "Blue") {
                 document.getElementById("banner-image").src = "../static/images/blue_octane_banner_v2.png";
                 $("#home-link").removeClass("active-red");
                 $("form").removeClass("form-red");
@@ -259,7 +259,7 @@
                 var val4 = ($("#angle-input").val() - $("#angle-input").attr('min')) / ($("#angle-input").attr('max') - $("#angle-input").attr('min'));
 
                 var currTeam = document.getElementById("team-select").value
-                if (currTeam == "orange") {
+                if (currTeam == "Orange") {
                     $("#fov-input").css('background-image',
                             '-webkit-gradient(linear, left top, right top, '
                             + 'color-stop(' + val1 + ', #B93F02), '
@@ -284,7 +284,7 @@
                             + 'color-stop(' + val4 + ', #ddd)'
                             + ')'
                     );
-                } else if (currTeam == "blue") {
+                } else if (currTeam == "Blue") {
                     $("#fov-input").css('background-image',
                             '-webkit-gradient(linear, left top, right top, '
                             + 'color-stop(' + val1 + ', #0055FF), '
@@ -339,8 +339,6 @@
             } else if ($("#team-select").val() == "blue")  {
                 $("#gamemode").val($(".option-btn-active-blue").text());
             }
-
-            $("#game-data-form").submit();
         }
         function lossClicked() {
             $("#result").val("Loss");
@@ -354,7 +352,7 @@
         function dcClicked() {
             $("#result").val("Disconnect");
         }
-        
+
         $("#win").click(winClicked)
         $("#loss").click(lossClicked)
         $("#forfeit_win").click(ffwClicked)

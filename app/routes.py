@@ -150,11 +150,11 @@ def analyze():
     for j in range(20):
         # the try-except below is for making the win-loss record display
         try:
-            if result_dict[j][3] == "win" or \
-                result_dict[j][3] == "forfeit_win":
+            if result_dict[j][3] == "Win" or \
+                result_dict[j][3] == "Forfeit Win":
                     win_counter = win_counter + 1
-            elif result_dict[j][3] == "loss" or \
-                result_dict[j][3] == "forfeit_loss":
+            elif result_dict[j][3] == "Loss" or \
+                result_dict[j][3] == "Forfeit Loss":
                     loss_counter = loss_counter + 1
         except:
             # An empty except clause is poor practice, but I really 
@@ -171,13 +171,6 @@ def analyze():
 @login_required
 def filter_table():
     form = AnalyzeForm()
-    for fieldname, value in form.data.items():
-        # This will cycle through all the fields in the form.
-        # Obviously I'm only interested in the options where the user 
-        # selected something...
-        if value:
-            if fieldname == "team":
-                pass
 
     result_dict = {}
     conn = sqlite3.connect(db_path)

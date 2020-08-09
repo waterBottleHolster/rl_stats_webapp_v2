@@ -17,13 +17,13 @@
 <div class="container-fluid">
     <div style="display: flex; flex-direction: row-reverse; justify-content: space-between; margin: 1vw;">
         {% for item in result_dict %}
-            {% if result_dict[item][3] == "win" %}
+            {% if result_dict[item][3] == "Win" %}
                 <div style="background-color: green; width: 3vw; height: 50px;"></div>
-            {% elif result_dict[item][3] == "loss" %}
+            {% elif result_dict[item][3] == "Loss" %}
                 <div style="background-color: red; width: 3vw; height: 50px;"></div>
-            {% elif result_dict[item][3] == "forfeit_win" %}
+            {% elif result_dict[item][3] == "Forfeit Win" %}
                 <div style="background-color: green; width: 3vw; height: 50px;"></div>
-            {% elif result_dict[item][3] == "forfeit_loss" %}
+            {% elif result_dict[item][3] == "Forfeit Loss" %}
                 <div style="background-color: red; width: 3vw; height: 50px;"></div>
             {% else %}
                 <div style="background-color: black; width: 3vw; height: 50px;"></div>
