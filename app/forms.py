@@ -4,7 +4,7 @@ from wtforms import StringField, PasswordField, SubmitField, validators, \
     HiddenField, IntegerField, SelectField, BooleanField, TextAreaField, \
     RadioField, SelectMultipleField
 from wtforms.validators import ValidationError, DataRequired, Regexp
-from app.helper_objects import rl_vehicle_list, rl_gamemode_list
+from app.helper_objects import rl_vehicle_list_v2, rl_gamemode_list_v2
 import sqlite3
 db_path = 'rl_stats.db'
 
@@ -37,8 +37,8 @@ class RegistrationForm(FlaskForm):
 
 class GameDataForm(FlaskForm):
     partied = BooleanField(u'Partied Up?')
-    team = SelectField(u'Team', choices=[('blue','Blue'),('orange','Orange'), ('club_colors','Club Colors')])
-    vehicle = SelectField(u'Vehicle', choices=rl_vehicle_list)
+    team = SelectField(u'Team', choices=[('Blue','Blue'),('Orange','Orange'), ('Club Colors','Club Colors')])
+    vehicle = SelectField(u'Vehicle', choices=rl_vehicle_list_v2)
     topper = BooleanField(u'Topper')
     antenna = BooleanField(u'Antenna')
     notes = TextAreaField(u'Notes')
@@ -57,5 +57,5 @@ class AnalyzeForm(FlaskForm):
                                 ('Club Colors', 'CLUB'),
                                 ('No Filter', 'NONE')
                                 ])
-    gamemode = SelectMultipleField(u'Game Mode', choices=rl_gamemode_list)
-    vehicle = SelectMultipleField(u'Vehicle', choices=rl_vehicle_list)
+    gamemode = SelectMultipleField(u'Game Mode', choices=rl_gamemode_list_v2)
+    vehicle = SelectMultipleField(u'Vehicle', choices=rl_vehicle_list_v2)

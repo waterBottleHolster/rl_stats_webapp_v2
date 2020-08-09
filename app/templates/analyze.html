@@ -73,16 +73,28 @@
                         {{ result_dict[i][5] }}
                     </td>
                     <td>
-                        {{ result_dict[i][6] }}
+                        {% if result_dict[i][6] == 0: %}
+                            False
+                        {% elif result_dict[i][6] == 1: %}
+                            True
+                        {% endif %}
                     </td>
                     <td>
                         {{ result_dict[i][8] }}
                     </td>
                     <td>
-                        {{ result_dict[i][4] }}
+                        {% if result_dict[i][4] == 0: %}
+                            False
+                        {% elif result_dict[i][4] == 1: %}
+                            True
+                        {% endif %}
                     </td>
                     <td>
-                        {{ result_dict[i][9] }}
+                        {% if result_dict[i][9] == 0: %}
+                            False
+                        {% elif result_dict[i][9] == 1: %}
+                            True
+                        {% endif %}
                     </td>
                     <td>
                         {{ result_dict[i][10] }}
@@ -101,7 +113,7 @@
         </tbody>
     </table>
 
-    <table class="container-fluid table table-dark table-striped" style="margin-top: 5%;" id="small-table">
+    <table class="container-fluid table table-dark table-striped table-sm" style="margin-top: 5%;" id="small-table">
         <thead>
             <tr>
                 <th scope="col">Game #</th>

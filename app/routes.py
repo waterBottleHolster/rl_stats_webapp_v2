@@ -148,6 +148,7 @@ def analyze():
     loss_counter = 0
 
     for j in range(20):
+        # the try-except below is for making the win-loss record display
         try:
             if result_dict[j][3] == "win" or \
                 result_dict[j][3] == "forfeit_win":
