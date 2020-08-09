@@ -193,19 +193,3 @@ def binary_to_boolean(input):
     else:
         output = False
     return output
-
-def pretty_translate(input):
-    if input == "win":
-        output = "Win"
-    elif input == "loss":
-        output = "Loss"
-    elif input == "forfeit_win":
-        output = "Forfeit (W)"
-    elif input == "forfeit_loss":
-        output = "Forfeit (L)"
-    elif input == "disconnect":
-        output = "Disconnect"
-    elif input == 1:
-        output = True
-    elif input == 0:
-        output = False

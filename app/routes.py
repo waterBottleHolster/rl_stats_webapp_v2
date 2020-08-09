@@ -75,7 +75,7 @@ def register():
 @app.route('/data_submit/', methods=['GET', 'POST'])
 def data_submit():
     form = GameDataForm()
-    current_time = datetime.utcnow()
+    current_time = str(datetime.utcnow())[:19]
     # Collect all of the form variables
     # Convert the boolean fields to binary w/ helper function
     current_result = form.result.data
@@ -95,7 +95,7 @@ def data_submit():
     # else???
 
     conn = sqlite3.connect(db_path)
-    cur = conn.execute("INSERT INTO game_data (date_time, username, \
+    conn.execute("INSERT INTO game_data (date_time, username, \
                         game_result, topper, game_mode, partied, team, \
                         vehicle, antenna, fov, distance, height, angle, \
                         notes) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (
