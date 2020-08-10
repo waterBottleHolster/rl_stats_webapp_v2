@@ -2,12 +2,11 @@
 
 {% block content %}
 
-<div class="topnav" style="clear: right;">
+<div class="topnav">
     <a href="{{ url_for('analyze') }}" class="active-blue" id="home-link">Analyze</a>
     <div id="myLinks">
       <a href="{{ url_for('index') }}" id="analyze-link">Home</a>
       <a href="{{ url_for('logout') }}" id="logout">Logout</a>
-      <a href="#" id="extra2-link">extra2</a>
     </div>
     <a href="javascript:void(0);" class="icon" onclick="dropdownFunction()">
       <i class="fa fa-bars"></i>

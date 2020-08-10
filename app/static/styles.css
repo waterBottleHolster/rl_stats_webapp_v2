@@ -41,6 +41,7 @@ header> img {
 }
 
 .topnav {
+    clear: right;
     overflow: hidden;
     background-color: #555;
     position: relative;
