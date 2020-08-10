@@ -1,3 +1,4 @@
+#!/home/dh_4gxtme/rl-experiment-tracker.com/public/rl_stats_webapp_v2/.flask_venv/bin/python3
 # the first item in the tuple is the string as it'll appear in the db
 # the second item in the tuple is how it'll appear to users
 rl_vehicle_list = [
