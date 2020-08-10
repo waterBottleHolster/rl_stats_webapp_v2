@@ -15,6 +15,12 @@
     <title>RL Stats - Home</title>
   </head>
   <body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     <header>
         <img src="../static/images/blue_octane_banner_v2.png" alt="octane-ball-banner" id="banner-image">
     </header>
@@ -27,11 +33,7 @@
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
     <!--This is for the vertical collapsible menu-->
     <script>
@@ -361,89 +363,6 @@
         
     </script>
 
-    <!--This script will sort the analyze table by clicking on the sort icon-->
-    <script>
-        function sortTable(n) {
-          var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-          table = document.getElementById("big-table");
-          switching = true;
-          // Set the sorting direction to ascending:
-          dir = "asc";
-          /* Make a loop that will continue until
-          no switching has been done: */
-          while (switching) {
-            // Start by saying: no switching is done:
-            switching = false;
-            rows = table.rows;
-            /* Loop through all table rows (except the
-            first, which contains table headers): */
-            for (i = 1; i < (rows.length - 1); i++) {
-              // Start by saying there should be no switching:
-              shouldSwitch = false;
-              /* Get the two elements you want to compare,
-              one from current row and one from the next: */
-              x = rows[i].getElementsByTagName("TD")[n];
-              y = rows[i + 1].getElementsByTagName("TD")[n];
-              /* Check if the two rows should switch place,
-              based on the direction, asc or desc: */
-              if (dir == "asc") {
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                  // If so, mark as a switch and break the loop:
-                  shouldSwitch = true;
-                  break;
-                }
-              } else if (dir == "desc") {
-                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                  // If so, mark as a switch and break the loop:
-                  shouldSwitch = true;
-                  break;
-                }
-              }
-            }
-            if (shouldSwitch) {
-              /* If a switch has been marked, make the switch
-              and mark that a switch has been done: */
-              rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-              switching = true;
-              // Each time a switch is done, increase this count by 1:
-              switchcount ++;
-            } else {
-              /* If no switching has been done AND the direction is "asc",
-              set the direction to "desc" and run the while loop again. */
-              if (switchcount == 0 && dir == "asc") {
-                dir = "desc";
-                switching = true;
-              }
-            }
-          }
-        }
-    </script>
 
-    <!-- This script will filter the table based on the date entered-->
-    <script>
-        // argument one is the column name that's being filtered.
-        // argument two is the column number that's being filtered.
-        function filterTable(hdrName, j) {
-            // Declare variables
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById(hdrName);
-            filter = input.value.toUpperCase();
-            table = document.getElementById("big-table");
-            tr = table.getElementsByTagName("tr");
-        
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[j];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-                } else {
-                tr[i].style.display = "none";
-                }
-            }
-            }
-        }
-    </script>
   </body>
 </html>
