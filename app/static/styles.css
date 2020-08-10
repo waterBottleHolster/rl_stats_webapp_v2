@@ -440,3 +440,73 @@ th {
 td {
     text-align: center;
 }
+
+
+/* These styling blocks are related to elements on the analyze.html page */
+
+#colored-squares-cont {
+    display: flex; 
+    flex-direction: row-reverse; 
+    justify-content: space-between; 
+    margin: 1vw;
+}
+
+.wl-square {
+    width: 3vw; 
+    height: 50px;
+}
+
+.wl-square-win {
+    background-color: green;
+}
+.wl-square-loss {
+    background-color: red;
+}
+.wl-square-na {
+    background-color: black;
+}
+
+#wl-record-label {
+    color: white; 
+    font-size: 40px;
+    text-align: center;
+}
+
+#big-table {
+    margin-top: 3%;
+}
+
+#small-table {
+    margin-top: 5%;
+}
+
+#game-hdr {
+    width: 65px;
+}
+#date-hdr {
+    width: 165px;
+}
+#result-hdr, #team-hdr, #distance-hdr {
+    width: 90px;
+}
+#gametype-hdr {
+    width: 120px;
+}
+#party-hdr {
+    width: 60px;
+}
+#vehicle-hdr {
+    width: 170px;
+}
+#topper-hdr {
+    width: 70px;
+}
+#antenna-hdr {
+    width: 80px;
+}
+#fov-hdr {
+    width: 55px;
+}
+#height-hdr, #angle-hdr {
+    width: 75px;
+}
