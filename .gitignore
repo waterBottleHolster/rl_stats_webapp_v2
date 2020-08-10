@@ -2,6 +2,7 @@ __pycache__/
 instance/
 .webassets-cache
 .env
+.flask_venv/
 .venv
 env/
 venv/
