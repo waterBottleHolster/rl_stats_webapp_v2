@@ -8,7 +8,8 @@ from werkzeug.urls import url_parse
 from app.models import User
 import sqlite3
 from datetime import datetime
-from app.helper_objects import boolean_to_binary, binary_to_boolean, rl_vehicle_list
+from app.helper_objects import boolean_to_binary, binary_to_boolean, \
+                                rl_vehicle_list
 
 db_path = 'rl_stats.db'
 
@@ -91,18 +92,18 @@ def data_submit():
     current_angle = form.angle.data
     current_notes = form.notes.data
 
-    # You don't have any data validation here... was it taken care of somewhere
-    # else???
+    # You don't have any data validation here... was it taken care 
+    # of somewhere else???
 
     conn = sqlite3.connect(db_path)
     conn.execute("INSERT INTO game_data (date_time, username, \
                         game_result, topper, game_mode, partied, team, \
                         vehicle, antenna, fov, distance, height, angle, \
                         notes) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (
-                        current_time, current_user.username, 
-                        current_result, current_topper, current_gamemode, 
-                        current_partied, current_team, current_vehicle, 
-                        current_antenna, current_fov, current_distance, 
+                        current_time, current_user.username,
+                        current_result, current_topper, current_gamemode,
+                        current_partied, current_team, current_vehicle,
+                        current_antenna, current_fov, current_distance,
                         current_height, current_angle, current_notes))
     conn.commit()
     conn.close()
@@ -115,8 +116,8 @@ def data_submit():
 def analyze():
     form = AnalyzeForm()
     
-    # By default The result_dict contains info about the most recent 20 games
-    # for the user currently logged in.
+    # By default The result_dict contains info about the most
+    # recent 20 games for the user currently logged in.
     # If there aren't 20 games worth of data, it'll show as many games
     # as are available.
     result_dict = {}
@@ -148,7 +149,7 @@ def analyze():
     loss_counter = 0
 
     for j in range(20):
-        # the try-except below is for making the win-loss record display
+        # the try-except below makes the win-loss record display
         try:
             if result_dict[j][3] == "Win" or \
                 result_dict[j][3] == "Forfeit Win":

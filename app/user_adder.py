@@ -5,7 +5,8 @@ import sys
 def insert_user(username, password):
     password_hash = generate_password_hash(password)
     conn = sqlite3.connect('rl_stats.db')
-    conn.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, password_hash))
+    conn.execute("INSERT INTO users (username, password) VALUES (?, ?)", 
+                (username, password_hash))
     conn.commit()
     conn.close()
 

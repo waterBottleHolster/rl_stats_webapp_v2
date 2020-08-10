@@ -17,7 +17,8 @@ class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[
         DataRequired(),
         Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0, 
-                message='Usernames must have only letters, numbers, dots or underscores')])
+                message='Usernames must have only letters, numbers, \
+                dots or underscores')])
     password = PasswordField('Password', [
         validators.DataRequired(),
         validators.EqualTo('confirm', message="Passwords must match.")
@@ -29,7 +30,8 @@ class RegistrationForm(FlaskForm):
     def validate_username(self, username):
         #user = User.query.filter_by(username=username.data).first()
         conn = sqlite3.connect(db_path)
-        cur = conn.execute("SELECT * FROM users WHERE username=?", (username.data,))
+        cur = conn.execute("SELECT * FROM users WHERE username=?", 
+                            (username.data,))
         if cur.fetchone() is not None:
             raise ValidationError('Please use a different username.')
         conn.close()
@@ -37,7 +39,11 @@ class RegistrationForm(FlaskForm):
 
 class GameDataForm(FlaskForm):
     partied = BooleanField(u'Partied Up?')
-    team = SelectField(u'Team', choices=[('Blue','Blue'),('Orange','Orange'), ('Club Colors','Club Colors')])
+    team = SelectField(u'Team', choices=[
+                                ('Blue','Blue'),
+                                ('Orange','Orange'), 
+                                ('Club Colors','Club Colors')
+                                ])
     vehicle = SelectField(u'Vehicle', choices=rl_vehicle_list_v2)
     topper = BooleanField(u'Topper')
     antenna = BooleanField(u'Antenna')

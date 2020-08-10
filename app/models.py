@@ -6,12 +6,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 db_path = 'rl_stats.db'
 
-class User (UserMixin):
+class User(UserMixin):
     def __init__(self, username, password_hash):
         self.username = username
         self.password_hash = password_hash
         conn = sqlite3.connect(db_path)
-        cur = conn.execute("SELECT id FROM users WHERE username = ?", (username,))
+        cur = conn.execute("SELECT id FROM users WHERE username = ?", 
+                            (username,))
         cur = cur.fetchone()
         conn.close()
         if cur == None:
@@ -31,7 +32,8 @@ class User (UserMixin):
 @login.user_loader
 def load_user(id):
     conn = sqlite3.connect(db_path)
-    cur = conn.execute("SELECT id, username, password FROM users WHERE id = ?", (id,))
+    cur = conn.execute("SELECT id, username, password FROM users WHERE id = ?",
+                        (id,))
     cur = cur.fetchone()
 
     if cur[0] == None:
