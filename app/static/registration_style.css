@@ -42,6 +42,10 @@ body {
     border-radius: 3px;
 }
 
+.form-group a {
+    color: white;
+}
+
 .form-group:last-child, .form-group:nth-last-child(2) {
     background-color: transparent;
 }

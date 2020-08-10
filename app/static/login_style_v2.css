@@ -47,6 +47,10 @@ body {
     background-color: transparent;
 }
 
+.form-group a {
+    color: white;
+}
+
 input {
     font-size: 20px;
     outline: none;
