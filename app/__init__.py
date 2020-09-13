@@ -5,6 +5,8 @@ from flask_login import LoginManager
 from config import Config
 
 login_manager=LoginManager()
+# the login_view attribute below points to the 
+# endpoint (aka 'view') for the login page.
 login_manager.login_view = 'login'
 
 def create_app(config_name):
@@ -15,10 +17,6 @@ def create_app(config_name):
     login_manager.init_app(app)
     db.init_app(app)
 
-    #attach routes and custom error pages here
+    # This is where you can register blueprints
 
     return app
-#login = LoginManager(app)
-login.login_view = 'login'
-
-from app import routes
