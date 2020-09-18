@@ -1,12 +1,15 @@
 #!/home/dh_4gxtme/rl-experiment-tracker.com/public/rl_stats_webapp_v2/.flask_venv/bin/python3
-from app import login
 from flask_login import UserMixin
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 
 db_path = 'rl_stats.db'
 
-class User(UserMixin):
+class User(UserMixin, db.model):
+    __tablename__ = 'users'
+    id = db.Column(db.integer, primary_key=True)
+    username = db.Column(db.String(64), unique=True, index=True)
+
     def __init__(self, username, password_hash):
         self.username = username
         self.password_hash = password_hash

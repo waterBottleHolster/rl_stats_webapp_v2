@@ -1,5 +1,5 @@
 #!/home/dh_4gxtme/rl-experiment-tracker.com/public/rl_stats_webapp_v2/.flask_venv/bin/python3
-from flask import Flask, render_template
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from config import Config
@@ -20,5 +20,7 @@ def create_app(config_name):
     db.init_app(app)
 
     # This is where you can register blueprints
+    from .auth import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint, url_prefix='auth')
 
     return app
