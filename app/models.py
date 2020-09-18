@@ -1,13 +1,15 @@
 #!/home/dh_4gxtme/rl-experiment-tracker.com/public/rl_stats_webapp_v2/.flask_venv/bin/python3
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask import current_app, request, url_for
 from flask_login import UserMixin
 import sqlite3
-from werkzeug.security import generate_password_hash, check_password_hash
 
-db_path = 'rl_stats.db'
+from . import db, login_manager
 
-class User(UserMixin, db.model):
+
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
-    id = db.Column(db.integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), unique=True, index=True)
 
     def __init__(self, username, password_hash):
@@ -32,15 +34,12 @@ class User(UserMixin, db.model):
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
-@login.user_loader
-def load_user(id):
-    conn = sqlite3.connect(db_path)
-    cur = conn.execute("SELECT id, username, password FROM users WHERE id = ?",
-                        (id,))
-    cur = cur.fetchone()
+class GameEvent(db.Model):
+    __tablename__ = 'game_events'
+    id = db.Column(db.Integer, primary_key=True)
 
-    if cur[0] == None:
-        return None
-    else:
-        return User(username=cur[1], password_hash=cur[2])
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 
