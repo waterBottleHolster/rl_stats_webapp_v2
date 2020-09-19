@@ -1,48 +1,29 @@
 #!/home/dh_4gxtme/rl-experiment-tracker.com/public/rl_stats_webapp_v2/.flask_venv/bin/python3
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, current_app
 from .forms import LoginForm, RegistrationForm, GameDataForm, AnalyzeForm
 from flask_login import current_user, login_user, logout_user, login_required
 from . import main
 from .. import db
-from ..models import User
+from ..models import User, GameEvent
 
 from werkzeug.security import generate_password_hash
 from werkzeug.urls import url_parse
-import sqlite3
+
 from datetime import datetime
 from app.helper_objects import boolean_to_binary, binary_to_boolean, \
                                 rl_vehicle_list
 
-db_path = 'rl_stats.db'
 
-@app.route('/')
-@app.route('/index/', methods=["GET", "POST"])
+@main.route('/')
+@main.route('/index/', methods=["GET", "POST"])
 @login_required
 def index():
     # obtain the most recent data for user (if available) to try and \
     # autopopulate some of the fields.
     try:
         # attempt to get information from the database from the current_user
-        conn = sqlite3.connect(db_path)
-        cur = conn.execute("SELECT * \
-                            FROM game_data \
-                            WHERE username = ? \
-                            ORDER BY id DESC \
-                            LIMIT 1", 
-                            (current_user.username,))
-        cur = cur.fetchone()
-        conn.close()
-        # Convert the tuple from the db to a list
-        cur = list(cur)
-
-        # Convert the binary (db) into boolean (webpage)
-        cur[4] = binary_to_boolean(cur[4])
-        cur[6] = binary_to_boolean(cur[6])
-        cur[9] = binary_to_boolean(cur[9])
-
-        form = GameDataForm(vehicle=cur[8], team=cur[7], partied=cur[6], 
-                            topper=cur[4], antenna=cur[9], fov=cur[10],
-                            distance=str(cur[11]), height=cur[12], angle=cur[13])
+        if 5/0:
+            pass
     except:
         # if there is no data in the database from the current_user \
         # then just go with some defaults.
@@ -55,18 +36,12 @@ def index():
 
     return render_template('index.html', form=form, cur=cur)
 
-@app.route('/register/', methods=['GET', 'POST'])
+@main.route('/register/', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        conn = sqlite3.connect(db_path)
-        password_hash = generate_password_hash(form.password.data)
-        conn.execute("INSERT INTO users (username, password) VALUES (?, ?)", (form.username.data, password_hash))
-        conn.commit()
-        conn.close()
-
         user = User(username=form.username.data,
                     password_hash=password_hash)
         
@@ -75,7 +50,7 @@ def register():
     return render_template('register.html', form=form)
 
 
-@app.route('/data_submit/', methods=['GET', 'POST'])
+@main.route('/data_submit/', methods=['GET', 'POST'])
 def data_submit():
     form = GameDataForm()
     current_time = str(datetime.utcnow())[:19]
@@ -94,26 +69,11 @@ def data_submit():
     current_angle = form.angle.data
     current_notes = form.notes.data
 
-    # You don't have any data validation here... was it taken care 
-    # of somewhere else???
-
-    conn = sqlite3.connect(db_path)
-    conn.execute("INSERT INTO game_data (date_time, username, \
-                        game_result, topper, game_mode, partied, team, \
-                        vehicle, antenna, fov, distance, height, angle, \
-                        notes) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (
-                        current_time, current_user.username,
-                        current_result, current_topper, current_gamemode,
-                        current_partied, current_team, current_vehicle,
-                        current_antenna, current_fov, current_distance,
-                        current_height, current_angle, current_notes))
-    conn.commit()
-    conn.close()
     
     # current_user.username
     return redirect(url_for('index'))
 
-@app.route('/analyze/', methods=['GET', 'POST'])
+@main.route('/analyze/', methods=['GET', 'POST'])
 @login_required
 def analyze():
     form = AnalyzeForm()
@@ -170,7 +130,7 @@ def analyze():
 
     return render_template('analyze.html', form=form, result_dict=result_dict)
 
-@app.route('/filter_table/', methods=['GET', 'POST'])
+@main.route('/filter_table/', methods=['GET', 'POST'])
 @login_required
 def filter_table():
     form = AnalyzeForm()
@@ -219,7 +179,7 @@ def filter_table():
 
 
 
-@app.route('/login/', methods=['GET', 'POST'])
+@main.route('/login/', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
@@ -243,7 +203,7 @@ def login():
 
     return render_template('login_v2.html', form=form)
 
-@app.route('/logout/')
+@main.route('/logout/')
 @login_required
 def logout():
     logout_user()
