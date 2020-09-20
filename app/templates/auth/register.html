@@ -24,7 +24,7 @@
             </div>
             <div class="row">
                 <div class="login">
-                    <form action="{{ url_for('register') }}" method="POST" oninput='confirm.setCustomValidity(confirm.value != password.value ? "Passwords do not match." : "")'>
+                    <form action="{{ url_for('auth.register') }}" method="POST" oninput='confirm.setCustomValidity(confirm.value != password.value ? "Passwords do not match." : "")'>
                         {{ form.hidden_tag() }}
 
                         <div class="form-group">
@@ -42,7 +42,7 @@
                             {{ form.submit() }}
                         </div>
                         <div class="form-group" id="helper-links">
-                            <a class="small-text" href=" {{ url_for('login') }}">Already a Member?</a>
+                            <a class="small-text" href=" {{ url_for('auth.login') }}">Already a Member?</a>
                         </div>
                     </form>
                 </div>

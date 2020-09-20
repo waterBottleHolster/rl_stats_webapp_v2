@@ -16,38 +16,12 @@ from app.helper_objects import boolean_to_binary, binary_to_boolean, \
 
 @main.route('/')
 @main.route('/index/', methods=["GET", "POST"])
-@login_required
 def index():
     # obtain the most recent data for user (if available) to try and \
     # autopopulate some of the fields.
-    try:
-        # attempt to get information from the database from the current_user
-        if 5/0:
-            pass
-    except:
-        # if there is no data in the database from the current_user \
-        # then just go with some defaults.
-        cur = ["0", "1970-01-01 00:00:00", current_user.username, "win", 
-                False, "three_v_three", False, "blue", "batmobile16",
-                False, 110, 220, 110, -4]
-        form = GameDataForm(vehicle=cur[8], team=cur[7], partied=cur[6], 
-                            topper=cur[4], antenna=cur[9], fov=cur[10],
-                            distance=str(cur[11]), height=cur[12], angle=cur[13])
+    form = GameDataForm()
 
-    return render_template('index.html', form=form, cur=cur)
-
-@main.route('/register/', methods=['GET', 'POST'])
-def register():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        user = User(username=form.username.data,
-                    password_hash=password_hash)
-        
-        return redirect(url_for('index'))
-
-    return render_template('register.html', form=form)
+    return render_template('index.html', form=form)
 
 
 @main.route('/data_submit/', methods=['GET', 'POST'])
@@ -74,7 +48,6 @@ def data_submit():
     return redirect(url_for('index'))
 
 @main.route('/analyze/', methods=['GET', 'POST'])
-@login_required
 def analyze():
     form = AnalyzeForm()
     
@@ -131,7 +104,6 @@ def analyze():
     return render_template('analyze.html', form=form, result_dict=result_dict)
 
 @main.route('/filter_table/', methods=['GET', 'POST'])
-@login_required
 def filter_table():
     form = AnalyzeForm()
 
@@ -176,36 +148,3 @@ def filter_table():
     result_dict['record'] = record
 
     return render_template('analyze.html', form=form, result_dict=result_dict)
-
-
-
-@main.route('/login/', methods=['GET', 'POST'])
-def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = LoginForm()
-    if form.validate_on_submit():
-        conn = sqlite3.connect(db_path)
-        cur = conn.execute('SELECT * FROM users WHERE username = ?', (form.username.data,))
-        cur = cur.fetchone()
-        user = User(cur[1], cur[2])
-        # at this point cur contains either [] or the row of data for the user
-        # which includes userid (int), username(string), and password(string)
-        if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
-            return redirect(url_for('login'))
-        login_user(user, remember=True)
-        next_page = request.args.get('next')
-        if not next_page or url_parse(next_page).netloc != '':
-            flash('Hello \"' + user.username + '\"')
-            next_page = url_for('index')
-        return redirect(next_page)
-
-    return render_template('login_v2.html', form=form)
-
-@main.route('/logout/')
-@login_required
-def logout():
-    logout_user()
-    flash('You\'ve Been Successfully Logged Out')
-    return redirect(url_for('login'))

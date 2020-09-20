@@ -1,4 +1,5 @@
 #!/home/dh_4gxtme/rl-experiment-tracker.com/public/rl_stats_webapp_v2/.flask_venv/bin/python3
+from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import current_app, request, url_for
 from flask_login import UserMixin
@@ -13,18 +14,8 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     game_events = db.relationship('GameEvent', backref='user', lazy='dynamic')
 
-    def __init__(self, username, password_hash):
-        self.username = username
-        self.password_hash = password_hash
-        conn = sqlite3.connect(db_path)
-        cur = conn.execute("SELECT id FROM users WHERE username = ?", 
-                            (username,))
-        cur = cur.fetchone()
-        conn.close()
-        if cur == None:
-            self.id = None
-        else:
-            self.id = cur[0]
+    def __init__(self, **kwargs):
+        super(User, self).__init__(**kwargs)
 
     @property
     def password(self):
