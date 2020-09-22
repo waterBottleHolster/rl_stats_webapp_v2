@@ -50,58 +50,7 @@ def data_submit():
 @main.route('/analyze/', methods=['GET', 'POST'])
 def analyze():
     form = AnalyzeForm()
-    
-    # By default The result_dict contains info about the most
-    # recent 20 games for the user currently logged in.
-    # If there aren't 20 games worth of data, it'll show as many games
-    # as are available.
-    result_dict = {}
-    conn = sqlite3.connect(db_path)
-    cur = conn.execute("SELECT * \
-                        FROM game_data \
-                        WHERE username=? \
-                        ORDER BY id DESC \
-                        LIMIT 20", 
-                        (current_user.username,))
-
-    cur = cur.fetchall()
-
-
-    # Put the results of the fetchall into 20 rows of the result_dict.
-    # keys are numbers 0 - 19 (inclusive)
-    # values are the rows of data from cur.fetchall()
-    for j in range(20):
-        try:
-            result_dict[j] = cur[j]
-        except:
-            # If there aren't twenty rows of data, just put the loop 
-            # counter as the value.
-            result_dict[j] = j
-
-    # Calculate the win-loss record and store it in the result_dict
-    # under the key 'record'
-    win_counter = 0
-    loss_counter = 0
-
-    for j in range(20):
-        # the try-except below makes the win-loss record display
-        try:
-            if result_dict[j][3] == "Win" or \
-                result_dict[j][3] == "Forfeit Win":
-                    win_counter = win_counter + 1
-            elif result_dict[j][3] == "Loss" or \
-                result_dict[j][3] == "Forfeit Loss":
-                    loss_counter = loss_counter + 1
-        except:
-            # An empty except clause is poor practice, but I really 
-            # can't think of what should go here.
-            pass
-
-    record = str(win_counter) + 'W - ' + str(loss_counter) + 'L'
-
-    result_dict['record'] = record
-
-    return render_template('analyze.html', form=form, result_dict=result_dict)
+    return render_template('analyze.html', form=form)
 
 @main.route('/filter_table/', methods=['GET', 'POST'])
 def filter_table():
